@@ -35,6 +35,8 @@ li{
     color: rgba(100,100,100, 0.8);
     padding: 10px 10px;
     border-radius: 10px;
+    display: flex;
+
 }
 .cuadro_imagen_perfil{
     display: flex;
@@ -58,4 +60,9 @@ li{
 .activado{
     background: rgba(124, 30, 217, 0.8);
     color: #fff;
+}
+.abajo{
+    margin-left: 5px;
+    position: relative;
+    transform: translateY(2px);
 }

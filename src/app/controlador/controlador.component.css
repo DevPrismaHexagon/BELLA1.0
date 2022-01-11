@@ -28,6 +28,8 @@ ul{
     display: flex;
     justify-content: space-between;
     list-style: none;
+    
+    padding: 0;
 }
 li{
     margin:0px 5px;
@@ -36,7 +38,13 @@ li{
     padding: 10px 10px;
     border-radius: 10px;
     display: flex;
+    transition: all 200ms ease;
 
+}
+
+li:hover{
+    background: rgba(100,100,100, 0.1);
+    color: rgba(100,100,100, 0.8);
 }
 .cuadro_imagen_perfil{
     display: flex;
@@ -56,6 +64,7 @@ li{
     width: 40px;
     height: 40px;
     margin: 2px;
+    border-radius: 50%;
 }
 .activado{
     background: rgba(124, 30, 217, 0.8);
@@ -65,4 +74,26 @@ li{
     margin-left: 5px;
     position: relative;
     transform: translateY(2px);
+
+
+}
+.menu_despegable{
+    transform: translate(-10px, 30px);
+
+    display: none;
+    flex-flow: column nowrap;
+    position: absolute;
+    justify-content: space-between;
+    padding: 0;
+    background-color : #fff;
+    box-shadow: 5px 5px 20px rgba(100,100,100, 0.2);
+    padding: 6px 0;
+    border-radius: 10px;
+    transition: all 200ms linear;
+}
+
+
+.despegable:hover  .menu_despegable{
+    
+    display: flex;
 }

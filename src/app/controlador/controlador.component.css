@@ -1,0 +1,61 @@
+.arriba{
+    width: 100%;
+    box-shadow: 0px 0px 20px rgba(100,100,100, 0.3);
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header{
+    display: flex;
+    
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    
+    width: 90%;
+}
+.header .logo img{
+    width: 10vh;
+    
+}
+.barra{
+    min-width: 50%;
+    width: auto;
+}
+ul{
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
+li{
+    margin:0px 5px;
+    cursor: pointer;
+    color: rgba(100,100,100, 0.8);
+    padding: 10px 10px;
+    border-radius: 10px;
+}
+.cuadro_imagen_perfil{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(73,163,242, 0.8);
+    border-radius: 50%;
+    padding: 2px;
+}
+.rayita_imagen_perfil{
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    background: #fff;
+}
+.cuadro_imagen_perfil img{
+    width: 40px;
+    height: 40px;
+    margin: 2px;
+}
+.activado{
+    background: rgba(124, 30, 217, 0.8);
+    color: #fff;
+}

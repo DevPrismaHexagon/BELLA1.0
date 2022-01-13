@@ -1,0 +1,172 @@
+#seguridad{
+    padding: 20px;
+}
+#seguridad{
+    background-color: #fff;
+}
+#seguridad .titulo{
+    /* padding: 20px; */
+
+    text-align: center;
+    color: rgba(100,100,100, 1);
+    margin-bottom: 20px;
+}
+.usuarios .titulo_usuarios{
+    margin-bottom: 20px;
+}
+.usuarios .titulo_usuarios h3{
+    font-weight: normal;
+    color: rgba(100,100,100, 1);
+}
+#seguridad .titulo h4{
+    font-weight: normal;
+    font-size: 22px;
+}
+.agg_usuarios button{
+    margin-bottom: 35px;
+    background:rgba(7,86,242, 0.8);
+    cursor: pointer;
+    color: #fff;
+    padding: 10px 10px;
+    border-radius: 10px;
+    border: none;
+    display: flex;
+    transition: all 200ms ease;
+}
+.lista .lista_header{
+    display: flex;
+    justify-content: space-between;
+}
+.lista .lista_header .herramientas{
+    width: 70%;
+    display: flex;
+}
+.lista .lista_header .herramientas ul{
+    list-style: none;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+.lista .lista_header .herramientas ul li{
+    margin:0px 5px;
+    cursor: pointer;
+    color: rgba(100,100,100, 0.8);
+}
+.lista .lista_header .herramientas ul li input[type="checkbox"]{
+    background: #000;
+    border: 5px solid #000;
+    padding: 20px;
+}
+.lista .lista_header .herramientas ul li button{
+    color: #000;
+    border: none;
+    cursor: pointer;
+    transition: all 200ms ease;
+    padding: 10px;
+    border-radius: 10px;
+    color: rgba(100,100,100, 0.8);
+    width: 37px !important;
+    height: 37px !important;
+}
+.lista .lista_header .herramientas ul li button:hover{
+    background:rgba(7,86,242, 0.8);
+    color: #fff;
+}
+.lista .lista_header .buscador{
+    width: 30%;
+}
+.lista .lista_header .buscador input{ 
+    border: none;
+    border-bottom: 1px solid rgba(100,100,100, 0.8);
+    width: 100%;
+    padding: 8px 16px;
+    transition: all 200ms ease;
+}
+.lista .lista_header .buscador input:focus,
+.lista .lista_header .buscador input:active{
+    outline: none;
+    border-color: rgba(7,86,242, 0.8);
+}
+.lista .lista_tabla{
+    margin-top: 30px;
+}
+.lista .lista_tabla table{
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+    font-weight: 300;
+}
+.lista .lista_tabla table thead{
+    background: rgba(124, 30, 217, 0.8);
+}
+.lista .lista_tabla table thead th{
+    /* margin-bottom: 20px; */
+    font-weight: normal;
+    font-size: 0.9em;
+    color: #fff;
+    padding: 9px;
+}
+.lista .lista_tabla table tbody {
+
+}
+.lista .lista_tabla table tbody tr:nth-child(even){
+    background: rgba(240, 240, 240, 1);
+}
+.lista .lista_tabla table tbody tr td{
+    font-size: 0.9em;
+    padding: 9px;
+}
+.lista .lista_tabla table tbody tr td .borrar{
+    color: rgba(250, 0,0,.6);
+    cursor: pointer;
+}
+.lista .lista_footer{
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+.lista .lista_footer .entradas p{
+    color: rgba(100,100,100, 0.8);;
+    font-size: 0.9em;;
+}
+.lista .lista_footer .entradas p select{
+    color: rgba(100,100,100, 0.8);
+    border:none;
+    outline: none;
+    box-shadow: none;
+    padding: 3px;
+    margin: 0 5px;   
+}
+.lista .lista_footer .paginacion ul{
+    list-style: none;
+    display: flex;
+}
+.lista .lista_footer .paginacion li{
+    /* display: inline-block; */
+}
+.lista .lista_footer .paginacion li button{
+    margin: 0 3px;
+    border: none;
+    cursor: pointer;
+    transition: all 200ms ease;
+    padding: 10px;
+    border-radius: 6px;
+}
+.lista .lista_footer .paginacion li button:hover{
+    background: rgba(7,86,242, 0.8);
+    color: #fff;
+}
+.lista .lista_footer .paginacion li .numero{
+    width: 35px !important;
+    height: 35px !important;
+}
+
+
+#seguridad .roles{
+    margin: 20px 0px;
+}
+#seguridad .titulo_roles h3{
+    font-weight: normal;
+    color: rgba(100,100,100, 1);
+}

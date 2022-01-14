@@ -65,8 +65,8 @@
     padding: 10px;
     border-radius: 10px;
     color: rgba(100,100,100, 0.8);
-    width: 37px !important;
-    height: 37px !important;
+    min-width: 37px !important;
+    min-height: 37px !important;
 }
 .lista .lista_header .herramientas ul li button:hover{
     background:rgba(7,86,242, 0.8);
@@ -170,3 +170,20 @@
     font-weight: normal;
     color: rgba(100,100,100, 1);
 }
+/* 
+.modal{
+    text-align: center;
+    position: fixed;
+    width: 100vh;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, .5);
+    transform: scale(0);
+    transition: transform .3s;
+    z-index: 9999;
+}
+.modal_content{
+    background: #fff;
+} */

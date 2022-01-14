@@ -1,1 +1,7 @@
-<app-controlador></app-controlador>
+
+    <app-login *ngIf="login; else controlador"></app-login>
+
+
+<ng-template #controlador>
+    <app-controlador></app-controlador>
+</ng-template>

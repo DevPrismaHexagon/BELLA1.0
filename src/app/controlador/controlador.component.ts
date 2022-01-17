@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-controlador',
@@ -7,11 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ControladorComponent implements OnInit {
 
-  constructor() {
+  constructor(  private router:Router) {
   
    }
 
   ngOnInit(): void {
+    this.router.navigate(['/dashboard'])
     var monitoreo=document.getElementById('monitoreo') as HTMLLIElement;
     monitoreo.addEventListener('click', (e)=>{
       var hola=e.target as Element;      

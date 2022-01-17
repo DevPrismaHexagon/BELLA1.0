@@ -9,9 +9,17 @@ import { RegistroComponent } from './registro/registro.component';
 import { IniciarSessionComponent } from './iniciar-session/iniciar-session.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { SeguridadComponent } from './seguridad/seguridad.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { Error404Component } from './error404/error404.component';
 
 const rutas:Routes=[
-  {path:'',component:ControladorComponent},
+  {path:'',component:ControladorComponent,
+    children:[
+      {path:'seguridad', component:SeguridadComponent},
+      {path:'dashboard', component:DashboardComponent},
+
+  ]  },
   {path:'login',
     component:LoginComponent,
     children:[
@@ -19,6 +27,8 @@ const rutas:Routes=[
       {path:'registro',component:RegistroComponent}
     ]  
   },
+  {path:'**', component:Error404Component}
+ 
 
 ]
 
@@ -29,7 +39,10 @@ const rutas:Routes=[
     ControladorComponent,
     LoginComponent,
     RegistroComponent,
-    IniciarSessionComponent
+    IniciarSessionComponent,
+    SeguridadComponent,
+    DashboardComponent,
+    Error404Component
   ],
   imports: [
     BrowserModule, 

@@ -2,7 +2,8 @@
     <div class="logo"><img src="./assets/logo.png"></div>
     <div class="barra">
         <ul id="monitoreo">
-            <li  class="activado ">Seguridad</li>
+            <li  class="activado" [routerLink]="['./dashboard']">Inicio</li>
+            <li  [routerLink]="['./seguridad']">Seguridad</li>
             <li class="despegable ">Contabilidad <div class="abajo"><i class="fas fa-angle-down"></i></div> <div class="menu_despegable">
                 <li >Opcion 1</li>
                 <li>Opcion 2</li>
@@ -69,8 +70,7 @@
 </div>
 <div class="con">
     <div class="contenedor">
-        <div class="app"></div>
-       
+        <router-outlet></router-outlet>
     </div>
 </div>
 

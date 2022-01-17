@@ -29,6 +29,12 @@ export class ControladorComponent implements OnInit {
         
       }    
     })
+
+    var modo=document.querySelector('#modo');
+    modo?.addEventListener("click",()=>{
+      document.body.classList.toggle("dark");
+      modo?.classList.toggle("active");
+    })
   }
 
 

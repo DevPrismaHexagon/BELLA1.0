@@ -13,17 +13,18 @@ import { ComprasComponent } from './compras/compras.component';
 
 
 const rutas:Routes=[
-  {path:'compras',component:ComprasComponent,
-
+  {path:'',component:ControladorComponent,
+    children:[
+      {path:'compras',component:ComprasComponent}
+    ]
   },
 
-  {path:'',component:ControladorComponent},
   {path:'login',
     component:LoginComponent,
     children:[
       {path:'iniciar',component:IniciarSessionComponent}
-    //   {path:'registro',component:RegistroComponent}
-     ]  
+      {path:'registro',component:RegistroComponent}
+     ]
   }
 
 ]

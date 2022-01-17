@@ -8,19 +8,10 @@
             <p class="pre_titulo">Trabajamos duro para que usted no tenga que hacerlo :)</p>
         </div>
         <div class="login">
-            <div class="cuadro_registro">
-                <button class="registro"(click)="cambiarCuadroPanel()">{{texToBotonRegistro}}</button>
-                <button class="registro">Notas v1.0</button>
-            </div> 
-            <div class="cuadro_panel">
-                <h3>Bienvenido a Bella v1.0</h3>
-                <app-iniciar-session *ngIf="iniciarSession; else registro"></app-iniciar-session>
-
-
-                <ng-template #registro>
-                    <app-registro></app-registro>
-                </ng-template>
-            </div>
+       
+                <router-outlet></router-outlet>
+                
+            
             <div class="redes">
                 <div class="cuadro_redes"><a href=""><i class="fab fa-facebook-square"></i></a></div>
                 <div class="cuadro_redes"><a href=""><i class="fab fa-youtube"></i></a></div>

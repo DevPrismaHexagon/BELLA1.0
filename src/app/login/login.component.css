@@ -35,13 +35,13 @@ img{
     font-size: 0.8em;
 }
 .login{
+    position: relative;
    background: linear-gradient(180deg, rgba(156,27,191, 0.8) 0%, rgba(124, 30, 217, 0.8) 50%, rgba(124, 30, 217, 0.8) 100%);
-   
     width: 40%;
     height: 100%;
     display: flex;
     flex-flow: column;
-    justify-content: space-between;
+    justify-content: stretch;
 }
 .cuadro_registro{
     display: flex;
@@ -51,6 +51,7 @@ img{
     
 }
 .registro{
+    margin-top: 10px;
     margin-left: 10px;
     background: none;
     border:1px solid rgba(255,255,255,0.5);
@@ -65,10 +66,14 @@ img{
     color:  rgba(124, 30, 217, 0.8);
 }
 .redes{
+     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
+    bottom: 0;
+    align-self: center;
+    z-index: 50;
 }
 .cuadro_redes{
     margin: 0px 5px;
@@ -86,6 +91,6 @@ img{
 .cuadro_panel h3{
     color: rgba(255,255,255,0.9);
     font-size:1.9em;
-    margin-top: 25px;
+    margin-top: 20px;
     font-weight: 400;
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-declare var particlesJS:any;
+import { ActivatedRoute, Router } from '@angular/router';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,10 +19,13 @@ export class LoginComponent implements OnInit {
       this.texToBotonRegistro="Registrarse"
     }
   }
-  constructor() { }
+  
+  constructor( private router:Router) {
+    
+   }
 
   ngOnInit(): void {
-    
+    this.router.navigate(['/login/iniciar'])
   }
 
 }

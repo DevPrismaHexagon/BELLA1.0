@@ -1,72 +1,86 @@
-<div class="arriba"><div class="header">
-    <div class="logo"><img src="./assets/logo.png"></div>
-    <div class="barra">
-        <ul id="monitoreo">
-            <li  class="activado" [routerLink]="['./dashboard']">Inicio</li>
-            <li  [routerLink]="['./seguridad']">Seguridad</li>
-            <li class="despegable ">Contabilidad <div class="abajo"><i class="fas fa-angle-down"></i></div> <div class="menu_despegable">
-                <li >Opcion 1</li>
-                <li>Opcion 2</li>
-                <li>Opcion 3</li>
-                <li>Opcion 1</li>
-                <li>Opcisdfsdfsdfdon 2</li>
-                <li>Opcion 3</li>
-                <li>Opcion 1</li>
-                <li>Opcion 2</li>
-                <li>Opcion 3</li>
-                
-            </div> </li>
-            <li class="despegable">Bancos/Tesoreria <div class="abajo"><i class="fas fa-angle-down"></i></div><div class="menu_despegable">
-                <li >Opcion 1</li>
-                <li>Opcion 2</li>
-                <li>Opcion 3</li>
-                <li>Opcion 1</li>
-                <li>Opcisdfsdfsdfdon 2</li>
-                <li>Opcion 3</li>
-                <li>Opcion 1</li>
-                
-            </div></li>
-            <li >Ventas</li>
-            <li >Inventario</li>
-            <li class="despegable " >Cuentas <div class="abajo"><i class="fas fa-angle-down"></i></div><div class="menu_despegable">
-                <li>Cuentas por cobrar</li>
-                <li>Cuentas por pagar</li>         
-            </div></li>
+<div class="arriba">
+    <div class="header">
+        <div class="logo"><img src="./assets/logo.png"></div>
+        <div class="barra">
+            <ul id="monitoreo">
+                <li class="activado" [routerLink]="['./dashboard']">Inicio</li>
+                <li [routerLink]="['./seguridad']">Seguridad</li>
+                <li class="despegable ">Contabilidad
+                    <div class="abajo"><i class="fas fa-angle-down"></i></div>
+                    <div class="menu_despegable">
+                        <li>Opcion 1</li>
+                        <li>Opcion 2</li>
+                        <li>Opcion 3</li>
+                        <li>Opcion 1</li>
+                        <li>Opcisdfsdfsdfdon 2</li>
+                        <li>Opcion 3</li>
+                        <li>Opcion 1</li>
+                        <li>Opcion 2</li>
+                        <li>Opcion 3</li>
 
-            <li >Activos fijos</li>
-            <li >Compras</li>
-            
-        </ul>
+                    </div>
+                </li>
+                <li class="despegable">Bancos/Tesoreria
+                    <div class="abajo"><i class="fas fa-angle-down"></i></div>
+                    <div class="menu_despegable">
+                        <li>Opcion 1</li>
+                        <li>Opcion 2</li>
+                        <li>Opcion 3</li>
+                        <li>Opcion 1</li>
+                        <li>Opcisdfsdfsdfdon 2</li>
+                        <li>Opcion 3</li>
+                        <li>Opcion 1</li>
 
-    </div>
-    <div class="perfi_todo">
-    <div class="usuario">
-         <div class="cuadro_imagen_perfil">
-            <div class="rayita_imagen_perfil">
-                <img src="./assets/face.jpg">
+                    </div>
+                </li>
+                <li [routerLink]="['./ventas']">Ventas</li>
+                <li>Inventario</li>
+                <li class="despegable ">Cuentas
+                    <div class="abajo"><i class="fas fa-angle-down"></i></div>
+                    <div class="menu_despegable">
+                        <li>Cuentas por cobrar</li>
+                        <li>Cuentas por pagar</li>
+                    </div>
+                </li>
+
+                <li>Activos fijos</li>
+                <li [routerLink]="['./compras']">Compras</li>
+                <li>Factura Electronica</li>
+
+            </ul>
+
+        </div>
+        <div class="perfi_todo">
+            <div class="usuario">
+                <div class="cuadro_imagen_perfil">
+                    <div class="rayita_imagen_perfil">
+                        <img src="./assets/face.jpg">
+                    </div>
+                </div>
+                <div class="nombre">
+                    <div class="usuario_nombre">Nelberth</div>
+                    <div class="tipo_cuenta">Administrador</div>
+                </div>
+                <div class="abajo"><i class="fas fa-angle-down"></i></div>
+
             </div>
-        </div>
-        <div class="nombre">
-            <div class="usuario_nombre">Nelberth</div>
-            <div class="tipo_cuenta">Administrador</div>
-        </div>
-        <div class="abajo"><i class="fas fa-angle-down"></i></div>
-       
-    </div>
-    <div class="opciones_usuario">
-        <div class="opciones_usu">
-            <div>Claro</div>
-            <button class="modo" id="modo">
+            <div class="opciones_usuario">
+                <div class="opciones_usu">
+                    <div>Claro</div>
+                    <button class="modo" id="modo">
                 <span><i class="fas fa-sun"></i></span>
                 <span><i class="fas fa-moon"></i></span>
         </button></div>
-        <div class="opciones_usu"><div class="icono"><i class="fas fa-user"></i></div> Ver perfil</div>
-        <div class="opciones_usu"><div class="icono"><i class="fas fa-cog"></i></div>Configuracion</div>
-        <div class="opciones_usu"><div class="icono"><i class="fas fa-sign-out-alt"></i></div>Salir</div>
-    </div>
-</div>
+                <div class="opciones_usu">
+                    <div class="icono"><i class="fas fa-user"></i></div> Ver perfil</div>
+                <div class="opciones_usu">
+                    <div class="icono"><i class="fas fa-cog"></i></div>Configuracion</div>
+                <div class="opciones_usu">
+                    <div class="icono"><i class="fas fa-sign-out-alt"></i></div>Salir</div>
+            </div>
+        </div>
 
-</div>
+    </div>
 </div>
 <div class="con">
     <div class="contenedor">
@@ -77,5 +91,5 @@
 <div class="footer">
     <div class="derechos">© 2022 BELLA All rights reserved.</div>
     <div class="diseno">Design and Developed by MARKDEBRAND WORLD WIDE</div>
-    
+
 </div>

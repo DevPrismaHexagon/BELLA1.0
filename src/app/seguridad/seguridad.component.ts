@@ -51,6 +51,13 @@ export class SeguridadComponent implements OnInit {
       "nombre": "Post One",
       "rol": "Administrador",
       "correo": "christiandmoraless@gmail.com"
+    },
+    {
+      "id": 6,
+      "estado":"activo",
+      "nombre": "Post One",
+      "rol": "Administrador",
+      "correo": "christiandmoraless@gmail.com"
     }
   ];
 

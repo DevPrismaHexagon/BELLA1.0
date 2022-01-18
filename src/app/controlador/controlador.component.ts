@@ -13,6 +13,7 @@ export class ControladorComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.router.navigate(['/dashboard'])
     var monitoreo=document.getElementById('monitoreo') as HTMLLIElement;
     monitoreo.addEventListener('click', (e)=>{
       var hola=e.target as Element;      

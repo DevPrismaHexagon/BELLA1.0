@@ -1,5 +1,5 @@
 <div class="arriba"><div class="header">
-    <div class="logo"><img src="./assets/logo.png"></div>
+    <div class="logo"><img src="./assets/logo.svg"></div>
     <div class="barra">
         <ul id="monitoreo">
             <li  class="activado" [routerLink]="['./dashboard']">Inicio</li>
@@ -60,9 +60,9 @@
                 <span><i class="fas fa-sun"></i></span>
                 <span><i class="fas fa-moon"></i></span>
         </button></div>
-        <div class="opciones_usu"><div class="icono"><i class="fas fa-user"></i></div> Ver perfil</div>
+        <div class="opciones_usu" [routerLink]="['/perfil']"><div class="icono"><i class="fas fa-user"></i></div> Ver perfil</div>
         <div class="opciones_usu"><div class="icono"><i class="fas fa-cog"></i></div>Configuracion</div>
-        <div class="opciones_usu"><div class="icono"><i class="fas fa-sign-out-alt"></i></div>Salir</div>
+        <div class="opciones_usu" [routerLink]="['/login/iniciar']"><div class="icono"><i class="fas fa-sign-out-alt"></i></div>Salir</div>
     </div>
 </div>
 

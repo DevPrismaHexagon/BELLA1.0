@@ -12,12 +12,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { SeguridadComponent } from './seguridad/seguridad.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { Error404Component } from './error404/error404.component';
+import { PerfilComponent } from './perfil/perfil.component';
 
 const rutas:Routes=[
   {path:'',component:ControladorComponent,
     children:[
+      {path:'', component:DashboardComponent},
       {path:'seguridad', component:SeguridadComponent},
       {path:'dashboard', component:DashboardComponent},
+      {path:'perfil', component:PerfilComponent},
 
   ]  },
   {path:'login',
@@ -42,7 +45,8 @@ const rutas:Routes=[
     IniciarSessionComponent,
     SeguridadComponent,
     DashboardComponent,
-    Error404Component
+    Error404Component,
+    PerfilComponent
   ],
   imports: [
     BrowserModule, 

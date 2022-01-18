@@ -13,12 +13,20 @@ import { SeguridadComponent } from './seguridad/seguridad.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { Error404Component } from './error404/error404.component';
 
+import { ReactiveFormsModule } from '@angular/forms';
+import { ArticlesComponent } from './articles/articles.component';
+import { ArticlesService } from './articles/articles.service';
+import { AddArticlesComponent } from './articles/add-articles.component';
+import { EditArticlesComponent } from './articles/edit-articles.component';
+
 const rutas:Routes=[
   {path:'',component:ControladorComponent,
     children:[
       {path:'seguridad', component:SeguridadComponent},
       {path:'dashboard', component:DashboardComponent},
-
+      { path: 'articulos', component: ArticlesComponent },
+      { path: 'articulos/agregar', component: AddArticlesComponent },
+      { path: 'articulos/editar/:id', component: EditArticlesComponent }
   ]  },
   {path:'login',
     component:LoginComponent,
@@ -27,9 +35,7 @@ const rutas:Routes=[
       {path:'registro',component:RegistroComponent}
     ]  
   },
-  {path:'**', component:Error404Component}
- 
-
+  {path:'**', component:Error404Component},
 ]
 
 
@@ -42,15 +48,19 @@ const rutas:Routes=[
     IniciarSessionComponent,
     SeguridadComponent,
     DashboardComponent,
-    Error404Component
+    Error404Component,
+    ArticlesComponent,
+    EditArticlesComponent,
+    AddArticlesComponent
   ],
   imports: [
     BrowserModule, 
     FormsModule, 
     BrowserAnimationsModule,
+    ReactiveFormsModule, 
     RouterModule.forRoot(rutas)
   ],
-  providers: [],
+  providers: [ArticlesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

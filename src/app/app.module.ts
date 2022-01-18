@@ -12,6 +12,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { SeguridadComponent } from './seguridad/seguridad.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { Error404Component } from './error404/error404.component';
+import { ComprasComponent } from './compras/compras.component';
+import { CrearComponent } from './compras/crear/crear.component';
+import { EditarComponent } from './compras/editar/editar.component';
+import { VentasComponent } from './ventas/ventas.component';
+import { CrearVentaComponent } from './ventas/crear-venta/crear-venta.component';
+import { EditarVentaComponent } from './ventas/editar-venta/editar-venta.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { ArticlesComponent } from './articles/articles.component';
@@ -24,9 +30,16 @@ const rutas:Routes=[
     children:[
       {path:'seguridad', component:SeguridadComponent},
       {path:'dashboard', component:DashboardComponent},
+      {path:'compras', component:ComprasComponent},
+      {path:'compras/crear', component: CrearComponent},
+      {path:'compras/editar', component:EditarComponent},
+      {path:'ventas', component:VentasComponent},
+      {path:'ventas/crear', component: CrearVentaComponent},
+      {path:'ventas/editar', component:EditarVentaComponent},
       { path: 'articulos', component: ArticlesComponent },
       { path: 'articulos/agregar', component: AddArticlesComponent },
       { path: 'articulos/editar/:id', component: EditArticlesComponent }
+
   ]  },
   {path:'login',
     component:LoginComponent,
@@ -49,6 +62,12 @@ const rutas:Routes=[
     SeguridadComponent,
     DashboardComponent,
     Error404Component,
+    ComprasComponent,
+    CrearComponent,
+    EditarComponent,
+    VentasComponent,
+    CrearVentaComponent,
+    EditarVentaComponent,
     ArticlesComponent,
     EditArticlesComponent,
     AddArticlesComponent

@@ -12,11 +12,13 @@ import { SeguridadComponent } from './seguridad/seguridad.component';
 import { EditarUsuarioComponent } from './seguridad/editar-usuario/editar-usuario.component';
 import { BancosComponent } from './bancos/bancos.component';
 import { BancosCrearComponent } from './bancos/bancos-crear/bancos-crear.component';
+import { SeguridadCrearUsuarioComponent } from './seguridad/seguridad-crear-usuario/seguridad-crear-usuario.component';
 const rutas:Routes=[
   {path:'',component:ControladorComponent,
     children:[
       {path:'seguridad', component:SeguridadComponent},
       {path:'seguridad_edicion', component:EditarUsuarioComponent},
+      {path:'seguridad/agregar_usuario', component:SeguridadCrearUsuarioComponent},
       {path:'bancos', component:BancosComponent},
       {path:'bancos/agregar', component:BancosCrearComponent},
       
@@ -40,6 +42,7 @@ const rutas:Routes=[
     EditarUsuarioComponent,
     BancosComponent,
     BancosCrearComponent,
+    SeguridadCrearUsuarioComponent,
   ],
   imports: [
     BrowserModule,

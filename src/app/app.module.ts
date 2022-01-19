@@ -7,7 +7,7 @@ import { ControladorComponent } from './controlador/controlador.component';
 import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
 import { IniciarSessionComponent } from './iniciar-session/iniciar-session.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { SeguridadComponent } from './seguridad/seguridad.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -18,6 +18,11 @@ import { EditarComponent } from './compras/editar/editar.component';
 import { VentasComponent } from './ventas/ventas.component';
 import { CrearVentaComponent } from './ventas/crear-venta/crear-venta.component';
 import { EditarVentaComponent } from './ventas/editar-venta/editar-venta.component';
+
+import { ArticlesComponent } from './articles/articles.component';
+import { ArticlesService } from './articles/articles.service';
+import { AddArticlesComponent } from './articles/add-articles.component';
+import { EditArticlesComponent } from './articles/edit-articles.component';
 
 const rutas:Routes=[
   {path:'',component:ControladorComponent,
@@ -30,7 +35,9 @@ const rutas:Routes=[
       {path:'ventas', component:VentasComponent},
       {path:'ventas/crear', component: CrearVentaComponent},
       {path:'ventas/editar', component:EditarVentaComponent},
-
+      { path: 'articulos', component: ArticlesComponent },
+      { path: 'articulos/agregar', component: AddArticlesComponent },
+      { path: 'articulos/editar/:id', component: EditArticlesComponent }
   ]  },
   {path:'login',
     component:LoginComponent,
@@ -60,15 +67,19 @@ const rutas:Routes=[
     EditarComponent,
     VentasComponent,
     CrearVentaComponent,
-    EditarVentaComponent
+    EditarVentaComponent,
+    ArticlesComponent,
+    EditArticlesComponent,
+    AddArticlesComponent
   ],
   imports: [
     BrowserModule, 
     FormsModule, 
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(rutas)
   ],
-  providers: [],
+  providers: [ArticlesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

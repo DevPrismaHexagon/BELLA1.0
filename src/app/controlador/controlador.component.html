@@ -1,25 +1,41 @@
-<div class="arriba">
-    <div class="header">
-        <div class="logo"><img src="./assets/logo.png"></div>
-        <div class="barra">
-            <ul id="monitoreo">
-                <li class="activado" [routerLink]="['./dashboard']">Inicio</li>
-                <li [routerLink]="['./seguridad']">Seguridad</li>
-                <li class="despegable ">Contabilidad
-                    <div class="abajo"><i class="fas fa-angle-down"></i></div>
-                    <div class="menu_despegable">
-                        <li>Opcion 1</li>
-                        <li>Opcion 2</li>
-                        <li>Opcion 3</li>
-                        <li>Opcion 1</li>
-                        <li>Opcisdfsdfsdfdon 2</li>
-                        <li>Opcion 3</li>
-                        <li>Opcion 1</li>
-                        <li>Opcion 2</li>
-                        <li>Opcion 3</li>
+<div class="arriba"><div class="header">
+    <div class="logo"><img src="./assets/logo.png"></div>
+    <div class="barra">
+        <ul id="monitoreo">
+            <li  class="activado" [routerLink]="['./dashboard']">Inicio</li>
+            <li  [routerLink]="['./seguridad']">Seguridad</li>
+            <li class="despegable ">Contabilidad <div class="abajo"><i class="fas fa-angle-down"></i></div> <div class="menu_despegable">
+                <li >Opcion 1</li>
+                <li>Opcion 2</li>
+                <li>Opcion 3</li>
+                <li>Opcion 1</li>
+                <li>Opcisdfsdfsdfdon 2</li>
+                <li>Opcion 3</li>
+                <li>Opcion 1</li>
+                <li>Opcion 2</li>
+                <li>Opcion 3</li>
+                
+            </div> </li>
+            <li class="despegable">Bancos/Tesoreria <div class="abajo"><i class="fas fa-angle-down"></i></div><div class="menu_despegable">
+                <li >Opcion 1</li>
+                <li>Opcion 2</li>
+                <li>Opcion 3</li>
+                <li>Opcion 1</li>
+                <li>Opcisdfsdfsdfdon 2</li>
+                <li>Opcion 3</li>
+                <li>Opcion 1</li>
+                
+            </div></li>
+            <li >Ventas</li>
+            <li [routerLink]="['./articulos']">Inventario</li>
+            <li class="despegable " >Cuentas 
+                <div class="abajo"><i class="fas fa-angle-down"></i></div>
+                <div class="menu_despegable">
+                    <li>Cuentas por cobrar</li>
+                    <li>Cuentas por pagar</li>         
+                </div>
+            </li>
 
-                    </div>
-                </li>
                 <li class="despegable">Bancos/Tesoreria
                     <div class="abajo"><i class="fas fa-angle-down"></i></div>
                     <div class="menu_despegable">

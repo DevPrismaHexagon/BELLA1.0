@@ -23,6 +23,7 @@ import { ArticlesComponent } from './articles/articles.component';
 import { ArticlesService } from './articles/articles.service';
 import { AddArticlesComponent } from './articles/add-articles.component';
 import { EditArticlesComponent } from './articles/edit-articles.component';
+import { ArticlesFilterPipe } from './articles/articles-filter.pipe';
 
 const rutas:Routes=[
   {path:'',component:ControladorComponent,
@@ -70,7 +71,8 @@ const rutas:Routes=[
     EditarVentaComponent,
     ArticlesComponent,
     EditArticlesComponent,
-    AddArticlesComponent
+    AddArticlesComponent,
+    ArticlesFilterPipe
   ],
   imports: [
     BrowserModule, 

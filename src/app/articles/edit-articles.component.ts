@@ -14,7 +14,8 @@ import { unit } from 'src/models/unit.model';
 })
 export class EditArticlesComponent implements OnInit {
   
-  title="Editar Articulos";
+  title="Articulos";
+  subtitle="Editar Articulos";
   HelperId:any;
   FormArticle!: FormGroup;
   

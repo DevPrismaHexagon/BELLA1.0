@@ -11,6 +11,8 @@ export class ArticlesComponent implements OnInit {
   title = 'Articulos';
   subtitle = 'listado de Articulos';
 
+  search:string="";
+
   articles:article[]=[];
 
   constructor(private ArticulosServicio:ArticlesService) {
@@ -22,5 +24,10 @@ export class ArticlesComponent implements OnInit {
 
   BorrarArticulo(id:number){
     this.ArticulosServicio.DeleteArticleService(id);
+  }
+
+  searcharticle(search:string){
+    this.search = search;
+    console.log(this.search);
   }
 }

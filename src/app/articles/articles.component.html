@@ -19,7 +19,7 @@
                     </ul>
                 </div>
                 <div class="buscador">
-                    <input type="text" name="" id="" class="buscar" placeholder="Buscar..."> 
+                    <input #searchArticle (keyup)="searcharticle(searchArticle.value)" type="text" name="searchArticle" id="searchArticle" class="searchArticle" placeholder="Buscar articulo"> 
                 </div>
             </div>
 
@@ -43,7 +43,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <div style="display: contents" *ngFor="let article of articles; let i=index">
+                        <div style="display: contents" *ngFor="let article of articles | articlesFilter:search; let i=index">
                         
                                 <tr class="lista-columna" routerLink="/articulos/editar/{{article.id}}">
                                     <th scope="row">{{article.id}}</th>

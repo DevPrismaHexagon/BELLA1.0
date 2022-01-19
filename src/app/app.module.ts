@@ -30,6 +30,9 @@ import { AddBrandsComponent } from './brands/add-brands.component';
 import { EditBrandsComponent } from './brands/edit-brands.component';
 import { BrandsFilterPipe } from './brands/brands-filter.pipe';
 import { AddArticlesComponent } from './articles/add-articles.component';
+import { UnitsComponent } from './units/units.component';
+import { AddUnitsComponent } from './units/add-units.component';
+import { EditUnitsComponent } from './units/edit-units.component';
 
 const rutas:Routes=[
   {path:'',component:ControladorComponent,
@@ -47,7 +50,10 @@ const rutas:Routes=[
       {path: 'articulos/editar/:id', component: EditArticlesComponent },
       {path: 'marcas', component: BrandsComponent },
       {path: 'marcas/crear', component: AddBrandsComponent },
-      {path: 'marcas/editar/:id', component: EditBrandsComponent }
+      {path: 'marcas/editar/:id', component: EditBrandsComponent },
+      {path: 'unidades', component: UnitsComponent },
+      {path: 'unidades/crear', component: AddUnitsComponent },
+      {path: 'unidades/editar/:id', component: EditUnitsComponent }
   ]  },
   {path:'login',
     component:LoginComponent,
@@ -87,6 +93,9 @@ const rutas:Routes=[
     EditBrandsComponent,
     BrandsFilterPipe,
     BrandsFilterPipe,
+    UnitsComponent,
+    AddUnitsComponent,
+    EditUnitsComponent,
   ],
   imports: [
     BrowserModule, 

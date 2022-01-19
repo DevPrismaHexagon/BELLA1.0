@@ -1,29 +1,29 @@
-<section id="inventario">
-    <div class="titulo">
+<section id="crud">
+
+    <div class="title">
         <h4>{{title}}</h4>
     </div>
 
-    <div class="articulos">
+    <div class="subtitle">
+        <h3>{{subtitle}}</h3>
+    </div>
 
-        <div class="titulo_articulos">
-            <h3>{{subtitle}}</h3>
-        </div>
-
-        <div class="lista">
-            <div class="lista_header">
-                <div class="herramientas">
+    <div class="container">
+        <div class="list">
+            <div class="list_header">
+                <div class="tools">
                     <ul>
                         <li><input type="checkbox" name="" id="" class=""></li>
                         <li><button routerLink="/articulos/crear"><span class="fas fa-plus"></span></button></li>
                         <li><button><span class="fas fa-trash"></span></button></li>
                     </ul>
                 </div>
-                <div class="buscador">
+                <div class="search">
                     <input #searchArticle (keyup)="searcharticle(searchArticle.value)" type="text" name="searchArticle" id="searchArticle" class="searchArticle" placeholder="Buscar articulo"> 
                 </div>
             </div>
 
-            <div class="lista_tabla">
+            <div class="list_table">
 
                 <table>
                     <thead>
@@ -69,8 +69,8 @@
 
             </div>
 
-            <div class="lista_footer">
-                <div class="entradas">
+            <div class="list_footer">
+                <div class="entries">
                      <p>
                          Mostrar entradas
                         <select name="" id="" class="">
@@ -82,7 +82,7 @@
                         
                      </p>  
                 </div>
-                <div class="paginacion">
+                <div class="pagination">
                     <ul>
                         <li><button class="">Siguiente</button></li>
                         <li><button class="numero">1</button></li>

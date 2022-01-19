@@ -15,8 +15,8 @@ export class BrandsComponent implements OnInit {
 
   brands:brand[]=[];
 
-  constructor(private MarcasServicio:BrandsService) { 
-    this.brands=this.MarcasServicio.brands;    
+  constructor(private BrandsService:BrandsService) { 
+    this.brands=this.BrandsService.brands;    
   }
 
   ngOnInit(): void {
@@ -27,5 +27,9 @@ export class BrandsComponent implements OnInit {
   }
   searchbrand(search:string){
     this.search = search;
+  }
+
+  DeleteBrand(id:number){
+    this.BrandsService.DeleteBrandService(id);
   }
 }

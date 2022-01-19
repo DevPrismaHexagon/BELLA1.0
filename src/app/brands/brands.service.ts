@@ -20,6 +20,16 @@ export class BrandsService {
     this.brands.push(brand);
   }
 
+  DeleteBrandService(id:number){
+    if(window.confirm("Desea borrar la Marca?")){
+      for(let i = 0; i < this.brands.length; ++i){
+        if (this.brands[i].id == id){
+          this.brands.splice(i,1);
+        }
+      }
+    }
+  }
+
   GetBrandService(id:number):brand | null{
     for(let i = 0; i < this.brands.length; ++i){
       if (this.brands[i].id == id){

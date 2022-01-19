@@ -1,31 +1,48 @@
-#inventario{
+#crud {
     padding: 20px;
 }
-#inventario{
+
+#crud {
     background-color: #fff;
     min-height: 85vh;
 }
-#inventario .titulo{
-    /* padding: 20px; */
 
+#crud .title {
+    /* padding: 20px; */
     text-align: center;
-    color: rgba(100,100,100, 1);
+    color: rgba(100, 100, 100, 1);
     margin-bottom: 20px;
 }
-.articulos .titulo_articulos{
+
+h1 {
+    text-align: center;
+    font-size: 30px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+}
+
+.crud .subtitle {
     margin-bottom: 20px;
 }
-.articulos .titulo_articulos h3{
+
+.crud .subtitle h3 {
     font-weight: normal;
-    color: rgba(100,100,100, 1);
+    color: rgba(100, 100, 100, 1);
 }
-#inventario .titulo h4{
+
+#crud .title h4 {
     font-weight: normal;
     font-size: 22px;
 }
-.agg_articulos button{
+
+.agg_usuarios button {
     margin-bottom: 35px;
-    background:rgba(7,86,242, 0.8);
+    background: rgba(7, 86, 242, 0.8);
     cursor: pointer;
     color: #fff;
     padding: 10px 10px;
@@ -34,125 +51,143 @@
     display: flex;
     transition: all 200ms ease;
 }
-.lista .lista_header{
+
+.list .list_header {
     display: flex;
     justify-content: space-between;
 }
-.lista .lista_header .herramientas{
+
+.list .list_header .tools {
     width: 70%;
     display: flex;
 }
-.lista .lista_header .herramientas ul{
+
+.list .list_header .tools ul {
     list-style: none;
     margin: 0;
     display: flex;
     align-items: center;
 }
-.lista .lista_header .herramientas ul li{
-    margin:0px 5px;
+
+.list .list_header .tools ul li {
+    margin: 0px 5px;
     cursor: pointer;
-    color: rgba(100,100,100, 0.8);
+    color: rgba(100, 100, 100, 0.8);
 }
-.lista .lista_header .herramientas ul li input[type="checkbox"]{
+
+.list .list_header .tools ul li input[type="checkbox"] {
     background: #000;
     border: 5px solid #000;
     padding: 20px;
 }
-.lista .lista_header .herramientas ul li button{
+
+.list .list_header .tools ul li button {
     color: #000;
     border: none;
     cursor: pointer;
     transition: all 200ms ease;
     padding: 10px;
     border-radius: 10px;
-    color: rgba(100,100,100, 0.8);
+    color: rgba(100, 100, 100, 0.8);
     min-width: 37px !important;
     min-height: 37px !important;
 }
-.lista .lista_header .herramientas ul li button:hover{
-    background:rgba(7,86,242, 0.8);
+
+.list .list_header .tools ul li button:hover {
+    background: rgba(7, 86, 242, 0.8);
     color: #fff;
 }
-.lista .lista_header .buscador{
+
+.list .list_header .search {
     width: 30%;
 }
-.lista .lista_header .buscador input{ 
+
+.list .list_header .search input {
     border: none;
-    border-bottom: 1px solid rgba(100,100,100, 0.8);
+    border-bottom: 1px solid rgba(100, 100, 100, 0.8);
     width: 100%;
     padding: 8px 16px;
     transition: all 200ms ease;
 }
-.lista .lista_header .buscador input:focus,
-.lista .lista_header .buscador input:active{
+
+.list .list_header .search input:focus,
+.list .list_header .search input:active {
     outline: none;
-    border-color: rgba(7,86,242, 0.8);
+    border-color: rgba(7, 86, 242, 0.8);
 }
-.lista .lista_tabla{
+
+.list .list_table {
     margin-top: 30px;
 }
-.lista .lista_tabla table{
+
+.list .list_table table {
     width: 100%;
     text-align: left;
     border-collapse: collapse;
     font-weight: 300;
 }
-.lista .lista_tabla table thead{
+
+.list .list_table table thead {
     background: rgba(124, 30, 217, 0.8);
 }
-.lista .lista_tabla table thead th{
+
+.list .list_table table thead th {
     /* margin-bottom: 20px; */
     font-weight: normal;
     font-size: 0.9em;
     color: #fff;
     padding: 9px;
 }
-.lista .lista_tabla table tbody {
 
-}
-.lista .lista_tabla table tbody tr:nth-child(even){
+.list .list_table table tbody {}
+
+.list .list_table table tbody tr:nth-child(even) {
     background: rgba(240, 240, 240, 1);
 }
 
-.lista .lista_tabla table tbody tr.lista-columna:hover{
-    cursor: pointer;
-    background-color: rgba(73,163,242, 0.1);
-}
-
-.lista .lista_tabla table tbody tr td{
+.list .list_table table tbody tr td {
     font-size: 0.9em;
     padding: 9px;
 }
-.lista .lista_tabla table tbody tr td .borrar{
-    color: rgba(250, 0,0,.6);
+
+.list .list_table table tbody tr td .borrar {
+    color: rgba(250, 0, 0, .6);
     cursor: pointer;
 }
-.lista .lista_footer{
+
+.list .list_footer {
     width: 100%;
     margin-top: 30px;
     display: flex;
     justify-content: space-between;
 }
-.lista .lista_footer .entradas p{
-    color: rgba(100,100,100, 0.8);;
-    font-size: 0.9em;;
+
+.list .list_footer .entries p {
+    color: rgba(100, 100, 100, 0.8);
+    ;
+    font-size: 0.9em;
+    ;
 }
-.lista .lista_footer .entradas p select{
-    color: rgba(100,100,100, 0.8);
-    border:none;
+
+.list .list_footer .entries p select {
+    color: rgba(100, 100, 100, 0.8);
+    border: none;
     outline: none;
     box-shadow: none;
     padding: 3px;
-    margin: 0 5px;   
+    margin: 0 5px;
 }
-.lista .lista_footer .paginacion ul{
+
+.list .list_footer .pagination ul {
     list-style: none;
     display: flex;
 }
-.lista .lista_footer .paginacion li{
+
+.list .list_footer .pagination li {
     /* display: inline-block; */
 }
-.lista .lista_footer .paginacion li button{
+
+.list .list_footer .pagination li button {
     margin: 0 3px;
     border: none;
     cursor: pointer;
@@ -160,20 +195,13 @@
     padding: 10px;
     border-radius: 6px;
 }
-.lista .lista_footer .paginacion li button:hover{
-    background: rgba(7,86,242, 0.8);
+
+.list .list_footer .pagination li button:hover {
+    background: rgba(7, 86, 242, 0.8);
     color: #fff;
 }
-.lista .lista_footer .paginacion li .numero{
+
+.list .list_footer .pagination li .number {
     width: 35px !important;
     height: 35px !important;
-}
-
-
-#seguridad .roles{
-    margin: 20px 0px;
-}
-#seguridad .titulo_roles h3{
-    font-weight: normal;
-    color: rgba(100,100,100, 1);
 }

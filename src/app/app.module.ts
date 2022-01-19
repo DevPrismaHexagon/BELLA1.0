@@ -18,6 +18,7 @@ import { EditarComponent } from './compras/editar/editar.component';
 import { VentasComponent } from './ventas/ventas.component';
 import { CrearVentaComponent } from './ventas/crear-venta/crear-venta.component';
 import { EditarVentaComponent } from './ventas/editar-venta/editar-venta.component';
+import { ActivosFijosComponent } from './activos-fijos/activos-fijos.component';
 
 const rutas:Routes=[
   {path:'',component:ControladorComponent,
@@ -28,6 +29,9 @@ const rutas:Routes=[
       {path:'compras/crear', component: CrearComponent},
       {path:'compras/editar', component:EditarComponent},
       {path:'ventas', component:VentasComponent},
+      {path:'ventas/crear', component: CrearVentaComponent},
+      {path:'ventas/editar', component:EditarVentaComponent},
+      {path:'activos', component:ActivosFijosComponent},
       {path:'ventas/crear', component: CrearVentaComponent},
       {path:'ventas/editar', component:EditarVentaComponent},
 
@@ -60,7 +64,8 @@ const rutas:Routes=[
     EditarComponent,
     VentasComponent,
     CrearVentaComponent,
-    EditarVentaComponent
+    EditarVentaComponent,
+    ActivosFijosComponent
   ],
   imports: [
     BrowserModule, 

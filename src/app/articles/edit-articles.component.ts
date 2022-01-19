@@ -31,9 +31,6 @@ export class EditArticlesComponent implements OnInit {
     this.article_categories=this.articlesservice.article_categories;
     this.brands=this.articlesservice.brands;
     this.units=this.articlesservice.units;
-
-    console.log("logro entrar al constructor");
-    console.log("helper: "+JSON.stringify(helper)); 
      
     this.FormArticle = this.form.group({
       id:[''],
@@ -98,8 +95,6 @@ export class EditArticlesComponent implements OnInit {
       this.agregar();
     })
   }
-
-  
 
   UpdateArticle(){
     this.articlesservice.UpdateArticleService(this.FormArticle);

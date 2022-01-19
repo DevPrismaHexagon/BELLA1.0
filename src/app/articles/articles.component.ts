@@ -11,17 +11,6 @@ export class ArticlesComponent implements OnInit {
   title = 'Articulos';
   subtitle = 'listado de Articulos';
 
-/*   HelperName:String="";
-  HelperSlug:String="";
-  HelperDescription:String="";
-  HelperStatus:number=0;
-  HelperBar_code:String="";
-  HelperSku:String="";
-  HelperComments:String="";
-  HelperSize:String="";
-  HelperWeight:String="";
-  HelperMade_in:String=""; */
-
   articles:article[]=[];
 
   constructor(private ArticulosServicio:ArticlesService) {
@@ -34,20 +23,4 @@ export class ArticlesComponent implements OnInit {
   BorrarArticulo(id:number){
     this.ArticulosServicio.DeleteArticleService(id);
   }
-
-  GuardarArticulo(){
-/*     let HelperArticle = new article(
-    this.HelperName, 
-    this.HelperSlug, 
-    this.HelperDescription, 
-    this.HelperStatus,  
-    this.HelperBar_code,  
-    this.HelperSku,  
-    this.HelperComments,  
-    this.HelperSize,  
-    this.HelperWeight,  
-    this.HelperMade_in);
-    this.ArticulosServicio.AgregarArticuloServicio(HelperArticle); */
-  }
-
 }

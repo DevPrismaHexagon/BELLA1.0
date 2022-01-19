@@ -102,6 +102,8 @@ export class ArticlesService {
   }
 
   UpdateArticleService(form:FormGroup /* article:article */){
+    console.log(form);
+
     for(let i = 0; i < this.articles.length; ++i){
       if(this.articles[i].id == form.get('id')!.value){
         this.articles[i].id = form.get('id')!.value;

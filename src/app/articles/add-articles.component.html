@@ -36,7 +36,7 @@
     <label for="made_in" class="form-label">hecho en:</label>
     <input required formControlName="made_in" type="text" class="form-control" id="made_in" name="made_in" placeholder="hecho en">  
 
-    <label for="status" class="form-label">Categoria del Articulo</label>
+    <label for="category_id" class="form-label">Categoria del Articulo</label>
     <select class="form-control" formControlName="category_id">
         <option [ngValue]="null" disabled>Seleccione categoria</option>
         <option *ngFor="let category of article_categories" [ngValue]="category.id">
@@ -44,15 +44,15 @@
         </option>
     </select>
 
-    <label for="status" class="form-label">Marca del Articulo</label>
-    <select class="form-control" formControlName="category_id">
+    <label for="brand_id" class="form-label">Marca del Articulo</label>
+    <select class="form-control" formControlName="brand_id">
         <option [ngValue]="null" disabled>Seleccione marca</option>
         <option *ngFor="let brand of brands" [ngValue]="brand.id">
           {{ brand.name }}
         </option>
     </select>
 
-    <label for="status" class="form-label">unidad del Articulo</label>
+    <label for="unit_id" class="form-label">unidad del Articulo</label>
     <select class="form-control" formControlName="unit_id">
         <option [ngValue]="null" disabled>Seleccione unidad</option>
         <option *ngFor="let unit of units" [ngValue]="unit.id">

@@ -1,1 +1,83 @@
-<p>activos-fijos works!</p>
+<section id="compras">
+    <div class="usuarios">
+
+        <div class="titulo_usuarios">
+            <h3>Gestion de Activos Fijos</h3>
+        </div>
+
+        <div class="lista">
+
+            <div class="lista_header">
+                <div class="herramientas">
+                    <ul>
+                        <li><input type="checkbox" name="" id="" class=""></li>
+                        <li [routerLink]="['./crear']"><button><span class="fas fa-plus"></span></button></li>
+                        <li><button><span class="fas fa-trash"></span></button></li>
+                    </ul>
+                </div>
+                <div class="buscador">
+                    <input type="text" name="" id="" class="buscar" placeholder="Buscar...">
+                </div>
+            </div>
+
+            <div class="lista_tabla">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>codigo</th>
+                            <th>Status</th>
+                            <th>Valor</th>
+                            <th>Ubicacion</th>
+                            <th>Depreciación</th>
+                            <th>Categoria</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td [routerLink]="['./editar']">
+                                <i class="far fa-eye"></i>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td style="text-align: center; width: 50px; "><span><i class="fas fa-times borrar "></i></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div class="lista_footer ">
+                <div class="entradas ">
+                    <p>
+                        Mostrar entradas
+                        <select name=" " id=" " class=" ">
+                            <option value="5 ">5</option>
+                            <option value="10 ">10</option>
+                            <option value="15 ">15</option>
+                            <option value="20 ">20</option>
+                        </select>
+
+                    </p>
+                </div>
+                <div class="paginacion ">
+                    <ul>
+                        <li><button class=" ">Siguiente</button></li>
+                        <li><button class="numero ">1</button></li>
+                        <li><button class=" ">Regresar</button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

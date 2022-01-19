@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ArticlesService } from './articles.service';
 import { article } from 'src/models/article.model';
 import { article_category } from 'src/models/article_category.model';
 import { brand } from 'src/models/brand.model';
 import { unit } from 'src/models/unit.model';
+import { BrandsService } from '../brands/brands.service';
 
 @Component({
   selector: 'app-edit-articles',
@@ -25,29 +26,29 @@ export class EditArticlesComponent implements OnInit {
   brands:brand[]=[];
   units:unit[]=[];
 
-  constructor(private ActiveRoute:ActivatedRoute, public form:FormBuilder, private articlesservice:ArticlesService, private router: Router){ 
+  constructor(private ActiveRoute:ActivatedRoute, public form:FormBuilder, private articlesservice:ArticlesService, private brandsservice:BrandsService, private router: Router){ 
     this.HelperId = ActiveRoute.snapshot.paramMap.get('id');
     let helper = this.articlesservice.GetArticleService(this.HelperId);
 
     this.article_categories=this.articlesservice.article_categories;
-    this.brands=this.articlesservice.brands;
+    this.brands=this.brandsservice.brands;
     this.units=this.articlesservice.units;
      
     this.FormArticle = this.form.group({
-      id:[''],
-      name:[''],
-      slug:[''],
-      description:[''],
-      status:[''],
+      id:['', Validators.required],
+      name:['', Validators.required],
+      slug:['', Validators.required],
+      description:['', Validators.required],
+      status:['', Validators.required],
       bar_code:[''],
       sku:[''],
       comments:[''],
       size:[''],
       weight:[''],
       made_in:[''],
-      brand_id:[''],
-      category_id:[''],
-      unit_id:[''],
+      brand_id:['', Validators.required],
+      category_id:['', Validators.required],
+      unit_id:['', Validators.required],
     }); 
 
     if(helper != null){
@@ -69,6 +70,7 @@ export class EditArticlesComponent implements OnInit {
       });
     }
   }
+  /* 
   agregarLabel(e:Event){
     let a= e.target as Element;
     let r = e.target as HTMLInputElement;
@@ -90,11 +92,11 @@ export class EditArticlesComponent implements OnInit {
       }
     })    
   }
-
+ */
   ngOnInit(): void {
-    window.addEventListener('load',()=>{
+    /* window.addEventListener('load',()=>{
       this.agregar();
-    })
+    }) */
   }
 
   UpdateArticle(){

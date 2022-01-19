@@ -1,6 +1,6 @@
 <h2 class="articles-title">{{title}}</h2>
 
-<form ngNativeValidate [formGroup]="FormArticle" (ngSubmit)="SaveArticle()">
+<form [formGroup]="FormArticle" (ngSubmit)="SaveArticle()">
     <label for="name" class="form-label">Nombre del Articulo:</label>
     <input required formControlName="name" type="text" class="form-control" id="name" name="name" placeholder="name"> 
 

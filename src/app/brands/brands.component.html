@@ -3,9 +3,9 @@
         <h4>{{title}}</h4>
     </div>
 
-    <div class="articulos">
+    <div class="marcas">
 
-        <div class="titulo_articulos">
+        <div class="titulo_marcas">
             <h3>{{subtitle}}</h3>
         </div>
 
@@ -14,12 +14,12 @@
                 <div class="herramientas">
                     <ul>
                         <li><input type="checkbox" name="" id="" class=""></li>
-                        <li><button routerLink="/articulos/crear"><span class="fas fa-plus"></span></button></li>
+                        <li><button routerLink="/marcas/crear"><span class="fas fa-plus"></span></button></li>
                         <li><button><span class="fas fa-trash"></span></button></li>
                     </ul>
                 </div>
                 <div class="buscador">
-                    <input #searchArticle (keyup)="searcharticle(searchArticle.value)" type="text" name="searchArticle" id="searchArticle" class="searchArticle" placeholder="Buscar articulo"> 
+                    <input #searchBrand (keyup)="searchbrand(searchBrand.value)" type="text" name="searchBrand" id="searchBrand" class="searchBrand" placeholder="Buscar marca"> 
                 </div>
             </div>
 
@@ -30,36 +30,22 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">name</th>
-                            <th scope="col">slug</th>
                             <th scope="col">description</th>
                             <th scope="col">status</th>
-                            <th scope="col">bar_code</th>
-                            <th scope="col">sku</th>
-                            <th scope="col">comments</th>
-                            <th scope="col">size</th>
-                            <th scope="col">weight</th>
-                            <th scope="col">made_in</th>
                             <th scope="col">actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <div style="display: contents" *ngFor="let article of articles | articlesFilter:search; let i=index">
+                        <div style="display: contents" *ngFor="let brand of brands | brandsFilter:search; let i=index">
                         
-                                <tr class="lista-columna" routerLink="/articulos/editar/{{article.id}}">
-                                    <th scope="row">{{article.id}}</th>
-                                    <td>{{article.name}}</td>
-                                    <td>{{article.slug}}</td>
-                                    <td>{{article.description}}</td>
-                                    <td>{{article.status}}</td>
-                                    <td>{{article.bar_code}}</td>
-                                    <td>{{article.sku}}</td>
-                                    <td>{{article.comments}}</td>
-                                    <td>{{article.size}}</td>
-                                    <td>{{article.weight}}</td>
-                                    <td>{{article.made_in}}</td>
+                                <tr class="lista-columna" routerLink="/marcas/editar/{{brand.id}}">
+                                    <th scope="row">{{brand.id}}</th>
+                                    <td>{{brand.name}}</td>
+                                    <td>{{brand.description}}</td>
+                                    <td>{{brand.status}}</td>
                                     <td>
-                                        <!-- <button routerLink="/articulos/editar/{{article.id}}">Editar</button> -->
-                                        <span (click)="BorrarArticulo(article.id)"><i class="fas fa-times borrar"></i></span>
+                                        <!-- <button routerLink="/articulos/editar/{{brand.id}}">Editar</button> -->
+                                        <span (click)="BorrarMarca(brand.id)"><i class="fas fa-times borrar"></i></span>
                                     </td>
                                 </tr>
                             
@@ -91,5 +77,6 @@
                 </div>
             </div>
         </div>
+
     </div>
 </section>

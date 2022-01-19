@@ -28,6 +28,5 @@ export class ArticlesComponent implements OnInit {
 
   searcharticle(search:string){
     this.search = search;
-    console.log(this.search);
   }
 }

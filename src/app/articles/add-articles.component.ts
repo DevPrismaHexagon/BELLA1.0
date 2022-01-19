@@ -6,6 +6,7 @@ import { article_category } from 'src/models/article_category.model';
 import { ArticlesService } from './articles.service';
 import { brand } from 'src/models/brand.model';
 import { unit } from 'src/models/unit.model';
+import { BrandsService } from '../brands/brands.service';
 
 @Component({
   selector: 'app-add-articles',
@@ -22,10 +23,10 @@ export class AddArticlesComponent implements OnInit {
   brands:brand[]=[];
   units:unit[]=[];
 
-  constructor(form:FormBuilder, private articlesservice:ArticlesService, private router: Router) {
+  constructor(form:FormBuilder, private articlesservice:ArticlesService, private brandsservice:BrandsService, private router: Router) {
 
     this.article_categories=this.articlesservice.article_categories;
-    this.brands=this.articlesservice.brands;
+    this.brands=this.brandsservice.brands;
     this.units=this.articlesservice.units;
 
     this.FormArticle = form.group({

@@ -19,11 +19,17 @@ import { VentasComponent } from './ventas/ventas.component';
 import { CrearVentaComponent } from './ventas/crear-venta/crear-venta.component';
 import { EditarVentaComponent } from './ventas/editar-venta/editar-venta.component';
 
+// leopoldo's components
 import { ArticlesComponent } from './articles/articles.component';
 import { ArticlesService } from './articles/articles.service';
-import { AddArticlesComponent } from './articles/add-articles.component';
+import { BrandsService } from './brands/brands.service';
 import { EditArticlesComponent } from './articles/edit-articles.component';
 import { ArticlesFilterPipe } from './articles/articles-filter.pipe';
+import { BrandsComponent } from './brands/brands.component';
+import { AddBrandsComponent } from './brands/add-brands.component';
+import { EditBrandsComponent } from './brands/edit-brands.component';
+import { BrandsFilterPipe } from './brands/brands-filter.pipe';
+import { AddArticlesComponent } from './articles/add-articles.component';
 
 const rutas:Routes=[
   {path:'',component:ControladorComponent,
@@ -36,9 +42,12 @@ const rutas:Routes=[
       {path:'ventas', component:VentasComponent},
       {path:'ventas/crear', component: CrearVentaComponent},
       {path:'ventas/editar', component:EditarVentaComponent},
-      { path: 'articulos', component: ArticlesComponent },
-      { path: 'articulos/agregar', component: AddArticlesComponent },
-      { path: 'articulos/editar/:id', component: EditArticlesComponent }
+      {path: 'articulos', component: ArticlesComponent },
+      {path: 'articulos/crear', component: AddArticlesComponent },
+      {path: 'articulos/editar/:id', component: EditArticlesComponent },
+      {path: 'marcas', component: BrandsComponent },
+      {path: 'marcas/crear', component: AddBrandsComponent },
+      {path: 'marcas/editar/:id', component: EditBrandsComponent }
   ]  },
   {path:'login',
     component:LoginComponent,
@@ -72,7 +81,12 @@ const rutas:Routes=[
     ArticlesComponent,
     EditArticlesComponent,
     AddArticlesComponent,
-    ArticlesFilterPipe
+    ArticlesFilterPipe,
+    BrandsComponent,
+    AddBrandsComponent,
+    EditBrandsComponent,
+    BrandsFilterPipe,
+    BrandsFilterPipe,
   ],
   imports: [
     BrowserModule, 
@@ -81,7 +95,7 @@ const rutas:Routes=[
     ReactiveFormsModule,
     RouterModule.forRoot(rutas)
   ],
-  providers: [ArticlesService],
+  providers: [ArticlesService, BrandsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

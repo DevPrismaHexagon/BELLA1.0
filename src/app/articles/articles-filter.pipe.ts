@@ -15,5 +15,4 @@ export class ArticlesFilterPipe implements PipeTransform {
       return FilteredArticles;
     }
   }
-
 }

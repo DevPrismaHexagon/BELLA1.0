@@ -60,13 +60,6 @@ export class ArticlesService {
     new article_category(3,"camaras", "camaras de todo tipo", 1),
   ];
 
-  brands:brand[]=[
-    new brand(0,"toyota", "empresa japonesa", 1),
-    new brand(1,"samsung", "empresa coreana", 1),
-    new brand(2,"nikon", "empresa japones", 1),
-    new brand(3,"apple", "empresa americana", 1),
-  ];
-
   units:unit[]=[
     new brand(0,"litro", "unidad europea", 1),
     new brand(1,"kilo", "unidad europea", 1),
@@ -91,7 +84,6 @@ export class ArticlesService {
   }
 
   GetArticleService(id:number):article | null{
-
     for(let i = 0; i < this.articles.length; ++i){
       if (this.articles[i].id == id){
         let helper = this.articles[i];
@@ -102,8 +94,6 @@ export class ArticlesService {
   }
 
   UpdateArticleService(form:FormGroup /* article:article */){
-    console.log(form);
-
     for(let i = 0; i < this.articles.length; ++i){
       if(this.articles[i].id == form.get('id')!.value){
         this.articles[i].id = form.get('id')!.value;

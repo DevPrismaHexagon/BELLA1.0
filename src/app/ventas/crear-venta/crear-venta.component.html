@@ -1,77 +1,68 @@
-<section id="venta-crear">
+<section id="compra-crear">
     <button [routerLink]="['/ventas']">
         <i class="fas fa-angle-left"></i>
     </button>
-    <h1 class="titulo">
-        Gestionar Nueva Venta
-    </h1>
+    <h2 class="titulo">{{title}}</h2>
     <div class="new">
-        <form action="">
-            <div class="new1">
-                <div class="new3">
-                    <label for="">Nombre</label>
-                    <input type="text" name="" id="">
-                </div>
-                <div class="new3">
-                    <label for="">Descripcion</label>
-                    <textarea rows="" cols=""></textarea>
-                </div>
-                <div class="new3">
-                    <label for="">Cantidad</label>
-                    <input type="number" name="" id="">
-                </div>
-                <div class="new3">
-                    <label for="">Fecha de Venta</label>
-                    <input type="date" name="" id="">
-                </div>
-                <div class="new3">
-                    <label for="">Descuento</label>
-                    <input type="number" name="" id="">
-                </div>
-                <div class="new3">
-                    <label for="">Lugar de la Venta</label>
-                    <input type="text" name="" id="">
-                </div>
-            </div>
-            <div class="new2">
+        <form [formGroup]="FormVenta" (ngSubmit)="SaveVenta()">
+            <label for="slug" class="form-label">Slug del Articulo:</label>
+            <input required formControlName="slug" type="text" class="form-control" id="slug" name="slug" placeholder="Slug">
 
-                <div class="new3">
-                    <label for="">Status</label>
-                    <select>
-                        <option value="">1</option>
-                        <option value="">2</option>
-                        <option value="">3</option>
-                        <option value="">4</option>   
-                    </select>
-                </div>
-                <div class="new3">
-                    <label for="">Tipo</label>
-                    <select>
-                        <option value="">1</option>
-                        <option value="">2</option>
-                        <option value="">3</option>
-                        <option value="">4</option>   
-                    </select>
-                </div>
-                <div class="new3">
-                    <label for="">Forma de Pago</label>
-                    <select>
-                        <option value="">1</option>
-                        <option value="">2</option>
-                        <option value="">3</option>
-                        <option value="">4</option>   
-                    </select>
-                </div>
-                <div class="new3">
-                    <label for="">sub-Total</label>
-                    <input type="text" name="" id="">
-                </div>
-                <div class="new3">
-                    <label for="">Total</label>
-                    <input type="text" name="" id="">
-                </div>
-            </div>
+            <label for="description" class="form-label">Descripcion del Articulo:</label>
+            <input required formControlName="description" type="text" class="form-control" id="description" name="description" placeholder="Descripcion">
 
+            <label for="status" class="form-label">Status del Articulo</label>
+            <select class="form-control" formControlName="status">
+                <option [ngValue]="null" disabled>Seleccione un status</option>
+                <option [ngValue]="0" selected>Activo</option>
+                <option [ngValue]="1">Inactivo</option>
+                <option [ngValue]="2">Pendiente</option>
+            </select>
+
+            <label for="bar_code" class="form-label">bar code del Articulo:</label>
+            <input required formControlName="bar_code" type="text" class="form-control" id="bar_code" name="bar_code" placeholder="bar code">
+
+            <label for="sku" class="form-label">SKU:</label>
+            <input required formControlName="sku" type="text" class="form-control" id="sku" name="sku" placeholder="SKU">
+
+            <label for="comments" class="form-label">Comentario del Articulo:</label>
+            <input required formControlName="comments" type="text" class="form-control" id="comments" name="comments" placeholder="Comentario">
+
+            <label for="size" class="form-label">Tamaño del Articulo:</label>
+            <input required formControlName="size" type="text" class="form-control" id="size" name="size" placeholder="Tamaño">
+
+            <label for="weight" class="form-label">Peso del Articulo:</label>
+            <input required formControlName="weight" type="text" class="form-control" id="weight" name="weight" placeholder="peso">
+
+            <label for="made_in" class="form-label">hecho en:</label>
+            <input required formControlName="made_in" type="text" class="form-control" id="made_in" name="made_in" placeholder="hecho en">
+
+            <!-- <label for="category_id" class="form-label">Categoria del Articulo</label>
+            <select class="form-control" formControlName="category_id">
+                <option [ngValue]="null" disabled>Seleccione categoria</option>
+                <option *ngFor="let category of article_categories" [ngValue]="category.id">
+                  {{ category.name }}
+                </option>
+            </select> -->
+
+            <!-- <label for="brand_id" class="form-label">Marca del Articulo</label>
+            <select class="form-control" formControlName="brand_id">
+                <option [ngValue]="null" disabled>Seleccione marca</option>
+                <option *ngFor="let brand of brands" [ngValue]="brand.id">
+                  {{ brand.name }}
+                </option>
+            </select> -->
+
+            <!-- <label for="unit_id" class="form-label">unidad del Articulo</label>
+            <select class="form-control" formControlName="unit_id">
+                <option [ngValue]="null" disabled>Seleccione unidad</option>
+                <option *ngFor="let unit of units" [ngValue]="unit.id">
+                  {{ unit.name }}
+                </option>
+            </select> -->
+
+            <button type="submit" class="btn btn-success">Guardar</button>
+            <button required type="" class="btn btn-danger" routerLink="/ventas">Cancel</button>
         </form>
     </div>
 </section>

@@ -36,6 +36,7 @@ import { AddArticlesComponent } from './articles/add-articles.component';
 import { UnitsComponent } from './units/units.component';
 import { AddUnitsComponent } from './units/add-units.component';
 import { EditUnitsComponent } from './units/edit-units.component';
+import { FilterPipe } from './compras/filter.pipe';
 
 const rutas:Routes=[
   {path:'',component:ControladorComponent,
@@ -104,7 +105,8 @@ const rutas:Routes=[
     EditUnitsComponent,
     ActivosFijosComponent,
     CrearActivoComponent,
-    EditarActivoComponent
+    EditarActivoComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

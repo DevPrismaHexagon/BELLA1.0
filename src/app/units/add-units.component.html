@@ -1,1 +1,24 @@
-<p>add-units works!</p>
+<section id="compra-crear">
+    <h2 class="titulo">{{title}}</h2>
+    <div class="new">
+      <form [formGroup]="FormUnit" (ngSubmit)="SaveUnit()">
+        <label for="name" class="form-label">Nombre de la Unidad:</label>
+        <input required formControlName="name" type="text" class="form-control" id="name" name="name" placeholder="name"> 
+  
+        <label for="description" class="form-label">Descripcion de la Unidad:</label>
+        <input required formControlName="description" type="text" class="form-control" id="description" name="description" placeholder="Descripcion">               
+  
+        <label for="status" class="form-label">Status de la Unidad</label>
+        <select class="form-control" formControlName="status">
+            <option [ngValue]="null" disabled>Seleccione un status</option>
+            <option [ngValue]="0" selected>Activo</option>
+            <option [ngValue]="1">Inactivo</option>
+            <option [ngValue]="2">Pendiente</option>
+        </select>
+  
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <button required type="" class="btn btn-danger" routerLink="/unidades">Cancel</button>
+      </form>
+    </div>
+  </section>
+  

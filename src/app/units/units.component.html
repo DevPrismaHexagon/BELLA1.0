@@ -1,1 +1,82 @@
-<p>units works!</p>
+<section id="crud">
+
+    <div class="title">
+        <h4>{{title}}</h4>
+    </div>
+
+    <div class="subtitle">
+        <h3>{{subtitle}}</h3>
+    </div>
+
+    <div class="container">
+        <div class="list">
+            <div class="list_header">
+                <div class="tools">
+                    <ul>
+                        <li><input type="checkbox" name="" id="" class=""></li>
+                        <li><button routerLink="/unidades/crear"><span class="fas fa-plus"></span></button></li>
+                        <li><button><span class="fas fa-trash"></span></button></li>
+                    </ul>
+                </div>
+                <div class="search">
+                    <input #searchAUnit (keyup)="SearchUnit(searchAUnit.value)" type="text" name="searchAUnit" id="searchAUnit" class="searchAUnit" placeholder="Buscar Unidad"> 
+                </div>
+            </div>
+
+            <div class="list_table">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">name</th>
+                            <th scope="col">description</th>
+                            <th scope="col">status</th>
+                            <th scope="col">actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- | articlesFilter:search; -->
+                        <div style="display: contents" *ngFor="let unit of units; let i=index">
+                        
+                                <tr class="lista-columna" routerLink="/unidades/editar/{{unit.id}}">
+                                    <th scope="row">{{unit.id}}</th>
+                                    <td>{{unit.name}}</td>
+                                    <td>{{unit.description}}</td>
+                                    <td>{{unit.status}}</td>
+                                    <td>
+                                        <!-- <button routerLink="/articulos/editar/{{article.id}}">Editar</button> -->
+                                        <span (click)="DeleteUnit(unit.id)"><i class="fas fa-times borrar"></i></span>
+                                    </td>
+                                </tr>
+                            
+                        </div>                     
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div class="list_footer">
+                <div class="entries">
+                     <p>
+                         Mostrar entradas
+                        <select name="" id="" class="">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                        </select>
+                        
+                     </p>  
+                </div>
+                <div class="pagination">
+                    <ul>
+                        <li><button class="">Siguiente</button></li>
+                        <li><button class="numero">1</button></li>
+                        <li><button class="">Regresar</button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

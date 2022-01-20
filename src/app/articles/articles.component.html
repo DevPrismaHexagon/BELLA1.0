@@ -19,7 +19,7 @@
                     </ul>
                 </div>
                 <div class="search">
-                    <input #searchArticle (keyup)="searcharticle(searchArticle.value)" type="text" name="searchArticle" id="searchArticle" class="searchArticle" placeholder="Buscar articulo"> 
+                    <input #searchArticle (keyup)="SearchArticle(searchArticle.value)" type="text" name="searchArticle" id="searchArticle" class="searchArticle" placeholder="Buscar articulo"> 
                 </div>
             </div>
 
@@ -59,7 +59,7 @@
                                     <td>{{article.made_in}}</td>
                                     <td>
                                         <!-- <button routerLink="/articulos/editar/{{article.id}}">Editar</button> -->
-                                        <span (click)="BorrarArticulo(article.id)"><i class="fas fa-times borrar"></i></span>
+                                        <span (click)="DeleteArticle(article.id)"><i class="fas fa-times borrar"></i></span>
                                     </td>
                                 </tr>
                             

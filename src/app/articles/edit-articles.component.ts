@@ -7,6 +7,7 @@ import { article_category } from 'src/models/article_category.model';
 import { brand } from 'src/models/brand.model';
 import { unit } from 'src/models/unit.model';
 import { BrandsService } from '../brands/brands.service';
+import { UnitsService } from '../units/units.service';
 
 @Component({
   selector: 'app-edit-articles',
@@ -26,13 +27,20 @@ export class EditArticlesComponent implements OnInit {
   brands:brand[]=[];
   units:unit[]=[];
 
-  constructor(private ActiveRoute:ActivatedRoute, public form:FormBuilder, private articlesservice:ArticlesService, private brandsservice:BrandsService, private router: Router){ 
+  constructor(
+    private ActiveRoute:ActivatedRoute, 
+    public form:FormBuilder, 
+    private ArticlesService:ArticlesService, 
+    private BrandsService:BrandsService, 
+    private UnitsService:UnitsService,
+    private router: Router
+    ){ 
     this.HelperId = ActiveRoute.snapshot.paramMap.get('id');
-    let helper = this.articlesservice.GetArticleService(this.HelperId);
+    let helper = this.ArticlesService.GetArticleService(this.HelperId);
 
-    this.article_categories=this.articlesservice.article_categories;
-    this.brands=this.brandsservice.brands;
-    this.units=this.articlesservice.units;
+    this.article_categories=this.ArticlesService.article_categories;
+    this.brands=this.BrandsService.brands;
+    this.units=this.UnitsService.units;
      
     this.FormArticle = this.form.group({
       id:['', Validators.required],
@@ -100,7 +108,7 @@ export class EditArticlesComponent implements OnInit {
   }
 
   UpdateArticle(){
-    this.articlesservice.UpdateArticleService(this.FormArticle);
+    this.ArticlesService.UpdateArticleService(this.FormArticle);
     this.router.navigateByUrl('articulos');
   }
 }

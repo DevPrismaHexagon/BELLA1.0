@@ -1,0 +1,32 @@
+<div class="contenido">
+    <h2 class="articles-title">{{title}}</h2>
+
+    <form id="form" [formGroup]="FormArticleCategory" (ngSubmit)="UpdateArticleCategory()">
+        
+        <label for="name" class="form-label">Nombre de la Categoria</label>
+        <input required formControlName="name" type="text" class="form-control" id="name" name="name" placeholder="name"> 
+        
+        <label for="description" class="form-label">Descripcion de la Categoria</label>
+        <input required formControlName="description" type="text" class="form-control" id="description" name="description" placeholder="Descripcion">     
+        
+        <label for="status" class="form-label">Status de la Categoria</label>
+        <select class="form-control" formControlName="status">
+            <option [ngValue]="null" disabled>Seleccione un status</option>
+            <option [ngValue]="0" selected>Activo</option>
+            <option [ngValue]="1">Inactivo</option>
+            <option [ngValue]="2">Pendiente</option>
+        </select>
+
+        <label for="parent_id" class="form-label">Categoria de la Categoria</label>
+        <select class="form-control" formControlName="parent_id">
+            <option [ngValue]="null" disabled>Seleccione categoria</option>
+            <option *ngFor="let category of article_categories | articlecategoriesbyidFilter:HelperId" [ngValue]="category.id">
+              {{ category.name }}
+            </option>
+        </select>
+
+
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <button type="" class="btn btn-danger" routerLink="/categorias-articulo">Cancel</button>
+    </form>
+</div>

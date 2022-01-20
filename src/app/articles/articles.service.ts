@@ -34,10 +34,10 @@ export class ArticlesService {
 
   // por ahora se traeran las categorias por aqui
   article_categories:article_category[]=[
-    new article_category(0,"camisas", "camisas de todas las tallas", 1),
-    new article_category(1,"pantalones", "pantalones de todas las tallas", 1),
-    new article_category(2,"televisores", "televisores de todss los tamaños", 1),
-    new article_category(3,"camaras", "camaras de todo tipo", 1),
+    new article_category(0,"camisas", "camisas de todas las tallas", 0, "root"),
+    new article_category(1,"camisas manga larga", "camisas de vestir", 0, 1),
+    new article_category(2,"camisas manga corta", "camisas casuales", 0, 1),
+    new article_category(3,"pantalones", "pantalones de todas las tallas", 0, "root"),
   ];
 
   constructor() { }

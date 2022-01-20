@@ -33,6 +33,14 @@ import { AddArticlesComponent } from './articles/add-articles.component';
 import { UnitsComponent } from './units/units.component';
 import { AddUnitsComponent } from './units/add-units.component';
 import { EditUnitsComponent } from './units/edit-units.component';
+import { ArticleCategoriesComponent } from './article-categories/article-categories.component';
+import { UnitsService } from './units/units.service';
+import { ArticleCategoriesService } from './article-categories/article-categories.service';
+import { UnitsFilterPipe } from './units/units-filter.pipe';
+import { ArticlecategoriesFilterPipe } from './article-categories/articlecategories-filter.pipe';
+import { AddArticleCategoriesComponent } from './article-categories/add-article-categories.component';
+import { EditArticleCategoriesComponent } from './article-categories/edit-article-categories.component';
+import { ArticlecategoriesbyidFilterPipe } from './article-categories/articlecategoriesbyid-filter.pipe';
 
 const rutas:Routes=[
   {path:'',component:ControladorComponent,
@@ -53,7 +61,11 @@ const rutas:Routes=[
       {path: 'marcas/editar/:id', component: EditBrandsComponent },
       {path: 'unidades', component: UnitsComponent },
       {path: 'unidades/crear', component: AddUnitsComponent },
-      {path: 'unidades/editar/:id', component: EditUnitsComponent }
+      {path: 'unidades/editar/:id', component: EditUnitsComponent },
+      {path: 'categorias-articulo', component: ArticleCategoriesComponent },
+      {path: 'categorias-articulo/crear', component: AddArticleCategoriesComponent },
+      {path: 'categorias-articulo/editar/:id', component: EditArticleCategoriesComponent },
+
   ]  },
   {path:'login',
     component:LoginComponent,
@@ -96,6 +108,12 @@ const rutas:Routes=[
     UnitsComponent,
     AddUnitsComponent,
     EditUnitsComponent,
+    ArticleCategoriesComponent,
+    UnitsFilterPipe,
+    ArticlecategoriesFilterPipe,
+    AddArticleCategoriesComponent,
+    EditArticleCategoriesComponent,
+    ArticlecategoriesbyidFilterPipe,
   ],
   imports: [
     BrowserModule, 
@@ -104,7 +122,7 @@ const rutas:Routes=[
     ReactiveFormsModule,
     RouterModule.forRoot(rutas)
   ],
-  providers: [ArticlesService, BrandsService],
+  providers: [ArticlesService, BrandsService, UnitsService, ArticleCategoriesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

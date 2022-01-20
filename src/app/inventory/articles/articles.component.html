@@ -1,0 +1,67 @@
+<section class="crud">
+
+    <!--     
+    <div class="title">
+        <h4>{{title}}</h4>
+    </div> 
+    -->
+
+    <div class="subtitle">
+        <h3>{{subtitle}}</h3>
+    </div>
+    
+    <div class="list">
+        <div class="list_header py-4 d-flex justify-content-end align-items-center">
+            <div class="tools">
+                <!-- <li><input type="checkbox" name="" id="" class=""></li> -->
+
+                <button class="btn btn-create px-3" routerLink="/articulos/crear"><span class="fas fa-plus"></span></button>
+
+                <!-- <li><button><span class="fas fa-trash"></span></button></li> -->
+            </div>
+            <div class="search">
+                <input #searchArticle (keyup)="SearchArticle(searchArticle.value)" type="text" name="search" id="search" class="search" placeholder="Buscar articulo"> 
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">slug</th>
+                        <th scope="col">status</th>
+                        <th scope="col">sku</th>
+                        <th scope="col">Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <div style="display: contents" *ngFor="let article of articles | articlesFilter:search; let i=index">
+                    
+                            <tr routerLink="/articulos/editar/{{article.id}}">
+                                <td>{{article.name}}</td>
+                                <td>{{article.slug}}</td>
+                                <td>{{article.status}}</td>
+                                <td>{{article.sku}}</td>
+                                <td>
+                                    <!-- <button routerLink="/articulos/editar/{{article.id}}">Editar</button> -->
+                                    <span (click)="DeleteArticle(article.id)"><i class="fas fa-times borrar"></i></span>
+                                </td>
+                            </tr>
+                        
+                    </div>                     
+                </tbody>
+            </table>
+        </div>
+
+        <!-- <div class="list_footer">
+            <div class="pagination">
+                <ul>
+                    <li><button class="">Siguiente</button></li>
+                    <li><button class="numero">1</button></li>
+                    <li><button class="">Regresar</button></li>
+                </ul>
+            </div>
+        </div> -->
+    </div>
+</section>

@@ -3,14 +3,14 @@ export class article_category {
     name:String;
     description:String;
     status:number;
-    parent_id:number | string;
+    parent_id:number | String;
 
     constructor(
         id:number,
         name:String, 
         description:String, 
         status:number,
-        parent_id:number | string,
+        parent_id:number | String,
         )
     {
         this.id=id;

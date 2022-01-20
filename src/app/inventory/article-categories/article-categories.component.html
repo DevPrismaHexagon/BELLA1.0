@@ -1,0 +1,82 @@
+<section class="crud">
+
+    <!--     
+    <div class="title">
+        <h4>{{title}}</h4>
+    </div> 
+    -->
+
+    <div class="subtitle">
+        <h3>{{subtitle}}</h3>
+    </div>
+
+    <div class="list">
+        <div class="list_header py-4 d-flex justify-content-end align-items-center">
+            <div class="tools">
+                <!-- <li><input type="checkbox" name="" id="" class=""></li> -->
+
+                <button class="btn btn-create px-3" routerLink="/categorias-articulo/crear"><span class="fas fa-plus"></span></button>
+
+                <!-- <li><button><span class="fas fa-trash"></span></button></li> -->
+            </div>
+            <div class="search">
+                <input #searchArticleCategory (keyup)="SearchArticleCategory(searchArticleCategory.value)" type="text" name="search" id="search" class="search" placeholder="Buscar Categoria"> 
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">status</th>
+                        <th scope="col">Categoria Padre</th>
+                        <th scope="col">Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <div style="display: contents" *ngFor="let category of article_categories | articlecategoriesFilter:search; let i=index">
+                            
+                            <tr routerLink="/categorias-articulo/editar/{{category.id}}">
+                                <td>{{category.name}}</td>
+                                <td>{{category.description}}</td>
+                                <td>{{category.status}}</td>
+                                <td>{{category.parent_id}}</td>
+                                <td>
+                                    <!-- <button routerLink="/articulos/editar/{{article.id}}">Editar</button> -->
+                                    <span (click)="DeleteArticleCategory(category.id)"><i class="fas fa-times borrar"></i></span>
+                                </td>
+                            </tr>
+                        
+                    </div>                     
+                </tbody>
+            </table>
+
+        </div>
+
+        <!--         
+        <div class="list_footer">
+            <div class="entries">
+                    <p>
+                        Mostrar entradas
+                    <select name="" id="" class="">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                    </select>
+                    
+                    </p>  
+            </div>
+            <div class="pagination">
+                <ul>
+                    <li><button class="">Siguiente</button></li>
+                    <li><button class="numero">1</button></li>
+                    <li><button class="">Regresar</button></li>
+                </ul>
+            </div>
+        </div> 
+        -->
+    </div>
+</section>

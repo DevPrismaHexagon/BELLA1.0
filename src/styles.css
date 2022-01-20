@@ -1,5 +1,75 @@
 /* You can add global styles to this file, and also import other style files */
-*{
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+.crud{
+    margin-top: 40px;
+}
+.crud .subtitle{
+    font-size: 32px;
+    font-weight: 500;
+    color: #000000;
+
+    margin: 14px 0;
+}
+.crud .list th, .crud .list td{
+    padding: 23px 15px;
+}
+
+.crud .btn-create{
+    color: rgba(179, 72, 230, 1);
+    background-color: rgba(243, 241, 254, 1);
+    border-color: rgba(243, 241, 254, 1);
+}
+
+.crud .btn-create:hover{
+    color: fi;
+    background-color: rgba(179, 72, 230, 0.1);
+    border-color: rgba(179, 72, 230, 0.1);
+}
+
+.search{
+    height: 58px;
+    padding: 0 8px;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.crud .list thead tr{
+    background-color: rgba(179, 72, 230, 1);
+}
+
+.crud .list thead tr th{
+ font-size: 24px;
+ color: #FFFFFF;
+ font-weight: 600;
+}
+
+.crud .list tbody tr:hover{
+    cursor: pointer;
+    background-color: rgba(179, 72, 230, 0.1);
+}
+
+.crud .list tbody tr:hover td{
+    filter: brightness(90%);
+}
+
+.crud .list tbody tr td{
+    font-size: 20px;
+    color: #767676;
+    font-weight: 600;
+}
+
+.crud .list .fa-times{
+ color: #F7685B;
+ font-size: 18px;
+}
+
+.crud .list .fa-times:hover{
+    color: #109CF1;
+}
+
+/* *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -58,4 +128,4 @@ body.dark .arriba, body.dark .menu_despegable, body.dark .contenedor{
 body.dark .activado:hover{
     background: rgba(124, 30, 217, 0.8) !important;
     color: #fff !important;
-}
+} */

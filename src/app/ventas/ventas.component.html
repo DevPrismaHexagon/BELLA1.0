@@ -14,9 +14,10 @@
             <div class="lista_header">
                 <div class="herramientas">
                     <ul>
-                        <li><input type="checkbox" name="" id="" class=""></li>
+
                         <li [routerLink]="['./crear']"><button><span class="fas fa-plus"></span></button></li>
-                        <li><button><span class="fas fa-trash"></span></button></li>
+                        <li [routerLink]="['/ventas/location']"><button><span class="fas fa-map-marker-alt"></span></button></li>
+
                     </ul>
                 </div>
                 <div class="buscador">
@@ -42,7 +43,7 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let venta of ventas | filter:search; let i=index">
-                            <td routerLink="./editar/{{venta.id}}">
+                            <td routerLink="/compras/editar/{{venta.id}}">
                                 <i class="far fa-eye"></i>
                             </td>
                             <th scope="row">{{venta.id}}</th>

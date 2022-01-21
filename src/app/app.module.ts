@@ -37,6 +37,14 @@ import { UnitsComponent } from './units/units.component';
 import { AddUnitsComponent } from './units/add-units.component';
 import { EditUnitsComponent } from './units/edit-units.component';
 import { FilterPipe } from './compras/filter.pipe';
+import { LocationComponent } from './compras/location/location.component';
+import { EditarLocationComponent } from './compras/location/editar-location/editar-location.component';
+import { CrearLocationComponent } from './compras/location/crear-location/crear-location.component';
+import { EditarLocationVentaComponent } from './ventas/location/editar-location-venta/editar-location-venta.component';
+import { CrearLocationVentaComponent } from './ventas/location/crear-location-venta/crear-location-venta.component';
+import { LocationVentasComponent } from './ventas/location/location.component';
+import { LocationPipe } from './compras/location/location.pipe';
+import { LocationVentasPipe } from './ventas/location/location-ventas.pipe';
 
 const rutas:Routes=[
   {path:'',component:ControladorComponent,
@@ -45,10 +53,11 @@ const rutas:Routes=[
       {path:'dashboard', component:DashboardComponent},
       {path:'compras', component:ComprasComponent},
       {path:'compras/crear', component: CrearComponent},
-      {path:'compras/editar', component:EditarComponent},
+      {path:'compras/editar/:id', component:EditarComponent},
+      {path:'compras/location', component:LocationComponent},
       {path:'ventas', component:VentasComponent},
       {path:'ventas/crear', component: CrearVentaComponent},
-      {path:'ventas/editar', component:EditarVentaComponent},
+      {path:'ventas/editar/:id', component:EditarVentaComponent},
       {path: 'articulos', component: ArticlesComponent },
       {path: 'articulos/crear', component: AddArticlesComponent },
       {path: 'articulos/editar/:id', component: EditArticlesComponent },
@@ -60,9 +69,14 @@ const rutas:Routes=[
       {path: 'unidades/editar/:id', component: EditUnitsComponent },
       {path:'activos', component:ActivosFijosComponent},
       {path:'ventas/crear', component: CrearVentaComponent},
-      {path:'ventas/editar', component:EditarVentaComponent},
+      {path:'ventas/editar/:id', component:EditarVentaComponent},
       {path:'activos/crear', component:CrearActivoComponent},
-      {path:'activos/editar', component:EditarActivoComponent},
+      {path:'activos/editar/:id', component:EditarActivoComponent},
+      {path:'compras/location/crear', component:CrearLocationComponent},
+      {path:'compras/location/editar/:id', component:EditarLocationComponent},
+      {path:'ventas/location/crear', component:CrearLocationVentaComponent},
+      {path:'ventas/location/editar/:id', component:EditarLocationVentaComponent},
+      {path:'ventas/location', component:LocationVentasComponent},
   ]  },
   {path:'login',
     component:LoginComponent,
@@ -106,7 +120,15 @@ const rutas:Routes=[
     ActivosFijosComponent,
     CrearActivoComponent,
     EditarActivoComponent,
-    FilterPipe
+    FilterPipe,
+    LocationComponent,
+    EditarLocationComponent,
+    CrearLocationComponent,
+    EditarLocationVentaComponent,
+    CrearLocationVentaComponent,
+    LocationVentasComponent,
+    LocationPipe,
+    LocationVentasPipe
   ],
   imports: [
     BrowserModule,

@@ -1,26 +1,22 @@
-#seguridad{
+#bancos{
     padding: 20px;
-}
-#seguridad{
     background-color: #fff;
-    min-height: 85vh;
 }
-#seguridad .titulo{
+.bancos__titulo{
+    margin-bottom: 20px;
+}
+.bancos__titulo h3{
+    font-weight: normal;
+    /* font-size: 22px; */
+    font-weight: normal;
+    color: rgba(100,100,100, 1);
+}
+#bancos__titulo .titulo{
     text-align: center;
     color: rgba(100,100,100, 1);
     margin-bottom: 20px;
 }
-.usuarios .titulo_usuarios{
-    margin-bottom: 20px;
-}
-.usuarios .titulo_usuarios h3{
-    font-weight: normal;
-    color: rgba(100,100,100, 1);
-}
-#seguridad .titulo h4{
-    font-weight: normal;
-    font-size: 22px;
-}
+
 .agg_usuarios button{
     margin-bottom: 35px;
     background:rgba(7,86,242, 0.8);

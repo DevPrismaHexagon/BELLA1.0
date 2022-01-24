@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { AppComponent } from './app.component';
 import { ControladorComponent } from './controlador/controlador.component';
 import { LoginComponent } from './login/login.component';
@@ -53,6 +52,10 @@ import { CrearLocationVentaComponent } from './ventas/location/crear-location-ve
 import { LocationVentasComponent } from './ventas/location/location.component';
 import { LocationPipe } from './compras/location/location.pipe';
 import { LocationVentasPipe } from './ventas/location/location-ventas.pipe';
+import { EditarUsuarioComponent } from './seguridad/editar-usuario/editar-usuario.component';
+import { BancosComponent } from './bancos/bancos.component';
+import { BancosCrearComponent } from './bancos/bancos-crear/bancos-crear.component';
+import { SeguridadCrearUsuarioComponent } from './seguridad/seguridad-crear-usuario/seguridad-crear-usuario.component';
 
 const rutas:Routes=[
   {path:'',component:ControladorComponent,
@@ -88,6 +91,10 @@ const rutas:Routes=[
       {path: 'categorias-articulo', component: ArticleCategoriesComponent },
       {path: 'categorias-articulo/crear', component: AddArticleCategoriesComponent },
       {path: 'categorias-articulo/editar/:id', component: EditArticleCategoriesComponent },
+      {path:'seguridad_edicion', component:EditarUsuarioComponent},
+      {path:'seguridad/agregar_usuario', component:SeguridadCrearUsuarioComponent},
+      {path:'bancos', component:BancosComponent},
+      {path:'bancos/agregar', component:BancosCrearComponent},
   ]  },
   {path:'login',
     component:LoginComponent,
@@ -146,6 +153,10 @@ const rutas:Routes=[
     AddArticleCategoriesComponent,
     EditArticleCategoriesComponent,
     ArticlecategoriesbyidFilterPipe,
+    EditarUsuarioComponent,
+    BancosComponent,
+    BancosCrearComponent,
+    SeguridadCrearUsuarioComponent,
   ],
   imports: [
     BrowserModule,

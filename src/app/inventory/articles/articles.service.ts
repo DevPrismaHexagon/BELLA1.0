@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { article } from 'src/models/article.model';
 import { article_category } from 'src/models/article_category.model';
-import { brand } from 'src/models/brand.model';
-import { unit } from 'src/models/unit.model';
 
 @Injectable({
   providedIn: 'root'
@@ -32,39 +30,14 @@ export class ArticlesService {
     new article(18, "samsung sXVIII", "samsung-sxviii", "asasf", 1, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 1, 1),
     new article(19, "samsung sXX", "samsung-sxx", "asasf", 1, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 1, 1),
     new article(20, "samsung sX", "samsung-sx", "asasf", 1, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 1, 1),
-/*     new article(21, "samsung sXI", "samsung-sxi", "asasf", 1, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 1, 1),
-    new article(22, "samsung sXII", "samsung-sxii", "asasf", 1, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 1, 1),
-    new article(23, "samsung sXIII", "samsung-sxiii", "asasf", 1, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 1, 1),
-    new article(24, "samsung sXIV", "samsung-sxiv", "asasf", 1, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 1, 1),
-    new article(25, "samsung sXV", "samsung-sxv", "asasf", 1, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 1, 1),
-    new article(26, "samsung sXVI", "samsung-sxvi", "asasf", 1, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 1, 1),
-    new article(27, "samsung sXVII", "samsung-sxvii", "asasf", 1, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 1, 1),
-    new article(28, "samsung sXVIII", "samsung-sxviii", "asasf", 1, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 1, 1),
-    new article(29, "samsung sXX", "samsung-sxx", "asasf", 1, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 1, 1),
-    new article(30, "samsung sX", "samsung-sx", "asasf", 1, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 1, 1),
-    new article(31, "samsung sXI", "samsung-sxi", "asasf", 1, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 1, 1),
-    new article(32, "samsung sXII", "samsung-sxii", "asasf", 1, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 1, 1),
-    new article(33, "samsung sXIII", "samsung-sxiii", "asasf", 1, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 1, 1),
-    new article(34, "samsung sXIV", "samsung-sxiv", "asasf", 4, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 1, 1),
-    new article(35, "samsung sXV", "samsung-sxv", "asasf", 1,"asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 1, 1),
-    new article(36, "samsung sXVI", "samsung-sxvi", "asasf", 3, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 1, 1),
-    new article(37, "samsung sXVII", "samsung-sxvii", "asasf", 1, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 1, 1),
-    new article(38, "samsung sXVIII", "samsung-sxviii", "asas3", 1, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 1, 1),
-    new article(39, "samsung sXX", "samsung-sxx", "asasf", 1,"asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 1, 1), */
-  ];
-  // por ahora se traeran las categorias por aqui
-  article_categories:article_category[]=[
-    new article_category(0,"camisas", "camisas de todas las tallas", 1),
-    new article_category(1,"pantalones", "pantalones de todas las tallas", 1),
-    new article_category(2,"televisores", "televisores de todss los tamaños", 1),
-    new article_category(3,"camaras", "camaras de todo tipo", 1),
   ];
 
-  units:unit[]=[
-    new brand(0,"litro", "unidad europea", 1),
-    new brand(1,"kilo", "unidad europea", 1),
-    new brand(2,"docena", "12", 1),
-    new brand(3,"arroba", "46kg", 1),
+  // por ahora se traeran las categorias por aqui
+  article_categories:article_category[]=[
+    new article_category(0,"camisas", "camisas de todas las tallas", 0, "root"),
+    new article_category(1,"camisas manga larga", "camisas de vestir", 0, 1),
+    new article_category(2,"camisas manga corta", "camisas casuales", 0, 1),
+    new article_category(3,"pantalones", "pantalones de todas las tallas", 0, "root"),
   ];
 
   constructor() { }

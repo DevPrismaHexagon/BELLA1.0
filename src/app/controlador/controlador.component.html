@@ -53,7 +53,7 @@
                     <div class="menu_despegable">
                         <li routerLink="articulos">Inventario</li>
                         <li routerLink="marcas">Marcas</li>
-                        <li routerLink="">Categorias</li>
+                        <li routerLink="categorias-articulo">Categorias</li>
                         <li routerLink="unidades">Unidades</li>
                     </div>
                 </li>
@@ -150,11 +150,21 @@
     </div>
 </div>
 
-<div class="con">
+<!-- <div class="con">
     <div class="contenedor">
-        <router-outlet></router-outlet>
+        
     </div>
-</div>
+</div> -->
+
+<section class="wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</section>
 
 <div class="footer">
     <div class="derechos">© 2022 BELLA All rights reserved.</div>

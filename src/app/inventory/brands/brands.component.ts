@@ -9,7 +9,7 @@ import { BrandsService } from './brands.service';
 })
 export class BrandsComponent implements OnInit {
   title = 'Marcas';
-  subtitle = 'listado de Marcas';
+  subtitle = 'Gestión de Marcas';
 
   search:string="";
 

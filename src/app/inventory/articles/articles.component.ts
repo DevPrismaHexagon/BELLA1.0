@@ -8,25 +8,25 @@ import { ArticlesService } from './articles.service';
   styleUrls: ['./articles.component.css']
 })
 export class ArticlesComponent implements OnInit {
-  title = 'Articulos';
-  subtitle = 'listado de Articulos';
+  title = 'Artículos';
+  subtitle = 'Gestión de Artículos';
 
   search:string="";
 
   articles:article[]=[];
 
-  constructor(private ArticulosServicio:ArticlesService) {
-    this.articles=this.ArticulosServicio.articles;
+  constructor(private ArticleService:ArticlesService) {
+    this.articles=this.ArticleService.articles;
   }
 
   ngOnInit(): void {
   }
 
-  BorrarArticulo(id:number){
-    this.ArticulosServicio.DeleteArticleService(id);
+  DeleteArticle(id:number){
+    this.ArticleService.DeleteArticleService(id);
   }
 
-  searcharticle(search:string){
+  SearchArticle(search:string){
     this.search = search;
   }
 }

@@ -7,6 +7,7 @@ import { ArticlesService } from './articles.service';
 import { brand } from 'src/models/brand.model';
 import { unit } from 'src/models/unit.model';
 import { BrandsService } from '../brands/brands.service';
+import { UnitsService } from '../units/units.service';
 
 @Component({
   selector: 'app-add-articles',
@@ -23,11 +24,16 @@ export class AddArticlesComponent implements OnInit {
   brands:brand[]=[];
   units:unit[]=[];
 
-  constructor(form:FormBuilder, private articlesservice:ArticlesService, private brandsservice:BrandsService, private router: Router) {
+  constructor(
+    form:FormBuilder, 
+    private ArticlesService:ArticlesService, 
+    private BrandsService:BrandsService, 
+    private UnitsService:UnitsService, 
+    private router: Router) {
 
-    this.article_categories=this.articlesservice.article_categories;
-    this.brands=this.brandsservice.brands;
-    this.units=this.articlesservice.units;
+    this.article_categories=this.ArticlesService.article_categories;
+    this.brands=this.BrandsService.brands;
+    this.units=this.UnitsService.units;
 
     this.FormArticle = form.group({
     id:[''],
@@ -67,7 +73,7 @@ export class AddArticlesComponent implements OnInit {
       this.FormArticle.get('category_id')!.value,
       this.FormArticle.get('unit_id')!.value,
     );
-    this.articlesservice.AddArticleService(HelperArticle);
+    this.ArticlesService.AddArticleService(HelperArticle);
     this.router.navigateByUrl('articulos');
   }
 }

@@ -1,27 +1,33 @@
 <section id="seguridad">
+    
+    <div class="titulo">
+        <h4>Seguridad</h4>
+    </div>
+
     <div class="usuarios">
 
         <div class="titulo_usuarios">
             <h3>Gestion de usuarios</h3>
         </div>
 
+        <!-- <div class="agg_usuarios">
+            <button>Agregar usuario</button>
+        </div> -->
+
         <div class="lista">
 
             <div class="lista_header">
                 <div class="herramientas">
                     <ul>
-                        <li><button [routerLink]="['./agregar_usuario']" ><span class="fas fa-plus"></span></button></li>
+                        <li><input type="checkbox" name="" id="" class=""></li>
+                        <li><button><span class="fas fa-plus"></span></button></li>
                         <li><button><span class="fas fa-trash"></span></button></li>
-                        <li><button>Agregar rol</button></li>
+                        <li><button id="modal__roles" class="">Agregar rol</button></li>
                     </ul>
                 </div>
-
-                <div class="buscador grupo">
-                    <input type="text" name="buscar" autocomplete="off"(blur)="agregarLabel($event)" (focus)="agregarLabel($event)" [(ngModel)]="password">
-            
-                    <label for="buscar">Buscar...</label>
+                <div class="buscador">
+                    <input type="text" name="" id="" class="buscar" placeholder="Buscar..."> 
                 </div>
-
             </div>
 
             <div class="lista_tabla">
@@ -29,7 +35,7 @@
                 <table>
                     <thead>
                         <tr>
-                            <th><input type="checkbox" name="" id="" class=""></th>
+                            <th></th>
                             <th>Estado</th>
                             <th>Nombre</th>
                             <th>Rol</th>
@@ -38,7 +44,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let post of posts " >
+                        <tr *ngFor="let post of posts ">
                             <td><input type="checkbox" name="" id="" class=""></td>
                             <td>{{post.estado}}</td>
                             <td>{{post.nombre}}</td>
@@ -75,3 +81,14 @@
         </div>
     </div>
 </section>
+
+<script>
+    
+    const modal = document.getElementById('modal__roles');
+    console.log(modal)
+    // modal.addEventListener('click', function(e){
+    //     console.log('hola muasadasdndo');
+    // })
+   
+    
+</script>

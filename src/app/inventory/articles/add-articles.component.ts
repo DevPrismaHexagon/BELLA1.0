@@ -8,8 +8,6 @@ import { brand } from 'src/models/brand.model';
 import { unit } from 'src/models/unit.model';
 import { BrandsService } from '../brands/brands.service';
 import { UnitsService } from '../units/units.service';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-add-articles',
@@ -64,7 +62,7 @@ export class AddArticlesComponent implements OnInit {
       this.FormArticle.get('name')!.value,
       this.FormArticle.get('description')!.value,  
     );
-    this.ArticlesService.AddArticleService(HelperArticle).subscribe();
+    this.ArticlesService.AddArticleService(HelperArticle);
     this.router.navigateByUrl('articulos');
   }
 }

@@ -24,6 +24,8 @@ export class ArticlesService implements OnInit {
 
   GetAllArticlesBaseUrl:string = 'http://localhost/belladev1.0/articles/read.php';
   AddArticlesBaseUrl:string = 'http://localhost/belladev1.0/articles/create.php';
+  UpdateArticlesBaseUrl:string = 'http://localhost/belladev1.0/articles/update.php';
+  GetArticleBaseUrl:string = 'http://localhost/belladev1.0/articles/single_read.php';
 
   constructor(private httpClient:HttpClient) {
   }
@@ -32,55 +34,28 @@ export class ArticlesService implements OnInit {
     this.GetAllArticlesService();
   }
 
-  AddArticleService(article:article):Observable<any>{
-    const body = JSON.stringify(article);
-    console.log(body);
-    let algo = this.httpClient.post(this.AddArticlesBaseUrl+"?insertar", body);
-    console.log(algo);
-    return algo;
-  }
-
+  // done
   GetAllArticlesService(){
-    return this.httpClient.get<Iarticle[]>(this.GetAllArticlesBaseUrl);
+    return this.httpClient.get<article[]>(this.GetAllArticlesBaseUrl);
   }
 
+  // halfway done
+  AddArticleService(article:article){
+    return this.httpClient.post(this.AddArticlesBaseUrl, article);
+  }
+
+  // in progress
+  UpdateArticleService(form:FormGroup){
+    return this.httpClient.post<article>(this.UpdateArticlesBaseUrl, form);
+  }
+
+  GetArticleService(id:number) {
+    return this.httpClient.get<article>(this.AddArticlesBaseUrl+"?id={id}");
+  }
+
+  // in progress
   DeleteArticleService(id:number):Observable<any> {
-    console.log("id de entrada en servicio: "+id);
-    
     let url = this.GetAllArticlesBaseUrl+"?borrar="+id;
-    console.log("URL completa: "+url);
-    
     return this.httpClient.get(url);
-  }
-
-  GetArticleService(id:number):article | null{
-     for(let i = 0; i < this.articles.length; ++i){
-      if (this.articles[i].id == id){
-        let helper = this.articles[i];
-        return helper;
-      }
-    }
-    return null; 
-  }
-
-  UpdateArticleService(form:FormGroup /* article:article */){
-/*     for(let i = 0; i < this.articles.length; ++i){
-      if(this.articles[i].id == form.get('id')!.value){
-        this.articles[i].id = form.get('id')!.value;
-        this.articles[i].name = form.get('name')!.value;
-        this.articles[i].slug = form.get('slug')!.value; 
-        this.articles[i].description = form.get('description')!.value; 
-        this.articles[i].status = form.get('status')!.value; 
-        this.articles[i].bar_code = form.get('bar_code')!.value;  
-        this.articles[i].sku = form.get('sku')!.value;  
-        this.articles[i].comments = form.get('comments')!.value;  
-        this.articles[i].size = form.get('size')!.value;  
-        this.articles[i].weight = form.get('weight')!.value;  
-        this.articles[i].made_in = form.get('made_in')!.value;
-        this.articles[i].brand_id = form.get('brand_id')!.value;
-        this.articles[i].category_id = form.get('category_id')!.value;
-        this.articles[i].unit_id = form.get('unit_id')!.value;
-      } 
-    } */
   }
 }

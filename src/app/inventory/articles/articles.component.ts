@@ -25,7 +25,7 @@ export class ArticlesComponent implements OnInit {
   }
 
   GetArticles(){
-    this.ArticleService.GetAllArticlesService().subscribe((response:Iarticle[]) => { 
+    this.ArticleService.GetAllArticlesService().subscribe((response) => { 
       this.articles = response;
     });
     

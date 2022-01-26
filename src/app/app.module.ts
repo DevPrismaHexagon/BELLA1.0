@@ -41,18 +41,20 @@ import { ArticlecategoriesFilterPipe } from './inventory/article-categories/arti
 import { AddArticleCategoriesComponent } from './inventory/article-categories/add-article-categories.component';
 import { EditArticleCategoriesComponent } from './inventory/article-categories/edit-article-categories.component';
 import { ArticlecategoriesbyidFilterPipe } from './inventory/article-categories/articlecategoriesbyid-filter.pipe';
+import { BreadCrumbsComponent } from './bread-crumbs/bread-crumbs.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const rutas:Routes=[
   {path:'',component:ControladorComponent,
     children:[
-      {path:'seguridad', component:SeguridadComponent},
-      {path:'dashboard', component:DashboardComponent},
-      {path:'compras', component:ComprasComponent},
-      {path:'compras/crear', component: CrearComponent},
-      {path:'compras/editar', component:EditarComponent},
-      {path:'ventas', component:VentasComponent},
-      {path:'ventas/crear', component: CrearVentaComponent},
-      {path:'ventas/editar', component:EditarVentaComponent},
+      {path:'seguridad', component:SeguridadComponent },
+      {path:'dashboard', component:DashboardComponent },
+      {path:'compras', component:ComprasComponent },
+      {path:'compras/crear', component: CrearComponent },
+      {path:'compras/editar', component:EditarComponent },
+      {path:'ventas', component:VentasComponent },
+      {path:'ventas/crear', component: CrearVentaComponent },
+      {path:'ventas/editar', component:EditarVentaComponent },
       {path: 'articulos', component: ArticlesComponent },
       {path: 'articulos/crear', component: AddArticlesComponent },
       {path: 'articulos/editar/:id', component: EditArticlesComponent },
@@ -65,8 +67,8 @@ const rutas:Routes=[
       {path: 'categorias-articulo', component: ArticleCategoriesComponent },
       {path: 'categorias-articulo/crear', component: AddArticleCategoriesComponent },
       {path: 'categorias-articulo/editar/:id', component: EditArticleCategoriesComponent },
-
-  ]  },
+    ]  
+  },
   {path:'login',
     component:LoginComponent,
     children:[
@@ -114,13 +116,15 @@ const rutas:Routes=[
     AddArticleCategoriesComponent,
     EditArticleCategoriesComponent,
     ArticlecategoriesbyidFilterPipe,
+    BreadCrumbsComponent,
   ],
   imports: [
     BrowserModule, 
     FormsModule, 
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(rutas)
+    RouterModule.forRoot(rutas),
+    HttpClientModule,
   ],
   providers: [ArticlesService, BrandsService, UnitsService, ArticleCategoriesService],
   bootstrap: [AppComponent]

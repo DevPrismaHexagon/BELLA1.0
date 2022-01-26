@@ -1,150 +1,118 @@
-<div class="contenido">
-    <h2 class="articles-title">{{title}}</h2>
+<section class="operation-crud">
 
-    <form id="form" [formGroup]="FormArticle" (ngSubmit)="UpdateArticle()">
-        
-        <label for="name" class="form-label">Nombre del Articulo</label>
-        <input required formControlName="name" type="text" class="form-control" id="name" name="name" placeholder="name"> 
-        
-        <label for="slug" class="form-label">Slug del Articulo</label>
-        <input required formControlName="slug" type="text" class="form-control" id="slug" name="slug" placeholder="Slug">
-        
-        <label for="description" class="form-label">Descripcion del Articulo</label>
-        <input required formControlName="description" type="text" class="form-control" id="description" name="description" placeholder="Descripcion">     
-        
-        <label for="status" class="form-label">Status del Articulo</label>
-        <select class="form-control" formControlName="status">
-            <option [ngValue]="null" disabled>Seleccione un status</option>
-            <option [ngValue]="0" selected>Activo</option>
-            <option [ngValue]="1">Inactivo</option>
-            <option [ngValue]="2">Pendiente</option>
-        </select>
+    <!-- momentaneo, tienen que ser dinamicos -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="">Inicio</a></li>
+          <li class="breadcrumb-item"><a routerLink="/articulos">Artículos</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Editar Artículos</li>
+        </ol>
+    </nav>
 
-        <label for="bar_code" class="form-label">bar code del Articulo</label>
-        <input required formControlName="bar_code" type="text" class="form-control" id="bar_code" name="bar_code" placeholder="bar code">
-        
-        <label for="sku" class="form-label">SKU</label>
-        <input required formControlName="sku" type="text" class="form-control" id="sku" name="sku" placeholder="SKU">
-        
-        <label for="comments" class="form-label">Comentario del Articulo</label>
-        <input required formControlName="comments" type="text" class="form-control" id="comments" name="comments" placeholder="Comentario">
-        
-        <label for="size" class="form-label">Tamaño del Articulo</label>
-        <input required formControlName="size" type="text" class="form-control" id="size" name="size" placeholder="Tamaño"> 
-        
-        <label for="weight" class="form-label">Peso del Articulo</label>
-        <input required formControlName="weight" type="text" class="form-control" id="weight" name="weight" placeholder="peso"> 
-        
-        <label for="made_in" class="form-label">Hecho en:</label>
-        <input required formControlName="made_in" type="text" class="form-control" id="made_in" name="made_in" placeholder="hecho en">
+    <!--     
+    <div class="title">
+        <h4>{{title}}</h4>
+    </div> 
+    -->
 
-        <label for="category_id" class="form-label">Categoria del Articulo</label>
-        <select class="form-control" formControlName="category_id">
-            <option [ngValue]="null" disabled>Seleccione categoria</option>
-            <option *ngFor="let category of article_categories" [ngValue]="category.id">
-              {{ category.name }}
-            </option>
-        </select>
+    <h2 class="subtitle text-center text-md-start">
+      {{title}}
+    </h2>
 
-        <label for="brand_id" class="form-label">Marca del Articulo</label>
-        <select class="form-control" formControlName="brand_id">
-            <option [ngValue]="null" disabled>Seleccione categoria</option>
-            <option *ngFor="let brand of brands" [ngValue]="brand.id">
-              {{ brand.name }}
-            </option>
-        </select>
+    <div class="form-wrapper">
+        <form id="form" [formGroup]="FormArticle" (ngSubmit)="UpdateArticle()">
+            
+            <div class="container px-0">
+                <div class="row">
+                    <div class="col-md-6 col-12">
+                        <label for="name" class="form-label">Nombre del Articulo</label>
+                        <input required formControlName="name" type="text" class="form-control" id="name" name="name" placeholder="name"> 
+                    </div>
 
-        <label for="unit_id" class="form-label">unidad del Articulo</label>
-        <select class="form-control" formControlName="unit_id">
-            <option [ngValue]="null" disabled>Seleccione categoria</option>
-            <option *ngFor="let unit of units" [ngValue]="unit.id">
-              {{ unit.name }}
-            </option>
-        </select>
+                    <!-- <div class="col-md-6 col-12">
+                        <label for="slug" class="form-label">Slug del Articulo</label>
+                        <input required formControlName="slug" type="text" class="form-control" id="slug" name="slug" placeholder="Slug">
+                    </div> -->
 
-        <button type="submit" class="btn btn-success">Guardar</button>
-        <button type="" class="btn btn-danger" routerLink="/articulos">Cancel</button>
-    </form>
-</div>
+                    <div class="col-md-6 col-12">
+                        <label for="description" class="form-label">Descripcion del Articulo</label>
+                        <input required formControlName="description" type="text" class="form-control" id="description" name="description" placeholder="Descripcion">     
+                    </div>
+                    <!-- 
+                    <div class="col-md-6 col-12">
+                        <label for="status" class="form-label">Status del Articulo</label>
+                        <select class="form-control" formControlName="status">
+                            <option [ngValue]="null" disabled>Seleccione un status</option>
+                            <option [ngValue]="0" selected>Activo</option>
+                            <option [ngValue]="1">Inactivo</option>
+                            <option [ngValue]="2">Pendiente</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <label for="bar_code" class="form-label">bar code del Articulo</label>
+                        <input required formControlName="bar_code" type="text" class="form-control" id="bar_code" name="bar_code" placeholder="bar code">
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <label for="sku" class="form-label">SKU</label>
+                        <input required formControlName="sku" type="text" class="form-control" id="sku" name="sku" placeholder="SKU">
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <label for="comments" class="form-label">Comentario del Articulo</label>
+                        <input required formControlName="comments" type="text" class="form-control" id="comments" name="comments" placeholder="Comentario">
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <label for="size" class="form-label">Tamaño del Articulo</label>
+                        <input required formControlName="size" type="text" class="form-control" id="size" name="size" placeholder="Tamaño"> 
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <label for="weight" class="form-label">Peso del Articulo</label>
+                        <input required formControlName="weight" type="text" class="form-control" id="weight" name="weight" placeholder="peso"> 
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <label for="made_in" class="form-label">Hecho en:</label>
+                        <input required formControlName="made_in" type="text" class="form-control" id="made_in" name="made_in" placeholder="hecho en">
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <label for="category_id" class="form-label">Categoria del Articulo</label>
+                        <select class="form-control" formControlName="category_id">
+                            <option [ngValue]="null" disabled>Seleccione categoria</option>
+                            <option *ngFor="let category of article_categories" [ngValue]="category.id">
+                            {{ category.name }}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <label for="brand_id" class="form-label">Marca del Articulo</label>
+                        <select class="form-control" formControlName="brand_id">
+                            <option [ngValue]="null" disabled>Seleccione categoria</option>
+                            <option *ngFor="let brand of brands" [ngValue]="brand.id">
+                            {{ brand.name }}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <label for="unit_id" class="form-label">unidad del Articulo</label>
+                        <select class="form-control" formControlName="unit_id">
+                            <option [ngValue]="null" disabled>Seleccione categoria</option>
+                            <option *ngFor="let unit of units" [ngValue]="unit.id">
+                            {{ unit.name }}
+                            </option>
+                        </select>
+                    </div> 
+                    -->
 
-<!-- 
-<label for="name" class="form-label">Nombre del Articulo</label>
-<input required formControlName="name" type="text" class="form-control" id="name" name="name" placeholder="name"> 
+                </div>
 
-<label for="slug" class="form-label">Slug del Articulo</label>
-<input required formControlName="slug" type="text" class="form-control" id="slug" name="slug" placeholder="Slug">
-
-<label for="description" class="form-label">Descripcion del Articulo</label>
-<input required formControlName="description" type="text" class="form-control" id="description" name="description" placeholder="Descripcion">     
-
-<label for="bar_code" class="form-label">bar code del Articulo</label>
-<input required formControlName="bar_code" type="text" class="form-control" id="bar_code" name="bar_code" placeholder="bar code">
-
-<label for="sku" class="form-label">SKU</label>
-<input required formControlName="sku" type="text" class="form-control" id="sku" name="sku" placeholder="SKU">
-
-<label for="comments" class="form-label">Comentario del Articulo</label>
-<input required formControlName="comments" type="text" class="form-control" id="comments" name="comments" placeholder="Comentario">
-
-<label for="size" class="form-label">Tamaño del Articulo</label>
-<input required formControlName="size" type="text" class="form-control" id="size" name="size" placeholder="Tamaño"> 
-
-<label for="weight" class="form-label">Peso del Articulo</label>
-<input required formControlName="weight" type="text" class="form-control" id="weight" name="weight" placeholder="peso"> 
-
-<label for="made_in" class="form-label">Hecho en:</label>
-<input required formControlName="made_in" type="text" class="form-control" id="made_in" name="made_in" placeholder="hecho en">
-
-
-        <div class="grupo">
-            <input [(ngModel)]="HelperName" type="text" id="name" name="name" autocomplete="off" (blur)="agregarLabel($event)" (focus)="agregarLabel($event)">
-            <label for="name" >Nombre del Articulo</label>
-        </div>
-
-        <div class="grupo">
-            <input [(ngModel)]="HelperSlug" type="text" id="slug" name="slug" autocomplete="off" (blur)="agregarLabel($event)" (focus)="agregarLabel($event)">
-            <label for="slug" >Slug del Articulo</label>
-        </div>
-
-        <div class="grupo">
-            <input [(ngModel)]="HelperDescription" type="text" id="description" name="description" autocomplete="off" (blur)="agregarLabel($event)" (focus)="agregarLabel($event)">
-            <label for="description" >Descripcion del Articulo</label>
-        </div>    
-        
-        <label for="status" class="form-label">Status del Articulo</label>
-        <select [(ngModel)]="HelperStatus" class="form-control" id="status" name="status">
-            <option value="1" selected>Activo</option>
-            <option value="2">Inactivo</option>
-            <option value="0" selected>Pendiente</option>
-        </select>
-    
-        <div class="grupo">
-            <input [(ngModel)]="HelperBar_code" type="text" id="bar_code" name="bar_code" autocomplete="off" (blur)="agregarLabel($event)" (focus)="agregarLabel($event)">
-            <label for="bar_code" >bar code del Articulo</label>
-        </div>    
-
-        <div class="grupo">
-            <input [(ngModel)]="HelperSku" type="text" id="sku" name="sku" autocomplete="off" (blur)="agregarLabel($event)" (focus)="agregarLabel($event)">
-            <label for="sku" >SKU del Articulo</label>
-        </div> 
-
-        <div class="grupo">
-            <input [(ngModel)]="HelperComments" type="text" id="comments" name="comments" autocomplete="off" (blur)="agregarLabel($event)" (focus)="agregarLabel($event)">
-            <label for="comments" >Comentario del Articulo</label>
-        </div> 
-
-        <div class="grupo">
-            <input [(ngModel)]="HelperSize" type="text" id="size" name="size" autocomplete="off" (blur)="agregarLabel($event)" (focus)="agregarLabel($event)">
-            <label for="size" >Tamaño del Articulo</label>
-        </div> 
-
-        <div class="grupo">
-            <input [(ngModel)]="HelperWeight" type="text" id="weight" name="weight" autocomplete="off" (blur)="agregarLabel($event)" (focus)="agregarLabel($event)">
-            <label for="weight" >Peso del Articulo</label>
-        </div> 
-
-        <div class="grupo">
-            <input [(ngModel)]="HelperMade_in" type="text" id="made_in" name="made_in" autocomplete="off" (blur)="agregarLabel($event)" (focus)="agregarLabel($event)">
-            <label for="made_in" >Hecho en</label>
-        </div>  
---> 
+                <div class="row justify-content-center">
+                    <div class="col-auto d-flex justify-content-center">
+                        <button type="submit" class="btn btn-save my-3">Guardar</button>
+                    </div>
+                    <div class="col-auto d-flex justify-content-center">
+                        <button required type="" class="btn btn-cancel my-3" routerLink="/articulos">Cancel</button>
+                    </div>
+                </div>
+            </div>
+                    
+        </form>
+    </div>
+</section>

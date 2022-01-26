@@ -1,24 +1,60 @@
-<div class="contenido">
-    <h2 class="articles-title">{{title}}</h2>
+<section class="operation-crud">
 
-    <form id="form" [formGroup]="FormUnit" (ngSubmit)="UpdateUnit()">
-        
-        <label for="name" class="form-label">Nombre de la Unidad</label>
-        <input required formControlName="name" type="text" class="form-control" id="name" name="name" placeholder="name"> 
-        
-        
-        <label for="description" class="form-label">Descripcion de la Unidad</label>
-        <input required formControlName="description" type="text" class="form-control" id="description" name="description" placeholder="Descripcion">     
-        
-        <label for="status" class="form-label">Status del Articulo</label>
-        <select class="form-control" formControlName="status">
-            <option [ngValue]="null" disabled>Seleccione un status</option>
-            <option [ngValue]="0" selected>Activo</option>
-            <option [ngValue]="1">Inactivo</option>
-            <option [ngValue]="2">Pendiente</option>
-        </select>
+	<!-- momentaneo, tienen que ser dinamicos -->
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a routerLink="">Inicio</a></li>
+		<li class="breadcrumb-item"><a routerLink="/unidades">Unidades</a></li>
+		<li class="breadcrumb-item active" aria-current="page">Editar Unidades</li>
+		</ol>
+	</nav>
 
-        <button type="submit" class="btn btn-success">Guardar</button>
-        <button type="" class="btn btn-danger" routerLink="/unidades">Cancel</button>
-    </form>
-</div>
+	<!--     
+	<div class="title">
+		<h4>{{title}}</h4>
+	</div> 
+	-->
+
+	<h2 class="subtitle text-center text-md-start">
+		{{title}}
+	</h2>  
+
+	<div class="form-wrapper">
+
+        <form id="form" [formGroup]="FormUnit" (ngSubmit)="UpdateUnit()">
+            
+            <div class="container px-0">
+				<div class="row">
+					<div class="col-md-6 col-12">
+                        <label for="name" class="form-label">Nombre de la Unidad</label>
+                        <input required formControlName="name" type="text" class="form-control" id="name" name="name" placeholder="name"> 
+					</div>
+                    <div class="col-md-6 col-12">
+                        <label for="description" class="form-label">Descripcion de la Unidad</label>
+                        <input required formControlName="description" type="text" class="form-control" id="description" name="description" placeholder="Descripcion">     
+                        
+					</div>
+                    <div class="col-md-6 col-12">
+                        <label for="status" class="form-label">Status del Articulo</label>
+                        <select class="form-control" formControlName="status">
+                            <option [ngValue]="null" disabled>Seleccione un status</option>
+                            <option [ngValue]="0" selected>Activo</option>
+                            <option [ngValue]="1">Inactivo</option>
+                            <option [ngValue]="2">Pendiente</option>
+                        </select>
+					</div>
+				</div>
+
+				<div class="row justify-content-center">
+					<div class="col-auto d-flex justify-content-center">
+						<button type="submit" class="btn btn-save my-3">Guardar</button>
+					</div>
+					<div class="col-auto d-flex justify-content-center">
+						<button required type="" class="btn btn-cancel my-3" routerLink="/unidades">Cancel</button>
+					</div>
+				</div>
+			</div>
+
+        </form>
+    </div>
+</section>

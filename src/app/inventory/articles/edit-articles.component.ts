@@ -45,9 +45,9 @@ export class EditArticlesComponent implements OnInit {
     this.FormArticle = this.form.group({
       id:['', Validators.required],
       name:['', Validators.required],
-      slug:['', Validators.required],
+      /* slug:['', Validators.required], */
       description:['', Validators.required],
-      status:['', Validators.required],
+      /* status:['', Validators.required],
       bar_code:[''],
       sku:[''],
       comments:[''],
@@ -56,16 +56,16 @@ export class EditArticlesComponent implements OnInit {
       made_in:[''],
       brand_id:['', Validators.required],
       category_id:['', Validators.required],
-      unit_id:['', Validators.required],
+      unit_id:['', Validators.required], */
     }); 
 
     if(helper != null){
       this.FormArticle.setValue({
         id:helper['id'],
         name:helper['name'],
-        slug:helper['slug'],
+        /* slug:helper['slug'], */
         description:helper['description'],
-        status:helper['status'],
+        /* status:helper['status'],
         bar_code:helper['bar_code'],
         sku:helper['sku'],
         comments:helper['comments'],
@@ -74,7 +74,7 @@ export class EditArticlesComponent implements OnInit {
         made_in:helper['made_in'],
         brand_id:helper['brand_id'],
         category_id:helper['category_id'],
-        unit_id:helper['unit_id'],
+        unit_id:helper['unit_id'], */
       });
     }
   }

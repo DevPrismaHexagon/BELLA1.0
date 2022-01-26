@@ -8,6 +8,8 @@ import { brand } from 'src/models/brand.model';
 import { unit } from 'src/models/unit.model';
 import { BrandsService } from '../brands/brands.service';
 import { UnitsService } from '../units/units.service';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-add-articles',
@@ -60,20 +62,9 @@ export class AddArticlesComponent implements OnInit {
     let HelperArticle = new article(
       this.random_number,
       this.FormArticle.get('name')!.value,
-      this.FormArticle.get('slug')!.value, 
-      this.FormArticle.get('description')!.value, 
-      this.FormArticle.get('status')!.value, 
-      this.FormArticle.get('bar_code')!.value,  
-      this.FormArticle.get('sku')!.value,  
-      this.FormArticle.get('comments')!.value,  
-      this.FormArticle.get('size')!.value,  
-      this.FormArticle.get('weight')!.value,  
-      this.FormArticle.get('made_in')!.value,
-      this.FormArticle.get('brand_id')!.value,
-      this.FormArticle.get('category_id')!.value,
-      this.FormArticle.get('unit_id')!.value,
+      this.FormArticle.get('description')!.value,  
     );
-    this.ArticlesService.AddArticleService(HelperArticle);
+    this.ArticlesService.AddArticleService(HelperArticle).subscribe();
     this.router.navigateByUrl('articulos');
   }
 }

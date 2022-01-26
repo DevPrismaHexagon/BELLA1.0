@@ -1,9 +1,9 @@
 export class article {
     id:number;
     name:String;
-    slug:String;
+    /* slug:String; */
     description:String;
-    status:number;
+/*     status:number;
     bar_code:String;
     sku:String;
     comments:String;
@@ -12,14 +12,14 @@ export class article {
     made_in:String;
     brand_id:number;
     category_id:number;
-    unit_id:number;
+    unit_id:number; */
 
     constructor(
         id:number,
         name:String, 
-        slug:String, 
+        /* slug:String,  */
         description:String, 
-        status:number, 
+        /* status:number, 
         bar_code:String, 
         sku:String, 
         comments:String, 
@@ -28,14 +28,14 @@ export class article {
         made_in:String,
         brand_id:number,
         category_id:number,
-        unit_id:number,
+        unit_id:number, */
         )
     {
         this.id=id;
         this.name=name;
-        this.slug=slug;
+        /* this.slug=slug; */
         this.description=description;
-        this.status=status;
+        /* this.status=status;
         this.bar_code=bar_code;
         this.sku=sku;
         this.comments=comments;
@@ -44,6 +44,6 @@ export class article {
         this.made_in=made_in;
         this.brand_id=brand_id;
         this.category_id=category_id;
-        this.unit_id=brand_id;
+        this.unit_id=brand_id; */
     }
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Iarticle } from 'src/interfaces/articles';
 import { article } from 'src/models/article.model';
 import { ArticlesService } from './articles.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-articles',
@@ -15,15 +17,25 @@ export class ArticlesComponent implements OnInit {
 
   articles:article[]=[];
 
-  constructor(private ArticleService:ArticlesService) {
-    this.articles=this.ArticleService.articles;
+  constructor(private ArticleService:ArticlesService, private router: Router) {
   }
 
   ngOnInit(): void {
+    this.GetArticles();
   }
 
-  DeleteArticle(id:number){
-    this.ArticleService.DeleteArticleService(id);
+  GetArticles(){
+    this.ArticleService.GetAllArticlesService().subscribe((response:Iarticle[]) => { 
+      this.articles = response;
+    });
+    
+  }
+  
+
+  DeleteArticle(id:number, index:number){
+    this.ArticleService.DeleteArticleService(id).subscribe( response => {
+      this.articles.splice(index,1);
+    });
   }
 
   SearchArticle(search:string){

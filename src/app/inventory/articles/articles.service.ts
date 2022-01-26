@@ -1,36 +1,18 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { article } from 'src/models/article.model';
 import { article_category } from 'src/models/article_category.model';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
+import { Iarticle } from 'src/interfaces/articles';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ArticlesService {
+export class ArticlesService implements OnInit {
 
-  articles:article[]=[
-    new article(0, "samsung sX", "samsung-sx", "asasf", 1, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 1, 1),
-    new article(1, "samsung sXI", "samsung-sxi", "asasf", 1, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 2, 1),
-    new article(2, "samsung sXII", "samsung-sxii", "asasf", 1, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 1, 1),
-    new article(3, "samsung sXIII", "samsung-sxiii", "asasf", 1, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 2, 1),
-    new article(4, "samsung sXIV", "samsung-sxiv", "asasf", 1, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 1, 1),
-    new article(5, "samsung sXV", "samsung-sxv", "asasf", 1, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 2, 1),
-    new article(6, "samsung sXVI", "samsung-sxvi", "asasf", 1, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 1, 1),
-    new article(7, "samsung sXVII", "samsung-sxvii", "asasf", 1, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 2, 1),
-    new article(8, "samsung sXVIII", "samsung-sxviii", "asasf", 1, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 1, 1),
-    new article(9, "samsung sXX", "samsung-sxx", "asasf", 1, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 2, 1),
-    new article(10, "samsung sX", "samsung-sx", "asasf", 1, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 1, 1),
-    new article(11, "samsung sXI", "samsung-sxi", "asasf", 1, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 1, 1),
-    new article(12, "samsung sXII", "samsung-sxii", "asasf", 1, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 1, 1),
-    new article(13, "samsung sXIII", "samsung-sxiii", "asasf", 1, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 1, 1),
-    new article(14, "samsung sXIV", "samsung-sxiv", "asasf", 1, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 1, 1),
-    new article(15, "samsung sXV", "samsung-sxv", "asasf", 1, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 1, 1),
-    new article(16, "samsung sXVI", "samsung-sxvi", "asasf", 1, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 1, 1),
-    new article(17, "samsung sXVII", "samsung-sxvii", "asasf", 1, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 1, 1),
-    new article(18, "samsung sXVIII", "samsung-sxviii", "asasf", 1, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 1, 1),
-    new article(19, "samsung sXX", "samsung-sxx", "asasf", 1, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 1, 1),
-    new article(20, "samsung sX", "samsung-sx", "asasf", 1, "asasas", "asasas", "asasasa", "asasas", "assasas", "asasasas", 1, 1, 1),
-  ];
+  articles:article[]=[];
 
   // por ahora se traeran las categorias por aqui
   article_categories:article_category[]=[
@@ -40,34 +22,49 @@ export class ArticlesService {
     new article_category(3,"pantalones", "pantalones de todas las tallas", 0, "root"),
   ];
 
-  constructor() { }
+  GetAllArticlesBaseUrl:string = 'http://localhost/belladev1.0/articles/read.php';
+  AddArticlesBaseUrl:string = 'http://localhost/belladev1.0/articles/create.php';
 
-  AddArticleService(article:article){
-    this.articles.push(article);
+  constructor(private httpClient:HttpClient) {
   }
 
-  DeleteArticleService(id:number){
-    if(window.confirm("Desea borrar el Articulo?")){
-      for(let i = 0; i < this.articles.length; ++i){
-        if (this.articles[i].id == id){
-          this.articles.splice(i,1);
-        }
-      }
-    }
+  ngOnInit(): void {
+    this.GetAllArticlesService();
+  }
+
+  AddArticleService(article:article):Observable<any>{
+    const body = JSON.stringify(article);
+    console.log(body);
+    let algo = this.httpClient.post(this.AddArticlesBaseUrl+"?insertar", body);
+    console.log(algo);
+    return algo;
+  }
+
+  GetAllArticlesService(){
+    return this.httpClient.get<Iarticle[]>(this.GetAllArticlesBaseUrl);
+  }
+
+  DeleteArticleService(id:number):Observable<any> {
+    console.log("id de entrada en servicio: "+id);
+    
+    let url = this.GetAllArticlesBaseUrl+"?borrar="+id;
+    console.log("URL completa: "+url);
+    
+    return this.httpClient.get(url);
   }
 
   GetArticleService(id:number):article | null{
-    for(let i = 0; i < this.articles.length; ++i){
+     for(let i = 0; i < this.articles.length; ++i){
       if (this.articles[i].id == id){
         let helper = this.articles[i];
         return helper;
       }
     }
-    return null;
+    return null; 
   }
 
   UpdateArticleService(form:FormGroup /* article:article */){
-    for(let i = 0; i < this.articles.length; ++i){
+/*     for(let i = 0; i < this.articles.length; ++i){
       if(this.articles[i].id == form.get('id')!.value){
         this.articles[i].id = form.get('id')!.value;
         this.articles[i].name = form.get('name')!.value;
@@ -84,6 +81,6 @@ export class ArticlesService {
         this.articles[i].category_id = form.get('category_id')!.value;
         this.articles[i].unit_id = form.get('unit_id')!.value;
       } 
-    }
+    } */
   }
 }

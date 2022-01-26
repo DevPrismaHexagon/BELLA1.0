@@ -61,11 +61,12 @@ export class EditArticlesComponent implements OnInit {
 
     if(helper != null){
       this.FormArticle.setValue({
+        /* 
         id:helper['id'],
         name:helper['name'],
-        /* slug:helper['slug'], */
+        slug:helper['slug'], 
         description:helper['description'],
-        /* status:helper['status'],
+        status:helper['status'],
         bar_code:helper['bar_code'],
         sku:helper['sku'],
         comments:helper['comments'],

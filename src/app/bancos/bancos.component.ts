@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ServiceBancosService } from './service-bancos.service';
+import { banco } from 'src/models/banco.model';
 
 @Component({
   selector: 'app-bancos',
@@ -7,10 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BancosComponent implements OnInit {
 
-  constructor() { }
+  title = 'Bancos';
+  subtitle = 'listado de Bancos';
+
+  search:string="";
+
+  bancos:banco[]=[];
+
+  constructor(private ServiceBancosService:ServiceBancosService) {
+    this.bancos=this.ServiceBancosService.bancos;
+   }
 
   ngOnInit(): void {
     
+  }
+
+  BorrarBanco(id:number){
+    this.ServiceBancosService.DeleteBancoService(id);
+  }
+
+  searchbanco(search:string){
+    this.search = search;
   }
 
 }

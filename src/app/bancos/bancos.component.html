@@ -1,96 +1,76 @@
 <section id="bancos">
 
     <div class="bancos__titulo">
-        <h3>Gestion de bancos</h3>
+        <h3>{{subtitle}}</h3>
     </div>
 
-        <div class="lista">
+    <div class="lista">
 
-            <div class="lista_header">
-                
-                <div class="herramientas">
-                    <ul>
-                        <li><button [routerLink]="['./agregar']"><span class="fas fa-plus"></span></button></li>
-                        <li><button><span class="fas fa-trash"></span></button></li>
-                    </ul>
-                </div>
+        <div class="lista_header">
 
-
+            <div class="herramientas">
+                <ul>
+                    <li><button [routerLink]="['./agregar']"><span class="fas fa-plus"></span></button></li>
+                    <li><button><span class="fas fa-trash"></span></button></li>
+                </ul>
+            </div>
+            <div class="buscador">
+                <input #searchCompra (keyup)="searchbanco(searchCompra.value)" type="text" name="searchArticle" id="searchArticle" class="searchArticle" placeholder="Buscar articulo">
             </div>
 
-            <div class="lista_tabla">
+        </div>
 
-                <table>
-                    <thead>
-                        <tr>
-                            <th><input type="checkbox" name="" id="" class=""></th>
-                            <th>Banco</th>
-                            <th>Descripcion</th>
-                            <th>Codigo</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><input type="checkbox" name="" id="" class=""></td>
-                            <td>Banco Crédito Agrícola de Cartago</td>
-                            <td>Banco</td>
-                            <td>AT973200000000518548</td>
-                            <td><span><i class="fas fa-times borrar"></i></span></td>
-                        </tr> 
-                        <tr>
-                            <td><input type="checkbox" name="" id="" class=""></td>
-                            <td>Banco Nacional de Costa Rica</td>
-                            <td>Banco</td>
-                            <td>AT973200000000518548</td>
-                            <td><span><i class="fas fa-times borrar"></i></span></td>
-                        </tr> 
-                        <tr>
-                            <td><input type="checkbox" name="" id="" class=""></td>
-                            <td>Banco Nacional de Costa Rica</td>
-                            <td>Banco</td>
-                            <td>AT973200000000518548</td>
-                            <td><span><i class="fas fa-times borrar"></i></span></td>
-                        </tr> 
-                        <tr>
-                            <td><input type="checkbox" name="" id="" class=""></td>
-                            <td>Banco Nacional de Costa Rica</td>
-                            <td>Banco</td>
-                            <td>AT973200000000518548</td>
-                            <td><span><i class="fas fa-times borrar"></i></span></td>
-                        </tr> 
-                        <tr>
-                            <td><input type="checkbox" name="" id="" class=""></td>
-                            <td>Banco Nacional de Costa Rica</td>
-                            <td>Banco</td>
-                            <td>AT973200000000518548</td>
-                            <td><span><i class="fas fa-times borrar"></i></span></td>
-                        </tr>                  
-                    </tbody>
-                </table>
+        <div class="lista_tabla">
 
-            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" name="" id="" class=""></th>
+                        <th>Banco</th>
+                        <th>Descripcion</th>
+                        <th>Codigo</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let banco of bancos | filter:search; let i=index">
+                        <td routerLink="/bancos/editar/{{banco.id}}">
+                            <i class="far fa-eye"></i>
+                        </td>
+                        <th scope="row">{{banco.id}}</th>
+                        <td>{{banco.name}}</td>
+                        <td>{{banco.slug}}</td>
+                        <td>
+                            <span (click)="BorrarBanco(banco.id)">
+                                <i class="fas fa-times borrar"></i>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
 
-            <div class="lista_footer">
-                <div class="entradas">
-                     <p>
-                         Mostrar entradas
-                        <select name="" id="" class="">
+        </div>
+
+        <div class="lista_footer">
+            <div class="entradas">
+                <p>
+                    Mostrar entradas
+                    <select name="" id="" class="">
                             <option value="5">5</option>
                             <option value="10">10</option>
                             <option value="15">15</option>
                             <option value="20">20</option>
                         </select>
-                        
-                     </p>  
-                </div>
-                <div class="paginacion">
-                    <ul>
-                        <li><button class="">Siguiente</button></li>
-                        <li><button class="numero">1</button></li>
-                        <li><button class="">Regresar</button></li>
-                    </ul>
-                </div>
+
+                </p>
+            </div>
+            <div class="paginacion">
+                <ul>
+                    <li><button class="">Siguiente</button></li>
+                    <li><button class="numero">1</button></li>
+                    <li><button class="">Regresar</button></li>
+                </ul>
             </div>
         </div>
+    </div>
 </section>

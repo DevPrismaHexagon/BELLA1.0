@@ -1,0 +1,93 @@
+<section id="compras">
+    <div class="usuarios">
+
+        <div class="titulo_usuarios">
+            <h3>{{subtitle}}</h3>
+        </div>
+
+        <div class="lista">
+
+            <div class="lista_header">
+                <div class="herramientas">
+                    <ul>
+                        <li [routerLink]="['/compras']">
+                            <button>
+                                <span class="fas fa-angle-left"></span>
+                            </button>
+                        </li>
+                        <li [routerLink]="['./crear']">
+                            <button>
+                                <span class="fas fa-plus"></span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="buscador">
+                    <input #searchLocacion (keyup)="searchlocacion(searchLocacion.value)" type="text" name="searchArticle" id="searchArticle" class="searchArticle" placeholder="Buscar articulo">
+                </div>
+            </div>
+
+            <div class="lista_tabla">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Producto</th>
+                            <th>Imagen</th>
+                            <th>Descripción</th>
+                            <th>Fecha de Compra</th>
+                            <th>Cantidad</th>
+                            <th>Status</th>
+                            <th>Precio</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let locacion of locaciones | filter:search; let i=index">
+                            <td routerLink="/compras/location/editar/{{locacion.id}}">
+                                <i class="far fa-eye"></i>
+                            </td>
+                            <th scope="row">{{locacion.id}}</th>
+                            <td>{{locacion.name}}</td>
+                            <td>{{locacion.slug}}</td>
+                            <td>{{locacion.description}}</td>
+                            <td>{{locacion.status}}</td>
+                            <td>{{locacion.bar_code}}</td>
+                            <td>{{locacion.sku}}</td>
+                            <td>{{locacion.comments}}</td>
+                            <td>
+                                <span (click)="BorrarLocacion(locacion.id)">
+                                    <i class="fas fa-times borrar"></i>
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div class="lista_footer ">
+                <div class="entradas ">
+                    <p>
+                        Mostrar entradas
+                        <select name=" " id=" " class=" ">
+                            <option value="5 ">5</option>
+                            <option value="10 ">10</option>
+                            <option value="15 ">15</option>
+                            <option value="20 ">20</option>
+                        </select>
+
+                    </p>
+                </div>
+                <div class="paginacion ">
+                    <ul>
+                        <li><button class=" ">Siguiente</button></li>
+                        <li><button class="numero ">1</button></li>
+                        <li><button class=" ">Regresar</button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -14,13 +14,14 @@
             <div class="lista_header">
                 <div class="herramientas">
                     <ul>
-                        <li><input type="checkbox" name="" id="" class=""></li>
+
                         <li [routerLink]="['./crear']"><button><span class="fas fa-plus"></span></button></li>
-                        <li><button><span class="fas fa-trash"></span></button></li>
+                        <li [routerLink]="['/ventas/location']"><button><span class="fas fa-map-marker-alt"></span></button></li>
+
                     </ul>
                 </div>
                 <div class="buscador">
-                    <input type="text" name="" id="" class="buscar" placeholder="Buscar...">
+                    <input #searchVenta (keyup)="searchventa(searchVenta.value)" type="text" name="searchArticle" id="searchArticle" class="searchArticle" placeholder="Buscar articulo">
                 </div>
             </div>
 
@@ -35,22 +36,29 @@
                             <th>Descripción</th>
                             <th>Fecha de Compra</th>
                             <th>Cantidad</th>
+                            <th>Status</th>
                             <th>Precio</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td [routerLink]="['./editar']">
+                        <tr *ngFor="let venta of ventas | filter:search; let i=index">
+                            <td routerLink="/compras/editar/{{venta.id}}">
                                 <i class="far fa-eye"></i>
                             </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td style="text-align: center; width: 50px; "><span><i class="fas fa-times borrar "></i></span></td>
+                            <th scope="row">{{venta.id}}</th>
+                            <td>{{venta.name}}</td>
+                            <td>{{venta.slug}}</td>
+                            <td>{{venta.description}}</td>
+                            <td>{{venta.status}}</td>
+                            <td>{{venta.bar_code}}</td>
+                            <td>{{venta.sku}}</td>
+                            <td>{{venta.comments}}</td>
+                            <td>
+                                <span (click)="BorrarVenta(venta.id)">
+                                    <i class="fas fa-times borrar"></i>
+                                </span>
+                            </td>
                         </tr>
                     </tbody>
                 </table>

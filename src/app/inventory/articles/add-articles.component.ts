@@ -2,7 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { article } from 'src/models/article.model';
+import { article_category } from 'src/models/article_category.model';
 import { ArticlesService } from './articles.service';
+import { brand } from 'src/models/brand.model';
+import { unit } from 'src/models/unit.model';
+import { BrandsService } from '../brands/brands.service';
+import { UnitsService } from '../units/units.service';
 
 @Component({
   selector: 'app-add-articles',
@@ -15,7 +20,21 @@ export class AddArticlesComponent implements OnInit {
   random_number:number = Math.floor(100*Math.random());
   FormArticle!: FormGroup;
 
-  constructor(form:FormBuilder, private articlesservice:ArticlesService, private router: Router) {
+  article_categories:article_category[]=[];
+  brands:brand[]=[];
+  units:unit[]=[];
+
+  constructor(
+    form:FormBuilder, 
+    private ArticlesService:ArticlesService, 
+    private BrandsService:BrandsService, 
+    private UnitsService:UnitsService, 
+    private router: Router) {
+
+    this.article_categories=this.ArticlesService.article_categories;
+    this.brands=this.BrandsService.brands;
+    this.units=this.UnitsService.units;
+
     this.FormArticle = form.group({
     id:[''],
     name:[''],
@@ -54,7 +73,7 @@ export class AddArticlesComponent implements OnInit {
       this.FormArticle.get('category_id')!.value,
       this.FormArticle.get('unit_id')!.value,
     );
-    this.articlesservice.AddArticleService(HelperArticle);
+    this.ArticlesService.AddArticleService(HelperArticle);
     this.router.navigateByUrl('articulos');
   }
 }

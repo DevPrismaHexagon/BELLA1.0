@@ -1,12 +1,8 @@
 <section id="compras">
-    <!-- <div class="titulo">
-        <h4>Compras</h4>
-    </div> -->
-
     <div class="usuarios">
 
         <div class="titulo_usuarios">
-            <h3>Gestion de Compras</h3>
+            <h3>{{subtitle}}</h3>
         </div>
 
         <div class="lista">
@@ -17,10 +13,11 @@
                         <li><input type="checkbox" name="" id="" class=""></li>
                         <li [routerLink]="['./crear']"><button><span class="fas fa-plus"></span></button></li>
                         <li><button><span class="fas fa-trash"></span></button></li>
+                        <li [routerLink]="['./location']"><button><span class="fas fa-map-marker-alt"></span></button></li>
                     </ul>
                 </div>
                 <div class="buscador">
-                    <input type="text" name="" id="" class="buscar" placeholder="Buscar...">
+                    <input #searchCompra (keyup)="searcharticle(searchCompra.value)" type="text" name="searchArticle" id="searchArticle" class="searchArticle" placeholder="Buscar articulo">
                 </div>
             </div>
 
@@ -35,22 +32,29 @@
                             <th>Descripción</th>
                             <th>Fecha de Compra</th>
                             <th>Cantidad</th>
+                            <th>Status</th>
                             <th>Precio</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td [routerLink]="['./editar']">
+                        <tr *ngFor="let compra of compras | filter:search; let i=index">
+                            <td routerLink="/compras/editar/{{compra.id}}">
                                 <i class="far fa-eye"></i>
                             </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td style="text-align: center; width: 50px; "><span><i class="fas fa-times borrar "></i></span></td>
+                            <th scope="row">{{compra.id}}</th>
+                            <td>{{compra.name}}</td>
+                            <td>{{compra.slug}}</td>
+                            <td>{{compra.description}}</td>
+                            <td>{{compra.status}}</td>
+                            <td>{{compra.bar_code}}</td>
+                            <td>{{compra.sku}}</td>
+                            <td>{{compra.comments}}</td>
+                            <td>
+                                <span (click)="BorrarCompra(compra.id)">
+                                    <i class="fas fa-times borrar"></i>
+                                </span>
+                            </td>
                         </tr>
                     </tbody>
                 </table>

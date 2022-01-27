@@ -12,6 +12,14 @@
         <label for="description" class="form-label">Descripcion del Articulo</label>
         <input required formControlName="description" type="text" class="form-control" id="description" name="description" placeholder="Descripcion">     
         
+        <label for="status" class="form-label">Status del Articulo</label>
+        <select class="form-control" formControlName="status">
+            <option [ngValue]="null" disabled>Seleccione un status</option>
+            <option [ngValue]="0" selected>Activo</option>
+            <option [ngValue]="1">Inactivo</option>
+            <option [ngValue]="2">Pendiente</option>
+        </select>
+
         <label for="bar_code" class="form-label">bar code del Articulo</label>
         <input required formControlName="bar_code" type="text" class="form-control" id="bar_code" name="bar_code" placeholder="bar code">
         
@@ -30,10 +38,27 @@
         <label for="made_in" class="form-label">Hecho en:</label>
         <input required formControlName="made_in" type="text" class="form-control" id="made_in" name="made_in" placeholder="hecho en">
 
+        <label for="category_id" class="form-label">Categoria del Articulo</label>
         <select class="form-control" formControlName="category_id">
             <option [ngValue]="null" disabled>Seleccione categoria</option>
-            <option *ngFor="let category of article_categories" value="{{category.id}}">
+            <option *ngFor="let category of article_categories" [ngValue]="category.id">
               {{ category.name }}
+            </option>
+        </select>
+
+        <label for="brand_id" class="form-label">Marca del Articulo</label>
+        <select class="form-control" formControlName="brand_id">
+            <option [ngValue]="null" disabled>Seleccione categoria</option>
+            <option *ngFor="let brand of brands" [ngValue]="brand.id">
+              {{ brand.name }}
+            </option>
+        </select>
+
+        <label for="unit_id" class="form-label">unidad del Articulo</label>
+        <select class="form-control" formControlName="unit_id">
+            <option [ngValue]="null" disabled>Seleccione categoria</option>
+            <option *ngFor="let unit of units" [ngValue]="unit.id">
+              {{ unit.name }}
             </option>
         </select>
 

@@ -23,18 +23,11 @@ export class ArticlesService implements OnInit {
     new article_category(3,"pantalones", "pantalones de todas las tallas", 0, "root"),
   ];
 
-<<<<<<< HEAD
-  GetAllArticlesBaseUrl:string = 'http://localhost/belladev1.0/articles/read.php';
-  AddArticlesBaseUrl:string = 'http://localhost/belladev1.0/articles/create.php';
-  UpdateArticleBaseUrl:string = 'http://localhost/belladev1.0/articles/update.php';
-  GetArticleBaseUrl:string = 'http://localhost/belladev1.0/articles/single_read.php';
-  DeleteArticleBaseUrl:string = 'http://localhost/belladev1.0/articles/delete.php';
-=======
   GetAllArticlesBaseUrl:string = 'http://localhost/BELLA1.0/belladev1.0/articles/read.php';
   AddArticlesBaseUrl:string = 'http://localhost/BELLA1.0/belladev1.0/articles/create.php';
-  UpdateArticlesBaseUrl:string = 'http://localhost/BELLA1.0/belladev1.0/articles/update.php';
+  UpdateArticleBaseUrl:string = 'http://localhost/BELLA1.0/belladev1.0/articles/update.php';
   GetArticleBaseUrl:string = 'http://localhost/BELLA1.0/belladev1.0/articles/single_read.php';
->>>>>>> 3d3ff4f0d15fd7df7e9504b9d08242b2a5f4cd10
+  DeleteArticleBaseUrl:string = 'http://localhost/BELLA1.0/belladev1.0/articles/delete.php';
 
   constructor(private httpClient:HttpClient) {
   }
@@ -65,8 +58,9 @@ export class ArticlesService implements OnInit {
   }
 
   // in progress
-  DeleteArticleService(id:number) {
-    console.log("id: "+id);
-    return this.httpClient.put(this.DeleteArticleBaseUrl, id);
+  SoftDeleteArticleService(article:article) {
+    console.log("id: "+article.id);
+    console.log("entro a delete article service");
+    return this.httpClient.put(this.DeleteArticleBaseUrl, article, {responseType: 'text'} );
   }
 }

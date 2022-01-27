@@ -16,11 +16,11 @@ export class ArticlesComponent implements OnInit {
   search:string="";
 
   articles:article[]=[];
-  HelperRefresh: string | null;
+
   HelperId: number;
 
-  helperArticle!:article;
-  helperArticleDelete!:article;
+  helperArticle:article;
+  helperArticleDelete:article;
 
   constructor(private ArticlesService:ArticlesService, private router: Router) {
   }
@@ -40,10 +40,18 @@ export class ArticlesComponent implements OnInit {
     console.log("id: "+id);
     console.log("index: "+index);
     
-    this.ArticlesService.DeleteArticleService(id).subscribe( response => {
-        /* this.articles.splice(index,1); 
-        window.location.reload();  */
-    });
+    this.ArticlesService.GetArticleService(id).subscribe( (article:article) => {
+      this.helperArticle=article; 
+
+      if(this.helperArticle != null){
+        this.ArticlesService.SoftDeleteArticleService(this.helperArticle).subscribe( response => {
+          /* this.articles.splice(index,1); 
+          window.location.reload();  */
+        });
+      }
+    } );
+
+
   }
 
   SearchArticle(search:string){

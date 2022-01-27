@@ -19,31 +19,10 @@
 
         // GET ALL
         public function getArticles(){
-            $sqlQuery = "SELECT * FROM " . $this->db_table . "";
+            $sqlQuery = "SELECT * FROM " . $this->db_table . " WHERE borrado = 1";
             $stmt = $this->conn->prepare($sqlQuery);
             $stmt->execute();
             return $stmt;
-        }
-         
-        // UPDATE
-        public function updateArticle(){
-            $sqlQuery = "UPDATE ". $this->db_table ." SET name = :name, description = :description WHERE id = :id";
-        
-            $stmt = $this->conn->prepare($sqlQuery);
-        
-            $this->name=htmlspecialchars(strip_tags($this->name));
-            $this->description=htmlspecialchars(strip_tags($this->description));
-            $this->id=htmlspecialchars(strip_tags($this->id));
-        
-            // bind data
-            $stmt->bindParam(":name", $this->name);
-            $stmt->bindParam(":description", $this->description);
-            $stmt->bindParam(":id", $this->id);
-        
-            if($stmt->execute()){
-               return true;
-            }
-            return false;
         }
 
         // CREATE
@@ -81,21 +60,45 @@
             $this->name = $dataRow['name'];
             $this->description = $dataRow['description'];
         }        
-        /*
+        
+        // UPDATE
+        public function updateArticle(){
+            $sqlQuery = "UPDATE ". $this->db_table ." SET name = :name, description = :description WHERE id = :id";
+        
+            $stmt = $this->conn->prepare($sqlQuery);
+        
+            $this->name=htmlspecialchars(strip_tags($this->name));
+            $this->description=htmlspecialchars(strip_tags($this->description));
+            $this->id=htmlspecialchars(strip_tags($this->id));
+        
+            // bind data
+            $stmt->bindParam(":name", $this->name);
+            $stmt->bindParam(":description", $this->description);
+            $stmt->bindParam(":id", $this->id);
+        
+            if($stmt->execute()){
+               return true;
+            }
+            return false;
+        }
+
         // DELETE
-        function deleteEmployee(){
-            $sqlQuery = "DELETE FROM " . $this->db_table . " WHERE id = ?";
+        function deleteArticle(){
+        //$sqlQuery = "DELETE FROM " . $this->db_table . " WHERE id = ?";
+        $sqlQuery = "UPDATE ". $this->db_table ." SET name = :name, description = :description, borrado = 0 WHERE id = :id";
             $stmt = $this->conn->prepare($sqlQuery);
         
             $this->id=htmlspecialchars(strip_tags($this->id));
         
-            $stmt->bindParam(1, $this->id);
+            $stmt->bindParam(":name", $this->name);
+            $stmt->bindParam(":description", $this->description);
+            $stmt->bindParam(":id", $this->id);
         
             if($stmt->execute()){
                 return true;
             }
             return false;
         }
-        */
+        
     }
 ?>

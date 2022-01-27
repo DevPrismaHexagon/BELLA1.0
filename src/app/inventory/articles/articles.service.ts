@@ -3,7 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { article } from 'src/models/article.model';
 import { article_category } from 'src/models/article_category.model';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, Observer, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Iarticle } from 'src/interfaces/articles';
 
@@ -41,16 +41,17 @@ export class ArticlesService implements OnInit {
 
   // halfway done
   AddArticleService(article:article){
-    return this.httpClient.post(this.AddArticlesBaseUrl, article);
+    return this.httpClient.post(this.AddArticlesBaseUrl, article, {responseType: 'text'});
   }
 
   // in progress
-  UpdateArticleService(form:FormGroup){
-    return this.httpClient.post<article>(this.UpdateArticlesBaseUrl, form);
+  UpdateArticleService(article:article){
+    return this.httpClient.post<article>(this.UpdateArticlesBaseUrl, article);
   }
 
-  GetArticleService(id:number) {
-    return this.httpClient.get<article>(this.AddArticlesBaseUrl+"?id={id}");
+  GetArticleService(id:number):Observable<any> {
+    let url = this.GetArticleBaseUrl+"?id="+id;
+    return this.httpClient.get(url);
   }
 
   // in progress

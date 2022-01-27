@@ -1,26 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { compra } from './../../../models/compras.model';
-import { ServiceComprasService } from './../service-compras.service';
+import { banco } from 'src/models/banco.model';
+import { ServiceBancosService } from '../service-bancos.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 @Component({
-  selector: 'app-editar',
-  templateUrl: './editar.component.html',
-  styleUrls: ['./editar.component.css']
+  selector: 'app-bancos-editar',
+  templateUrl: './bancos-editar.component.html',
+  styleUrls: ['./bancos-editar.component.css']
 })
-export class EditarComponent implements OnInit {
-  title="Compras";
-  subtitle="Editar Compra";
+export class BancosEditarComponent implements OnInit {
+
+  title="Bancos";
+  subtitle="Editar Banco";
   HelperId:any;
-  FormCompra!: FormGroup;
+  FormBanco!: FormGroup;
 
-  compra:compra;
+  banco:banco;
 
-  constructor(private ActiveRoute:ActivatedRoute, public form:FormBuilder, private servicecomprasservice:ServiceComprasService, private router: Router) { 
+  constructor(private ActiveRoute:ActivatedRoute, public form:FormBuilder, private servicebancosservice:ServiceBancosService, private router: Router) { 
     this.HelperId = ActiveRoute.snapshot.paramMap.get('id');
-    let helper = this.servicecomprasservice.GetCompraService(this.HelperId);
-
-    this.FormCompra = this.form.group({
+    let helper = this.servicebancosservice.GetBancoService(this.HelperId);
+    this.FormBanco = this.form.group({
       id:['', Validators.required],
       name:['', Validators.required],
       slug:['', Validators.required],
@@ -36,8 +37,9 @@ export class EditarComponent implements OnInit {
       category_id:['', Validators.required],
       unit_id:['', Validators.required],
     }); 
+
     if(helper != null){
-      this.FormCompra.setValue({
+      this.FormBanco.setValue({
         id:helper['id'],
         name:helper['name'],
         slug:helper['slug'],
@@ -55,11 +57,12 @@ export class EditarComponent implements OnInit {
       });
     }
   }
-   
+
   ngOnInit(): void {
   }
-  UpdateCompra(){
-    this.servicecomprasservice.UpdateCompraService(this.FormCompra);
-    this.router.navigateByUrl('compras');
+  UpdateBanco(){
+    this.servicebancosservice.UpdateBancoService(this.FormBanco);
+    this.router.navigateByUrl('bancos');
   }
+
 }

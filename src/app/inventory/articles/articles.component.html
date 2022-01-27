@@ -48,7 +48,7 @@
                 </thead>
                 <tbody>
                     <div style="display: contents" *ngFor="let article of articles | articlesFilter:search; let i = index">
-                        <tr> 
+                        <tr>
                             <td routerLink="/articulos/editar/{{article.id}}">{{article.name}}</td>
                             <td routerLink="/articulos/editar/{{article.id}}">{{article.description}}</td>
                             <!-- <td>{{article.slug}}</td>

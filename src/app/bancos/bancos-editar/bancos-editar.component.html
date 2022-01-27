@@ -1,12 +1,12 @@
-<section id="venta-editar">
-    <button [routerLink]="['/ventas']">
+<section id="compraedit">
+    <button [routerLink]="['/bancos']">
         <i class="fas fa-angle-left"></i>
     </button>
     <h1 class="titulo">
-        Gestionar Venta
+        Gestionar Banco
     </h1>
     <div class="new">
-        <form id="form" [formGroup]="FormVenta" (ngSubmit)="UpdateVenta()">
+        <form id="form" [formGroup]="FormBanco" (ngSubmit)="UpdateBanco()">
 
             <label for="name" class="form-label">Nombre del Articulo</label>
             <input required formControlName="name" type="text" class="form-control" id="name" name="name" placeholder="name">
@@ -43,32 +43,9 @@
             <label for="made_in" class="form-label">Hecho en:</label>
             <input required formControlName="made_in" type="text" class="form-control" id="made_in" name="made_in" placeholder="hecho en">
 
-            <!-- <label for="category_id" class="form-label">Categoria del Articulo</label>
-            <select class="form-control" formControlName="category_id">
-                <option [ngValue]="null" disabled>Seleccione categoria</option>
-                <option *ngFor="let category of article_categories" [ngValue]="category.id">
-                  {{ category.name }}
-                </option>
-            </select>
-
-            <label for="brand_id" class="form-label">Marca del Articulo</label>
-            <select class="form-control" formControlName="brand_id">
-                <option [ngValue]="null" disabled>Seleccione categoria</option>
-                <option *ngFor="let brand of brands" [ngValue]="brand.id">
-                  {{ brand.name }}
-                </option>
-            </select>
-
-            <label for="unit_id" class="form-label">unidad del Articulo</label>
-            <select class="form-control" formControlName="unit_id">
-                <option [ngValue]="null" disabled>Seleccione categoria</option>
-                <option *ngFor="let unit of units" [ngValue]="unit.id">
-                  {{ unit.name }}
-                </option>
-            </select> -->
 
             <button type="submit" class="btn btn-success">Guardar</button>
-            <button type="" class="btn btn-danger" routerLink="/ventas">Cancel</button>
+            <button type="" class="btn btn-danger" routerLink="/bancos">Cancel</button>
         </form>
     </div>
 </section>

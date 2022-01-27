@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { AppComponent } from './app.component';
 import { ControladorComponent } from './controlador/controlador.component';
 import { LoginComponent } from './login/login.component';
@@ -18,8 +17,9 @@ import { EditarComponent } from './compras/editar/editar.component';
 import { VentasComponent } from './ventas/ventas.component';
 import { CrearVentaComponent } from './ventas/crear-venta/crear-venta.component';
 import { EditarVentaComponent } from './ventas/editar-venta/editar-venta.component';
-
-// leopoldo's components
+import { ActivosFijosComponent } from './activos-fijos/activos-fijos.component';
+import { CrearActivoComponent } from './activos-fijos/crear-activo/crear-activo.component';
+import { EditarActivoComponent } from './activos-fijos/editar-activo/editar-activo.component';
 import { ArticlesComponent } from './inventory/articles/articles.component';
 import { ArticlesService } from './inventory/articles/articles.service';
 import { BrandsService } from './inventory/brands/brands.service';
@@ -41,7 +41,21 @@ import { ArticlecategoriesFilterPipe } from './inventory/article-categories/arti
 import { AddArticleCategoriesComponent } from './inventory/article-categories/add-article-categories.component';
 import { EditArticleCategoriesComponent } from './inventory/article-categories/edit-article-categories.component';
 import { ArticlecategoriesbyidFilterPipe } from './inventory/article-categories/articlecategoriesbyid-filter.pipe';
-// import { BreadCrumbsComponent } from './bread-crumbs/bread-crumbs.component';
+import { FilterPipe } from './compras/filter.pipe';
+import { LocationComponent } from './compras/location/location.component';
+import { EditarLocationComponent } from './compras/location/editar-location/editar-location.component';
+import { CrearLocationComponent } from './compras/location/crear-location/crear-location.component';
+import { EditarLocationVentaComponent } from './ventas/location/editar-location-venta/editar-location-venta.component';
+import { CrearLocationVentaComponent } from './ventas/location/crear-location-venta/crear-location-venta.component';
+import { LocationVentasComponent } from './ventas/location/location.component';
+import { LocationPipe } from './compras/location/location.pipe';
+import { LocationVentasPipe } from './ventas/location/location-ventas.pipe';
+import { BancosComponent } from './bancos/bancos.component';
+import { BancosCrearComponent } from './bancos/bancos-crear/bancos-crear.component';
+import { BancosEditarComponent } from './bancos/bancos-editar/bancos-editar.component';
+import { FilterBancosPipe } from './bancos/filter-bancos.pipe';
+import { ServiceBancosService } from './bancos/service-bancos.service';
+import { ServiceComprasService } from './compras/service-compras.service';
 import { HttpClientModule } from '@angular/common/http';
 
 const rutas:Routes=[
@@ -64,23 +78,34 @@ const rutas:Routes=[
       {path: 'unidades', component: UnitsComponent },
       {path: 'unidades/crear', component: AddUnitsComponent },
       {path: 'unidades/editar/:id', component: EditUnitsComponent },
+      {path:'activos', component:ActivosFijosComponent},
+      {path:'ventas/crear', component: CrearVentaComponent},
+      {path:'ventas/editar/:id', component:EditarVentaComponent},
+      {path:'activos/crear', component:CrearActivoComponent},
+      {path:'activos/editar/:id', component:EditarActivoComponent},
+      {path:'compras/location/crear', component:CrearLocationComponent},
+      {path:'compras/location/editar/:id', component:EditarLocationComponent},
+      {path:'ventas/location/crear', component:CrearLocationVentaComponent},
+      {path:'ventas/location/editar/:id', component:EditarLocationVentaComponent},
+      {path:'ventas/location', component:LocationVentasComponent},
       {path: 'categorias-articulo', component: ArticleCategoriesComponent },
       {path: 'categorias-articulo/crear', component: AddArticleCategoriesComponent },
       {path: 'categorias-articulo/editar/:id', component: EditArticleCategoriesComponent },
-    ]  
-  },
+      {path:'bancos', component:BancosComponent},
+      {path:'bancos/agregar', component:BancosCrearComponent},
+      {path:'bancos/editar/:id', component:BancosEditarComponent},
+
+  ]  },
   {path:'login',
     component:LoginComponent,
     children:[
       {path:'iniciar',component:IniciarSessionComponent},
       {path:'registro',component:RegistroComponent}
-    ]  
+    ]
   },
   {path:'**', component:Error404Component}
- 
 
 ]
-
 
 @NgModule({
   declarations: [
@@ -110,23 +135,39 @@ const rutas:Routes=[
     UnitsComponent,
     AddUnitsComponent,
     EditUnitsComponent,
+    ActivosFijosComponent,
+    CrearActivoComponent,
+    EditarActivoComponent,
+    FilterPipe,
+    LocationComponent,
+    EditarLocationComponent,
+    CrearLocationComponent,
+    EditarLocationVentaComponent,
+    CrearLocationVentaComponent,
+    LocationVentasComponent,
+    LocationPipe,
+    LocationVentasPipe,
     ArticleCategoriesComponent,
     UnitsFilterPipe,
     ArticlecategoriesFilterPipe,
     AddArticleCategoriesComponent,
     EditArticleCategoriesComponent,
     ArticlecategoriesbyidFilterPipe,
-    // BreadCrumbsComponent,
+    BancosComponent,
+    BancosCrearComponent,
+    BancosEditarComponent,
+    FilterBancosPipe,
+
   ],
   imports: [
-    BrowserModule, 
-    FormsModule, 
+    BrowserModule,
+    FormsModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(rutas),
     HttpClientModule,
   ],
-  providers: [ArticlesService, BrandsService, UnitsService, ArticleCategoriesService],
+  providers: [ArticlesService, BrandsService, UnitsService, ArticleCategoriesService,ServiceBancosService,ServiceComprasService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

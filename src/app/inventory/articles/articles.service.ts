@@ -3,7 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { article } from 'src/models/article.model';
 import { article_category } from 'src/models/article_category.model';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, Observer, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Iarticle } from 'src/interfaces/articles';
 
@@ -12,6 +12,7 @@ import { Iarticle } from 'src/interfaces/articles';
 })
 export class ArticlesService implements OnInit {
 
+  helperArticle:article;
   articles:article[]=[];
 
   // por ahora se traeran las categorias por aqui
@@ -22,8 +23,11 @@ export class ArticlesService implements OnInit {
     new article_category(3,"pantalones", "pantalones de todas las tallas", 0, "root"),
   ];
 
-  GetAllArticlesBaseUrl:string = 'http://localhost/belladev1.0/articles/read.php';
-  AddArticlesBaseUrl:string = 'http://localhost/belladev1.0/articles/create.php';
+  GetAllArticlesBaseUrl:string = 'http://localhost/BELLA1.0/belladev1.0/articles/read.php';
+  AddArticlesBaseUrl:string = 'http://localhost/BELLA1.0/belladev1.0/articles/create.php';
+  UpdateArticleBaseUrl:string = 'http://localhost/BELLA1.0/belladev1.0/articles/update.php';
+  GetArticleBaseUrl:string = 'http://localhost/BELLA1.0/belladev1.0/articles/single_read.php';
+  DeleteArticleBaseUrl:string = 'http://localhost/BELLA1.0/belladev1.0/belladev1.0/articles/delete.php';
 
   constructor(private httpClient:HttpClient) {
   }
@@ -32,55 +36,30 @@ export class ArticlesService implements OnInit {
     this.GetAllArticlesService();
   }
 
-  AddArticleService(article:article):Observable<any>{
-    const body = JSON.stringify(article);
-    console.log(body);
-    let algo = this.httpClient.post(this.AddArticlesBaseUrl+"?insertar", body);
-    console.log(algo);
-    return algo;
-  }
-
+  // done
   GetAllArticlesService(){
-    return this.httpClient.get<Iarticle[]>(this.GetAllArticlesBaseUrl);
+    return this.httpClient.get<article[]>(this.GetAllArticlesBaseUrl);
   }
 
-  DeleteArticleService(id:number):Observable<any> {
-    console.log("id de entrada en servicio: "+id);
-    
-    let url = this.GetAllArticlesBaseUrl+"?borrar="+id;
-    console.log("URL completa: "+url);
-    
+  // halfway done
+  AddArticleService(article:article){
+    return this.httpClient.post(this.AddArticlesBaseUrl, article, {responseType: 'text'});
+  }
+
+  // in progress
+  UpdateArticleService(article:article){
+    console.log("entro a update article service");
+    return this.httpClient.put(this.UpdateArticleBaseUrl, article, {responseType: 'text'} );
+  }
+
+  GetArticleService(id:number):Observable<any> {
+    let url = this.GetArticleBaseUrl+"?id="+id;
     return this.httpClient.get(url);
   }
 
-  GetArticleService(id:number):article | null{
-     for(let i = 0; i < this.articles.length; ++i){
-      if (this.articles[i].id == id){
-        let helper = this.articles[i];
-        return helper;
-      }
-    }
-    return null; 
-  }
-
-  UpdateArticleService(form:FormGroup /* article:article */){
-/*     for(let i = 0; i < this.articles.length; ++i){
-      if(this.articles[i].id == form.get('id')!.value){
-        this.articles[i].id = form.get('id')!.value;
-        this.articles[i].name = form.get('name')!.value;
-        this.articles[i].slug = form.get('slug')!.value; 
-        this.articles[i].description = form.get('description')!.value; 
-        this.articles[i].status = form.get('status')!.value; 
-        this.articles[i].bar_code = form.get('bar_code')!.value;  
-        this.articles[i].sku = form.get('sku')!.value;  
-        this.articles[i].comments = form.get('comments')!.value;  
-        this.articles[i].size = form.get('size')!.value;  
-        this.articles[i].weight = form.get('weight')!.value;  
-        this.articles[i].made_in = form.get('made_in')!.value;
-        this.articles[i].brand_id = form.get('brand_id')!.value;
-        this.articles[i].category_id = form.get('category_id')!.value;
-        this.articles[i].unit_id = form.get('unit_id')!.value;
-      } 
-    } */
+  // in progress
+  DeleteArticleService(id:number) {
+    console.log("id: "+id);
+    return this.httpClient.put(this.DeleteArticleBaseUrl, id);
   }
 }

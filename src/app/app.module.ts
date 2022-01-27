@@ -56,19 +56,19 @@ import { BancosEditarComponent } from './bancos/bancos-editar/bancos-editar.comp
 import { FilterBancosPipe } from './bancos/filter-bancos.pipe';
 import { ServiceBancosService } from './bancos/service-bancos.service';
 import { ServiceComprasService } from './compras/service-compras.service';
+import { HttpClientModule } from '@angular/common/http';
 
 const rutas:Routes=[
   {path:'',component:ControladorComponent,
     children:[
-      {path:'seguridad', component:SeguridadComponent},
-      {path:'dashboard', component:DashboardComponent},
-      {path:'compras', component:ComprasComponent},
-      {path:'compras/crear', component: CrearComponent},
-      {path:'compras/editar/:id', component:EditarComponent},
-      {path:'compras/location', component:LocationComponent},
-      {path:'ventas', component:VentasComponent},
-      {path:'ventas/crear', component: CrearVentaComponent},
-      {path:'ventas/editar/:id', component:EditarVentaComponent},
+      {path:'seguridad', component:SeguridadComponent },
+      {path:'dashboard', component:DashboardComponent },
+      {path:'compras', component:ComprasComponent },
+      {path:'compras/crear', component: CrearComponent },
+      {path:'compras/editar', component:EditarComponent },
+      {path:'ventas', component:VentasComponent },
+      {path:'ventas/crear', component: CrearVentaComponent },
+      {path:'ventas/editar', component:EditarVentaComponent },
       {path: 'articulos', component: ArticlesComponent },
       {path: 'articulos/crear', component: AddArticlesComponent },
       {path: 'articulos/editar/:id', component: EditArticlesComponent },
@@ -164,7 +164,8 @@ const rutas:Routes=[
     FormsModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(rutas)
+    RouterModule.forRoot(rutas),
+    HttpClientModule,
   ],
   providers: [ArticlesService, BrandsService, UnitsService, ArticleCategoriesService,ServiceBancosService,ServiceComprasService],
   bootstrap: [AppComponent]

@@ -50,7 +50,7 @@ export class ArticlesService implements OnInit {
   }
 
   GetArticleService(id:number) {
-    return this.httpClient.get<article>(this.AddArticlesBaseUrl+"?id={id}");
+    return this.httpClient.get<article>(this.AddArticlesBaseUrl+"?id=${id}");
   }
 
   // in progress

@@ -12,6 +12,7 @@ import { Iarticle } from 'src/interfaces/articles';
 })
 export class ArticlesService implements OnInit {
 
+  helperArticle:article;
   articles:article[]=[];
 
   // por ahora se traeran las categorias por aqui
@@ -24,8 +25,9 @@ export class ArticlesService implements OnInit {
 
   GetAllArticlesBaseUrl:string = 'http://localhost/belladev1.0/articles/read.php';
   AddArticlesBaseUrl:string = 'http://localhost/belladev1.0/articles/create.php';
-  UpdateArticlesBaseUrl:string = 'http://localhost/belladev1.0/articles/update.php';
+  UpdateArticleBaseUrl:string = 'http://localhost/belladev1.0/articles/update.php';
   GetArticleBaseUrl:string = 'http://localhost/belladev1.0/articles/single_read.php';
+  DeleteArticleBaseUrl:string = 'http://localhost/belladev1.0/articles/delete.php';
 
   constructor(private httpClient:HttpClient) {
   }
@@ -46,7 +48,8 @@ export class ArticlesService implements OnInit {
 
   // in progress
   UpdateArticleService(article:article){
-    return this.httpClient.post<article>(this.UpdateArticlesBaseUrl, article);
+    console.log("entro a update article service");
+    return this.httpClient.put(this.UpdateArticleBaseUrl, article, {responseType: 'text'} );
   }
 
   GetArticleService(id:number):Observable<any> {
@@ -55,8 +58,8 @@ export class ArticlesService implements OnInit {
   }
 
   // in progress
-  DeleteArticleService(id:number):Observable<any> {
-    let url = this.GetAllArticlesBaseUrl+"?borrar="+id;
-    return this.httpClient.get(url);
+  DeleteArticleService(id:number) {
+    console.log("id: "+id);
+    return this.httpClient.put(this.DeleteArticleBaseUrl, id);
   }
 }

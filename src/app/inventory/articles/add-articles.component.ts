@@ -62,7 +62,8 @@ export class AddArticlesComponent implements OnInit {
       this.FormArticle.get('name')!.value,
       this.FormArticle.get('description')!.value,  
     );
-    this.ArticlesService.AddArticleService(HelperArticle).subscribe();
+    this.ArticlesService.AddArticleService(HelperArticle).subscribe(data => {
+      console.log(data); });
     this.router.navigateByUrl('articulos');
   }
 }

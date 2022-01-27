@@ -17,8 +17,12 @@ export class ArticlesComponent implements OnInit {
 
   articles:article[]=[];
   HelperRefresh: string | null;
+  HelperId: number;
 
-  constructor(private ArticleService:ArticlesService, private router: Router) {
+  helperArticle!:article;
+  helperArticleDelete!:article;
+
+  constructor(private ArticlesService:ArticlesService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -26,16 +30,19 @@ export class ArticlesComponent implements OnInit {
   }
 
   GetArticles(){
-    this.ArticleService.GetAllArticlesService().subscribe((articles:article[]) => { 
+    this.ArticlesService.GetAllArticlesService().subscribe((articles:article[]) => { 
       this.articles = articles;
     });
     
   }
   
-
   DeleteArticle(id:number, index:number){
-    this.ArticleService.DeleteArticleService(id).subscribe( response => {
-      this.articles.splice(index,1);
+    console.log("id: "+id);
+    console.log("index: "+index);
+    
+    this.ArticlesService.DeleteArticleService(id).subscribe( response => {
+        /* this.articles.splice(index,1); 
+        window.location.reload();  */
     });
   }
 

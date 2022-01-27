@@ -8,7 +8,6 @@ import { unit } from 'src/models/unit.model';
 import { BrandsService } from '../brands/brands.service';
 import { UnitsService } from '../units/units.service';
 import { ArticlesService } from './articles.service';
-import { Iarticle } from 'src/interfaces/articles';
 
 @Component({
   selector: 'app-edit-articles',
@@ -28,7 +27,6 @@ export class EditArticlesComponent implements OnInit {
   brands:brand[]=[];
   units:unit[]=[];
   random_number:number = Math.floor(100*Math.random());
-  url:string;
 
   constructor(
     private ActiveRoute:ActivatedRoute, 
@@ -104,14 +102,12 @@ export class EditArticlesComponent implements OnInit {
   }
 
   UpdateArticle(){
-
     let HelperArticle = new article(
       this.FormArticle.get('id')!.value,
       this.FormArticle.get('name')!.value,
       this.FormArticle.get('description')!.value,  
     );
-
-    this.ArticlesService.UpdateArticleService(HelperArticle);
+    this.ArticlesService.UpdateArticleService(HelperArticle).subscribe();
     this.router.navigateByUrl('articulos');
   }
 }

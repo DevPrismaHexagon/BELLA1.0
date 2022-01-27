@@ -48,19 +48,17 @@
                 </thead>
                 <tbody>
                     <div style="display: contents" *ngFor="let article of articles | articlesFilter:search; let i = index">
-                    
-                            <tr routerLink="/articulos/editar/{{article.id}}"> 
-                                <td>{{article.name}}</td>
-                                <td>{{article.description}}</td>
-                                <!-- <td>{{article.slug}}</td>
-                                <td>{{article.status}}</td>
-                                <td>{{article.sku}}</td> -->
+                        <tr> 
+                            <td routerLink="/articulos/editar/{{article.id}}">{{article.name}}</td>
+                            <td routerLink="/articulos/editar/{{article.id}}">{{article.description}}</td>
+                            <!-- <td>{{article.slug}}</td>
+                            <td>{{article.status}}</td>
+                            <td>{{article.sku}}</td> -->
                             <td>
                                 <!-- <button routerLink="/articulos/editar/{{article.id}}">Editar</button> -->
                                 <span (click)="DeleteArticle(article.id, i)"><i class="fas fa-times borrar"></i></span>
                             </td>
                         </tr>
-
                     </div>
                 </tbody>
             </table>

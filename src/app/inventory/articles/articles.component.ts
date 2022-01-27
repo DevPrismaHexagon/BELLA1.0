@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Iarticle } from 'src/interfaces/articles';
 import { article } from 'src/models/article.model';
 import { ArticlesService } from './articles.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-articles',
@@ -16,6 +16,7 @@ export class ArticlesComponent implements OnInit {
   search:string="";
 
   articles:article[]=[];
+  HelperRefresh: string | null;
 
   constructor(private ArticleService:ArticlesService, private router: Router) {
   }
@@ -25,8 +26,8 @@ export class ArticlesComponent implements OnInit {
   }
 
   GetArticles(){
-    this.ArticleService.GetAllArticlesService().subscribe((response) => { 
-      this.articles = response;
+    this.ArticleService.GetAllArticlesService().subscribe((articles:article[]) => { 
+      this.articles = articles;
     });
     
   }

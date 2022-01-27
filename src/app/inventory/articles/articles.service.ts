@@ -3,7 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { article } from 'src/models/article.model';
 import { article_category } from 'src/models/article_category.model';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, Observer, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Iarticle } from 'src/interfaces/articles';
 
@@ -22,10 +22,10 @@ export class ArticlesService implements OnInit {
     new article_category(3,"pantalones", "pantalones de todas las tallas", 0, "root"),
   ];
 
-  GetAllArticlesBaseUrl:string = 'http://localhost/belladev1.0/articles/read.php';
-  AddArticlesBaseUrl:string = 'http://localhost/belladev1.0/articles/create.php';
-  UpdateArticlesBaseUrl:string = 'http://localhost/belladev1.0/articles/update.php';
-  GetArticleBaseUrl:string = 'http://localhost/belladev1.0/articles/single_read.php';
+  GetAllArticlesBaseUrl:string = 'http://localhost/BELLA1.0/belladev1.0/articles/read.php';
+  AddArticlesBaseUrl:string = 'http://localhost/BELLA1.0/belladev1.0/articles/create.php';
+  UpdateArticlesBaseUrl:string = 'http://localhost/BELLA1.0/belladev1.0/articles/update.php';
+  GetArticleBaseUrl:string = 'http://localhost/BELLA1.0/belladev1.0/articles/single_read.php';
 
   constructor(private httpClient:HttpClient) {
   }
@@ -41,16 +41,17 @@ export class ArticlesService implements OnInit {
 
   // halfway done
   AddArticleService(article:article){
-    return this.httpClient.post(this.AddArticlesBaseUrl, article);
+    return this.httpClient.post(this.AddArticlesBaseUrl, article, {responseType: 'text'});
   }
 
   // in progress
-  UpdateArticleService(form:FormGroup){
-    return this.httpClient.post<article>(this.UpdateArticlesBaseUrl, form);
+  UpdateArticleService(article:article){
+    return this.httpClient.post<article>(this.UpdateArticlesBaseUrl, article);
   }
 
-  GetArticleService(id:number) {
-    return this.httpClient.get<article>(this.AddArticlesBaseUrl+"?id=${id}");
+  GetArticleService(id:number):Observable<any> {
+    let url = this.GetArticleBaseUrl+"?id="+id;
+    return this.httpClient.get(url);
   }
 
   // in progress

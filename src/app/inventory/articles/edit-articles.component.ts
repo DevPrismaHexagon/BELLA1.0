@@ -8,6 +8,7 @@ import { unit } from 'src/models/unit.model';
 import { BrandsService } from '../brands/brands.service';
 import { UnitsService } from '../units/units.service';
 import { ArticlesService } from './articles.service';
+import { Iarticle } from 'src/interfaces/articles';
 
 @Component({
   selector: 'app-edit-articles',
@@ -21,11 +22,13 @@ export class EditArticlesComponent implements OnInit {
   HelperId:any;
   FormArticle!: FormGroup;
   
+  helperArticle:article;
 
-  article:article;
   article_categories:article_category[]=[];
   brands:brand[]=[];
   units:unit[]=[];
+  random_number:number = Math.floor(100*Math.random());
+  url:string;
 
   constructor(
     private ActiveRoute:ActivatedRoute, 
@@ -35,8 +38,6 @@ export class EditArticlesComponent implements OnInit {
     private UnitsService:UnitsService,
     private router: Router
     ){ 
-    this.HelperId = ActiveRoute.snapshot.paramMap.get('id');
-    let helper = this.ArticlesService.GetArticleService(this.HelperId);
 
     this.article_categories=this.ArticlesService.article_categories;
     this.brands=this.BrandsService.brands;
@@ -58,33 +59,37 @@ export class EditArticlesComponent implements OnInit {
       category_id:['', Validators.required],
       unit_id:['', Validators.required], */
     }); 
-
-    if(helper != null){
-      this.FormArticle.setValue({
-        id:helper['id'],
-        name:helper['name'],
-        /* slug:helper['slug'], */
-        description:helper['description'],
-        /* status:helper['status'],
-        bar_code:helper['bar_code'],
-        sku:helper['sku'],
-        comments:helper['comments'],
-        size:helper['size'],
-        weight:helper['weight'],
-        made_in:helper['made_in'],
-        brand_id:helper['brand_id'],
-        category_id:helper['category_id'],
-        unit_id:helper['unit_id'], */
-      });
-    }
   }
   
   ngOnInit(): void {
-  
+    /* window.addEventListener('load',()=>{
+      this.agregar();
+    }) */
+
+    this.HelperId = this.ActiveRoute.snapshot.paramMap.get('id');
+
+    this.ArticlesService.GetArticleService(this.HelperId).subscribe( (article:article) => {
+      this.helperArticle=article; 
+
+      if(this.helperArticle != null){
+        this.FormArticle.setValue({
+          id: this.helperArticle.id,
+          name: this.helperArticle.name,
+          description: this.helperArticle.description,
+        });
+      }
+    } );
   }
 
   UpdateArticle(){
-    this.ArticlesService.UpdateArticleService(this.FormArticle);
+
+    let HelperArticle = new article(
+      this.FormArticle.get('id')!.value,
+      this.FormArticle.get('name')!.value,
+      this.FormArticle.get('description')!.value,  
+    );
+
+    this.ArticlesService.UpdateArticleService(HelperArticle);
     this.router.navigateByUrl('articulos');
   }
 }

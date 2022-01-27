@@ -56,6 +56,7 @@ import { BancosEditarComponent } from './bancos/bancos-editar/bancos-editar.comp
 import { FilterBancosPipe } from './bancos/filter-bancos.pipe';
 import { ServiceBancosService } from './bancos/service-bancos.service';
 import { ServiceComprasService } from './compras/service-compras.service';
+import { HttpClientModule } from '@angular/common/http';
 
 const rutas:Routes=[
   {path:'',component:ControladorComponent,
@@ -164,7 +165,8 @@ const rutas:Routes=[
     FormsModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(rutas)
+    RouterModule.forRoot(rutas),
+    HttpClientModule,
   ],
   providers: [ArticlesService, BrandsService, UnitsService, ArticleCategoriesService,ServiceBancosService,ServiceComprasService],
   bootstrap: [AppComponent]

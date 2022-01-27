@@ -41,7 +41,7 @@ import { ArticlecategoriesFilterPipe } from './inventory/article-categories/arti
 import { AddArticleCategoriesComponent } from './inventory/article-categories/add-article-categories.component';
 import { EditArticleCategoriesComponent } from './inventory/article-categories/edit-article-categories.component';
 import { ArticlecategoriesbyidFilterPipe } from './inventory/article-categories/articlecategoriesbyid-filter.pipe';
-import { BreadCrumbsComponent } from './bread-crumbs/bread-crumbs.component';
+// import { BreadCrumbsComponent } from './bread-crumbs/bread-crumbs.component';
 import { HttpClientModule } from '@angular/common/http';
 
 const rutas:Routes=[
@@ -116,7 +116,7 @@ const rutas:Routes=[
     AddArticleCategoriesComponent,
     EditArticleCategoriesComponent,
     ArticlecategoriesbyidFilterPipe,
-    BreadCrumbsComponent,
+    // BreadCrumbsComponent,
   ],
   imports: [
     BrowserModule, 

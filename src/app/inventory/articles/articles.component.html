@@ -1,12 +1,12 @@
 <section class="crud">
 
-    <app-bread-crumbs></app-bread-crumbs>
+    <!-- <app-bread-crumbs></app-bread-crumbs> -->
 
     <!-- momentaneo, tienen que ser dinamicos -->
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a routerLink="">Inicio</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Artículos</li>
+            <li class="breadcrumb-item"><a routerLink="">Inicio</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Artículos</li>
         </ol>
     </nav>
 
@@ -19,7 +19,7 @@
     <div class="subtitle text-center text-md-start">
         <h3>{{subtitle}}</h3>
     </div>
-    
+
     <div class="list">
         <div class="list_header py-4 d-flex justify-content-end align-items-center">
             <div class="tools">
@@ -30,7 +30,7 @@
                 <!-- <li><button><span class="fas fa-trash"></span></button></li> -->
             </div>
             <div class="search">
-                <input #searchArticle (keyup)="SearchArticle(searchArticle.value)" type="text" name="search" id="search" class="search" placeholder="Buscar articulo"> 
+                <input #searchArticle (keyup)="SearchArticle(searchArticle.value)" type="text" name="search" id="search" class="search" placeholder="Buscar articulo">
             </div>
         </div>
 
@@ -55,13 +55,13 @@
                                 <!-- <td>{{article.slug}}</td>
                                 <td>{{article.status}}</td>
                                 <td>{{article.sku}}</td> -->
-                                <td>
-                                    <!-- <button routerLink="/articulos/editar/{{article.id}}">Editar</button> -->
-                                    <span (click)="DeleteArticle(article.id, i)"><i class="fas fa-times borrar"></i></span>
-                                </td>
-                            </tr>
-                        
-                    </div>                     
+                            <td>
+                                <!-- <button routerLink="/articulos/editar/{{article.id}}">Editar</button> -->
+                                <span (click)="DeleteArticle(article.id, i)"><i class="fas fa-times borrar"></i></span>
+                            </td>
+                        </tr>
+
+                    </div>
                 </tbody>
             </table>
         </div>

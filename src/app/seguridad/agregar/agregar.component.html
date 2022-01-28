@@ -1,0 +1,26 @@
+<div class="lista_todo">
+    <div class="titulo animate__animated animate__fadeInDown">Agregar nuevo usuario</div>
+
+    
+    <div class="cajita">
+        <div class="campo  animate__animated animate__fadeIn">
+            <label for="">Nombre de usuario</label>
+            <input type="text" placeholder="Nombre de usuario..." [(ngModel)]="usuario" >
+        </div>
+        <div class="campo  animate__animated animate__fadeIn">
+            <label for="">Contraseña</label>
+            <input type="password" placeholder="Introdusca su contraseña..." [(ngModel)]="password" >
+        </div>
+        <div class="campo animate__animated animate__fadeIn">
+            <label for="">Rol</label>
+            <select name="select" [(ngModel)]="rol"  >
+                <option value="0">Selecione el rol</option>
+                <option value="1">Administrador</option>
+                <option value="2">Moderador</option>
+                <option value="3">Creador de contenido</option>
+              </select>
+        </div>
+        
+    </div>
+    <div class="guardar animate__animated animate__bounceInUp"><button (click)="agregarUsuario()"> <i class="fas fa-user-plus"></i> Añadir usuario</button></div>
+</div>

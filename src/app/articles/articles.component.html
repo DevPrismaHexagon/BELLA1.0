@@ -1,0 +1,95 @@
+<section id="crud">
+
+    <div class="title">
+        <h4>{{title}}</h4>
+    </div>
+
+    <div class="subtitle">
+        <h3>{{subtitle}}</h3>
+    </div>
+
+    <div class="container">
+        <div class="list">
+            <div class="list_header">
+                <div class="tools">
+                    <ul>
+                        <li><input type="checkbox" name="" id="" class=""></li>
+                        <li><button routerLink="/articulos/crear"><span class="fas fa-plus"></span></button></li>
+                        <li><button><span class="fas fa-trash"></span></button></li>
+                    </ul>
+                </div>
+                <div class="search">
+                    <input #searchArticle (keyup)="searcharticle(searchArticle.value)" type="text" name="searchArticle" id="searchArticle" class="searchArticle" placeholder="Buscar articulo">
+                </div>
+            </div>
+
+            <div class="list_table">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">name</th>
+                            <th scope="col">slug</th>
+                            <th scope="col">description</th>
+                            <th scope="col">status</th>
+                            <th scope="col">bar_code</th>
+                            <th scope="col">sku</th>
+                            <th scope="col">comments</th>
+                            <th scope="col">size</th>
+                            <th scope="col">weight</th>
+                            <th scope="col">made_in</th>
+                            <th scope="col">actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <div style="display: contents" *ngFor="let article of articles | articlesFilter:search; let i=index">
+
+                            <tr class="lista-columna" routerLink="/articulos/editar/{{article.id}}">
+                                <th scope="row">{{article.id}}</th>
+                                <td>{{article.name}}</td>
+                                <td>{{article.slug}}</td>
+                                <td>{{article.description}}</td>
+                                <td>{{article.status}}</td>
+                                <td>{{article.bar_code}}</td>
+                                <td>{{article.sku}}</td>
+                                <td>{{article.comments}}</td>
+                                <td>{{article.size}}</td>
+                                <td>{{article.weight}}</td>
+                                <td>{{article.made_in}}</td>
+                                <td>
+                                    <!-- <button routerLink="/articulos/editar/{{article.id}}">Editar</button> -->
+                                    <span (click)="BorrarArticulo(article.id)"><i class="fas fa-times borrar"></i></span>
+                                </td>
+                            </tr>
+
+                        </div>
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div class="list_footer">
+                <div class="entries">
+                    <p>
+                        Mostrar entradas
+                        <select name="" id="" class="">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                        </select>
+
+                    </p>
+                </div>
+                <div class="pagination">
+                    <ul>
+                        <li><button class="">Siguiente</button></li>
+                        <li><button class="numero">1</button></li>
+                        <li><button class="">Regresar</button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

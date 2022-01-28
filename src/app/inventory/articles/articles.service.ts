@@ -1,11 +1,8 @@
 import { Injectable, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { article } from 'src/models/article.model';
 import { article_category } from 'src/models/article_category.model';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Observable, Observer, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
-import { Iarticle } from 'src/interfaces/articles';
+import { HttpClient } from '@angular/common/http';
+import { Observable, Observer, Subject, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +10,11 @@ import { Iarticle } from 'src/interfaces/articles';
 export class ArticlesService implements OnInit {
 
   helperArticle:article;
+
   articles:article[]=[];
+  articles$:Subject<article[]>;
+
+  BaseUrl:string = 'http://localhost/BELLA1.0/belladev1.0/articles/class/articles.controller.php';
 
   // por ahora se traeran las categorias por aqui
   article_categories:article_category[]=[
@@ -21,32 +22,49 @@ export class ArticlesService implements OnInit {
     new article_category(1,"camisas manga larga", "camisas de vestir", 0, 1),
     new article_category(2,"camisas manga corta", "camisas casuales", 0, 1),
     new article_category(3,"pantalones", "pantalones de todas las tallas", 0, "root"),
-  ];
-
-  GetAllArticlesBaseUrl:string = 'http://localhost/BELLA1.0/belladev1.0/articles/read.php';
-  AddArticlesBaseUrl:string = 'http://localhost/BELLA1.0/belladev1.0/articles/create.php';
-  UpdateArticleBaseUrl:string = 'http://localhost/BELLA1.0/belladev1.0/articles/update.php';
-  GetArticleBaseUrl:string = 'http://localhost/BELLA1.0/belladev1.0/articles/single_read.php';
-  DeleteArticleBaseUrl:string = 'http://localhost/BELLA1.0/belladev1.0/belladev1.0/articles/delete.php';
+  ]; 
 
   constructor(private httpClient:HttpClient) {
+    this.articles$ = new Subject();
   }
 
   ngOnInit(): void {
-    this.GetAllArticlesService();
+    //this.GetAllArticlesService();
   }
 
-  // done
-  GetAllArticlesService(){
-    return this.httpClient.get<article[]>(this.GetAllArticlesBaseUrl);
-  }
-
+    
   // halfway done
   AddArticleService(article:article){
-    return this.httpClient.post(this.AddArticlesBaseUrl, article, {responseType: 'text'});
+    this.articles.push(article);
+    this.articles$.next(this.articles);
+
+    return this.httpClient.post(this.BaseUrl, article, {responseType: 'text'});
+  }
+  
+
+  // observable
+  GetAllArticlesService$():Observable<article[]>{
+    console.log("entro en get observable");
+    return this.articles$.asObservable();
   }
 
-  // in progress
+  // non observable
+   GetAllArticlesService(){
+     let data = { 
+      'option':1
+    };
+    return this.httpClient.post<article[]>(this.BaseUrl, data);
+  }
+
+  IterateArticlesService(articles:article[]){
+    articles.forEach( e => {
+      let newArticle = new article(e.id, e.name,e.description);
+      this.articles.push(newArticle);
+    })
+    this.articles$.next(this.articles);
+  }
+
+/*   
   UpdateArticleService(article:article){
     console.log("entro a update article service");
     return this.httpClient.put(this.UpdateArticleBaseUrl, article, {responseType: 'text'} );
@@ -57,9 +75,10 @@ export class ArticlesService implements OnInit {
     return this.httpClient.get(url);
   }
 
-  // in progress
-  DeleteArticleService(id:number) {
-    console.log("id: "+id);
-    return this.httpClient.put(this.DeleteArticleBaseUrl, id);
+  SoftDeleteArticleService(article:article) {
+    console.log("id: "+article.id);
+    console.log("entro a delete article service");
+    return this.httpClient.put(this.DeleteArticleBaseUrl, article, {responseType: 'text'} );
   }
+   */
 }

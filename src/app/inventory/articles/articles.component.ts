@@ -11,44 +11,59 @@ import { NombrePaginaService } from 'src/app/controlador/nombre-pagina.service';
   styleUrls: ['./articles.component.css']
 })
 export class ArticlesComponent implements OnInit {
+
   title = 'Artículos';
   subtitle = 'Gestión de Artículos';
 
   search:string="";
 
   articles:article[]=[];
-  HelperRefresh: string | null;
+  
   HelperId: number;
 
-  helperArticle!:article;
-  helperArticleDelete!:article;
+  helperArticle:article;
+  helperArticleDelete:article;
 
   constructor(private ArticlesService:ArticlesService, private router: Router,private nombrePagina:NombrePaginaService) {
     nombrePagina.setpagina('Articulos');
-  }
-
-  ngOnInit(): void {
     this.GetArticles();
   }
 
-  GetArticles(){
-    this.ArticlesService.GetAllArticlesService().subscribe((articles:article[]) => { 
+  ngOnInit(): void {
+  }
+
+  GetObserverArticles(){
+    this.ArticlesService.GetAllArticlesService$().subscribe( (articles) => { 
       this.articles = articles;
     });
-    
   }
   
-  DeleteArticle(id:number, index:number){
-    console.log("id: "+id);
-    console.log("index: "+index);
-    
-    this.ArticlesService.DeleteArticleService(id).subscribe( response => {
-        /* this.articles.splice(index,1); 
-        window.location.reload();  */
-    });
+  GetArticles(){
+    this.ArticlesService.GetAllArticlesService().subscribe( articles => 
+      {
+        this.ArticlesService.IterateArticlesService(articles);
+      }
+    );
   }
+
+  /*   
+  DeleteArticle(id:number, index:number){
+
+    this.ArticlesService.GetArticleService(id).subscribe( (article:article) => {
+      this.helperArticle=article; 
+
+      if(this.helperArticle != null){
+        this.ArticlesService.SoftDeleteArticleService(this.helperArticle).subscribe( response => {
+          this.articles.splice(index,1); 
+          window.location.reload(); 
+        });
+      }
+    } );
+  } 
+  */
 
   SearchArticle(search:string){
     this.search = search;
   }
+
 }

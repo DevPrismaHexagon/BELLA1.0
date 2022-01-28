@@ -66,6 +66,7 @@ export class EditArticlesComponent implements OnInit {
 
     this.HelperId = this.ActiveRoute.snapshot.paramMap.get('id');
 
+    /*     
     this.ArticlesService.GetArticleService(this.HelperId).subscribe( (article:article) => {
       this.helperArticle=article; 
 
@@ -77,6 +78,7 @@ export class EditArticlesComponent implements OnInit {
         });
       }
     } );
+    */
   }
 
   UpdateArticle(){
@@ -84,8 +86,10 @@ export class EditArticlesComponent implements OnInit {
       this.FormArticle.get('id')!.value,
       this.FormArticle.get('name')!.value,
       this.FormArticle.get('description')!.value,  
-    );
+    /* 
     this.ArticlesService.UpdateArticleService(HelperArticle).subscribe();
     this.router.navigateByUrl('articulos');
+    */
+    )
   }
 }

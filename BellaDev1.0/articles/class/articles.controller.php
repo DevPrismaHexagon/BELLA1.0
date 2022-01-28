@@ -10,23 +10,15 @@
     $database = new Database();
     $db = $database->getConnection();
 
-    echo "entro 1";
-
     $items = new article($db);
-
-    echo "entro 2";
 
     $data = json_decode(file_get_contents('php://input'));
 
     if($data != NULL){
-        echo "entro 3";
         $option= $data->option;
 
         if($option == 1){
-            echo "entro 4";
             $items->get_articles();
-            //$itemCount = $stmt->rowCount();
         }
     }
-    echo "entro 9";
 ?>

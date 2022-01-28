@@ -33,7 +33,6 @@ export class ArticlesService implements OnInit {
     //this.GetAllArticlesService();
   }
 
-    
   // halfway done
   AddArticleService(article:article){
     this.articles.push(article);
@@ -41,7 +40,6 @@ export class ArticlesService implements OnInit {
 
     return this.httpClient.post(this.BaseUrl, article, {responseType: 'text'});
   }
-  
 
   // observable
   GetAllArticlesService$():Observable<article[]>{
@@ -67,16 +65,18 @@ export class ArticlesService implements OnInit {
     this.articles$.next(this.articles);
   }
 
+  GetArticleService(id:number):Observable<any> {
+    let url = this.BaseUrl+"?id="+id;
+    return this.httpClient.get(url);
+  }
+
 /*   
   UpdateArticleService(article:article){
     console.log("entro a update article service");
     return this.httpClient.put(this.UpdateArticleBaseUrl, article, {responseType: 'text'} );
   }
 
-  GetArticleService(id:number):Observable<any> {
-    let url = this.GetArticleBaseUrl+"?id="+id;
-    return this.httpClient.get(url);
-  }
+
 
   SoftDeleteArticleService(article:article) {
     console.log("id: "+article.id);

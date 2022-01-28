@@ -25,7 +25,7 @@ export class ArticlesComponent implements OnInit {
 
   constructor(private ArticlesService:ArticlesService, private router: Router) {
     this.GetArticles();
-    //this.GetObserverArticles();
+    this.GetObserverArticles();
   }
 
   ngOnInit(): void {

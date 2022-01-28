@@ -3,6 +3,7 @@ import { article } from 'src/models/article.model';
 import { article_category } from 'src/models/article_category.model';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Observer, Subject, throwError } from 'rxjs';
+import { Iarticle } from 'src/interfaces/articles';
 
 @Injectable({
   providedIn: 'root'
@@ -53,12 +54,14 @@ export class ArticlesService implements OnInit {
      let data = { 
       'option':1
     };
-    return this.httpClient.post<article[]>(this.BaseUrl, data);
+    return this.httpClient.post<Iarticle[]>(this.BaseUrl, data);
   }
 
-  IterateArticlesService(articles:article[]){
+  IterateArticlesService(articles:Iarticle[]){
     articles.forEach( e => {
+      
       let newArticle = new article(e.id, e.name,e.description);
+      
       this.articles.push(newArticle);
     })
     this.articles$.next(this.articles);

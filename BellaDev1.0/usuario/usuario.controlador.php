@@ -21,5 +21,4 @@
 		}else if($opcion==6){
 			$hola->paginacion_usuario();
 		}
-
 	}

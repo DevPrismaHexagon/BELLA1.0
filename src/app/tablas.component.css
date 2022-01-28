@@ -1,52 +1,59 @@
-table{
+table {
     width: 100%;
     border-collapse: collapse;
     background: #fff;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0,0.05);
-
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.05);
 }
-tbody tr{
+
+tbody tr {
     height: 80px;
     border-bottom: 1.67832px solid #EEEEEE;
     color: #767676;
     text-align: center;
-    
 }
-th i{
+
+th i {
     margin-right: 10px;
 }
-td{
+
+td {
     outline: none;
     text-align: center;
+}
 
-}
-tbody tr:hover{
+tbody tr:hover {
     background: #F3F1FE;
 }
-tbody tr:hover ~ input{
+
+tbody tr:hover~input {
     background: #F3F1FE;
 }
-tr span{
+
+tr span {
     color: #F7685B;
     font-size: 1.2em;
     cursor: pointer;
 }
-thead th{
+
+thead th {
     text-align: center;
     color: #fff;
     background: #B348E6;
-    height: 60px  !important;
+    height: 60px !important;
     font-weight: 600 !important;
 }
-.lista_footer{
+
+.lista_footer {
     display: flex;
     justify-content: end;
 }
-.paginacion{
+
+.paginacion {
     display: flex;
     margin: 30px 10px;
 }
-.paginacion div{
+
+.paginacion div {
     margin-right: 10px;
     height: 50px;
     width: 50px;
@@ -57,18 +64,21 @@ thead th{
     border-radius: 5px;
     cursor: pointer;
 }
-.flecha{
+
+.flecha {
     color: #D6D7E3;
     background: #EFF0F6;
-
 }
-.flecha.activado{
+
+.activado {
     background: #B348E6 !important;
     color: #fff !important;
 }
-.numero{
+
+.numero {
     transition: 100ms linear all;
 }
-.numero:hover{
+
+.numero:hover {
     background: #EFF0F6;
 }

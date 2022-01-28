@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ModalService } from '../seguridad/modal/modal.service';
+import { NombrePaginaService } from './nombre-pagina.service';
 
 @Component({
   selector: 'app-controlador',
@@ -8,14 +10,19 @@ import { Router } from '@angular/router';
 })
 export class ControladorComponent implements OnInit {
 
-  constructor(  private router:Router) {
-  
+  pagina:string;
+  constructor(  private router:Router,private nombrePagina:NombrePaginaService, private modalss:ModalService) {
+      this.pagina=this.nombrePagina.nombre;
    }
 
+  imodal:boolean;
   ngOnInit(): void {
-    this.router.navigate(['/dashboard'])
+
+    this.modalss.$modal.subscribe((valor)=>(this.imodal = valor))
+
     var monitoreo=document.getElementById('monitoreo') as HTMLLIElement;
     monitoreo.addEventListener('click', (e)=>{
+      this.pagina=this.nombrePagina.nombre;
       var hola=e.target as Element;      
       var padre = hola.parentElement as HTMLLIElement;
       var abuelo = padre.parentElement as HTMLLIElement;

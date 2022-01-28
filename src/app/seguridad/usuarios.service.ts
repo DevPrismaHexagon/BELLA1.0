@@ -19,11 +19,12 @@ export class UsuariosService {
   private usuarios$: Subject<Usuarioss[]>;
   urlPagina = environment.url;
   
-  ver_usuarios(){
+  ver_usuarios(empezar:number=1){
     let data={
-      'opcion':1
+      'opcion':1,
+      'empezar':empezar,
     }
-    let path=`${this.urlPagina}usuarios/usuarios.controlador.php`;
+    let path=`${this.urlPagina}usuario/usuario.controlador.php`;
      return this.http.post<Usuarioss[]>(path,data);
   }
   buscar_usuarios(buscar: string){
@@ -31,7 +32,7 @@ export class UsuariosService {
       'opcion':5,
       'buscar': buscar
     }
-    let path=`${this.urlPagina}usuarios/usuarios.controlador.php`;
+    let path=`${this.urlPagina}usuario/usuario.controlador.php`;
      return this.http.post<Usuarioss[]>(path,data);
   }
   agregar_usuarios(user:string, password:string, rol:number){
@@ -41,7 +42,7 @@ export class UsuariosService {
       'password':password,
       'rol': rol
     }
-    let path=`${this.urlPagina}usuarios/usuarios.controlador.php`;
+    let path=`${this.urlPagina}usuario/usuario.controlador.php`;
      return this.http.post<Usuarioss[]>(path,data);
   }
 
@@ -54,7 +55,7 @@ export class UsuariosService {
       'opcion':3,
       'id': this.$id
     }
-    let path=`${this.urlPagina}usuarios/usuarios.controlador.php`;
+    let path=`${this.urlPagina}usuario/usuario.controlador.php`;
      return this.http.post<Usuarioss[]>(path,data);
   }
   actualizar_usuario(id:number, tipo:string, texto:any){
@@ -64,8 +65,15 @@ export class UsuariosService {
       'tipo': tipo,
       'texto':texto
     }
-    let path=`${this.urlPagina}usuarios/usuarios.controlador.php`;
+    let path=`${this.urlPagina}usuario/usuario.controlador.php`;
      return this.http.post<Usuarioss[]>(path,data); 
+  }
+  paginacion_usuario(){
+    let data={
+      'opcion':6,
+    }
+    let path=`${this.urlPagina}usuario/usuario.controlador.php`;
+     return this.http.post<number>(path,data); 
   }
   
   getUsuarios$(): Observable<Usuarioss[]> {

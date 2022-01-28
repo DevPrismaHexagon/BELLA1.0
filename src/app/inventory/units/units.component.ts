@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { unit } from 'src/models/unit.model';
 import { UnitsService } from './units.service';
+import { NombrePaginaService } from 'src/app/controlador/nombre-pagina.service';
 
 @Component({
   selector: 'app-units',
@@ -15,8 +16,9 @@ export class UnitsComponent implements OnInit {
 
   units:unit[]=[];
 
-  constructor(private UnitsService:UnitsService) {
+  constructor(private UnitsService:UnitsService,private nombrePagina:NombrePaginaService) {
     this.units = this.UnitsService.units;
+    nombrePagina.setpagina('Unidades');
   }
 
   ngOnInit(): void {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceService } from './service.service';
 import { venta } from 'src/models/ventas.model';
+import { NombrePaginaService } from '../controlador/nombre-pagina.service';
 
 @Component({
   selector: 'app-ventas',
@@ -15,8 +16,9 @@ export class VentasComponent implements OnInit {
 
   ventas:venta[]=[];
 
-  constructor(private ServiceService:ServiceService) {
+  constructor(private ServiceService:ServiceService,private nombrePagina:NombrePaginaService) {
     this.ventas=this.ServiceService.ventas;
+    nombrePagina.setpagina('Ventas');
   }
 
   ngOnInit(): void {

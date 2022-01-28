@@ -3,6 +3,7 @@ import { Iarticle } from 'src/interfaces/articles';
 import { article } from 'src/models/article.model';
 import { ArticlesService } from './articles.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { NombrePaginaService } from 'src/app/controlador/nombre-pagina.service';
 
 @Component({
   selector: 'app-articles',
@@ -22,7 +23,8 @@ export class ArticlesComponent implements OnInit {
   helperArticle!:article;
   helperArticleDelete!:article;
 
-  constructor(private ArticlesService:ArticlesService, private router: Router) {
+  constructor(private ArticlesService:ArticlesService, private router: Router,private nombrePagina:NombrePaginaService) {
+    nombrePagina.setpagina('Articulos');
   }
 
   ngOnInit(): void {

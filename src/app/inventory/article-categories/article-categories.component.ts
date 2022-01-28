@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { article_category } from 'src/models/article_category.model';
 import { ArticleCategoriesService } from './article-categories.service';
+import { NombrePaginaService } from 'src/app/controlador/nombre-pagina.service';
 
 @Component({
   selector: 'app-article-categories',
@@ -16,8 +17,9 @@ export class ArticleCategoriesComponent implements OnInit {
   article_categories:article_category[]=[];
   filteredList:article_category[]=[];
 
-  constructor(private ArticleCategoryService:ArticleCategoriesService) { 
+  constructor(private ArticleCategoryService:ArticleCategoriesService,private nombrePagina:NombrePaginaService) { 
     this.article_categories = this.ArticleCategoryService.article_categories;
+    nombrePagina.setpagina('Categorias de articulos');
   }
 
   ngOnInit(): void {

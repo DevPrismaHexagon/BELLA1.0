@@ -20,6 +20,7 @@ import { EditarVentaComponent } from './ventas/editar-venta/editar-venta.compone
 import { ActivosFijosComponent } from './activos-fijos/activos-fijos.component';
 import { CrearActivoComponent } from './activos-fijos/crear-activo/crear-activo.component';
 import { EditarActivoComponent } from './activos-fijos/editar-activo/editar-activo.component';
+
 import { ArticlesComponent } from './inventory/articles/articles.component';
 import { ArticlesService } from './inventory/articles/articles.service';
 import { BrandsService } from './inventory/brands/brands.service';
@@ -57,11 +58,17 @@ import { FilterBancosPipe } from './bancos/filter-bancos.pipe';
 import { ServiceBancosService } from './bancos/service-bancos.service';
 import { ServiceComprasService } from './compras/service-compras.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AgregarComponent } from './seguridad/agregar/agregar.component';
+import { NombrePaginaService } from './controlador/nombre-pagina.service';
+import { ModalComponent } from './seguridad/modal/modal/modal.component';
+import { UsuariosService } from './seguridad/usuarios.service';
 
 const rutas:Routes=[
   {path:'',component:ControladorComponent,
     children:[
-      {path:'seguridad', component:SeguridadComponent},
+      {path:'usuarios:buscar', component:SeguridadComponent},
+      {path:'usuarios', component:SeguridadComponent},
+      {path:'usuarios/agregar', component:AgregarComponent},
       {path:'dashboard', component:DashboardComponent},
       {path:'compras', component:ComprasComponent},
       {path:'compras/crear', component: CrearComponent},
@@ -158,6 +165,8 @@ const rutas:Routes=[
     BancosCrearComponent,
     BancosEditarComponent,
     FilterBancosPipe,
+    AgregarComponent,
+    ModalComponent,
 
   ],
   imports: [
@@ -168,7 +177,7 @@ const rutas:Routes=[
     RouterModule.forRoot(rutas),
     HttpClientModule,
   ],
-  providers: [ArticlesService, BrandsService, UnitsService, ArticleCategoriesService,ServiceBancosService,ServiceComprasService],
+  providers: [ArticlesService, BrandsService, UnitsService, ArticleCategoriesService,ServiceBancosService,ServiceComprasService, NombrePaginaService, UsuariosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

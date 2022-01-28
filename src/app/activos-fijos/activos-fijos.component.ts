@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NombrePaginaService } from '../controlador/nombre-pagina.service';
 
 @Component({
   selector: 'app-activos-fijos',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActivosFijosComponent implements OnInit {
 
-  constructor() { }
+  constructor(private nombrePagina:NombrePaginaService) {
+    nombrePagina.setpagina('Activos Fijos');
+   }
 
   ngOnInit(): void {
   }

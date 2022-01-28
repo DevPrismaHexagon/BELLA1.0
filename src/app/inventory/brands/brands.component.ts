@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { brand } from 'src/models/brand.model';
 import { BrandsService } from './brands.service';
+import { NombrePaginaService } from 'src/app/controlador/nombre-pagina.service';
 
 @Component({
   selector: 'app-brands',
@@ -15,8 +16,9 @@ export class BrandsComponent implements OnInit {
 
   brands:brand[]=[];
 
-  constructor(private BrandsService:BrandsService) { 
+  constructor(private BrandsService:BrandsService,private nombrePagina:NombrePaginaService) { 
     this.brands=this.BrandsService.brands;    
+    nombrePagina.setpagina('Marcas'); 
   }
 
   ngOnInit(): void {

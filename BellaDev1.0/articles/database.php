@@ -5,7 +5,7 @@
         private $username = "root";
         private $password = "";
 
-        public $conn;
+        protected $conn;
 
         public function getConnection(){
             $this->conn = null;
@@ -13,10 +13,11 @@
                 $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->database_name, $this->username, $this->password);
                 $this->conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
                 $this->conn->exec("set names utf8");
+                return $this->conn;
             }catch(PDOException $exception){
                 echo "Database could not be connected: " . $exception->getMessage();
+                die();
             }
-            return $this->conn;
         }
     }  
 ?>

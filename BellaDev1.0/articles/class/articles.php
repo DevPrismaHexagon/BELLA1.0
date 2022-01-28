@@ -1,5 +1,14 @@
 <?php
-    class Article{
+    header('Content-Type: application/json');
+    header("Access-Control-Allow-Origin: *");
+    header("Access-Control-Request-Method: *");
+    header("Access-Control-Request-Headers: *");
+    header("Access-Control-Allow-Methods: GET,HEAD,OPTIONS,POST,PUT");
+    header("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    
+    include_once("../database.php");
+
+    class article {
 
         // Connection
         private $conn;
@@ -7,98 +16,63 @@
         // Table
         private $db_table = "article";
 
-        // Columns
-        public $id;
-        public $name;
-        public $description;
-
-        // Db connection
-        public function __construct($db){
-            $this->conn = $db;
-        }
+        // db connection
+		public function __construct($db){
+			$this->conn = $db;
+		}
 
         // GET ALL
-        public function getArticles(){
+        public function get_articles(){
+
+            $sql="SELECT * FROM article WHERE borrado=1";			
+        
+            $query = $this->conn->query($sql);
+
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+            echo json_encode($result);
+            exit();
+
+            /*              
+            echo "entro 5";
             $sqlQuery = "SELECT * FROM " . $this->db_table . " WHERE borrado = 1";
+            echo "entro 6";
             $stmt = $this->conn->prepare($sqlQuery);
-            $stmt->execute();
-            return $stmt;
+            echo "entro 7";
+            $result = $stmt->execute();
+            echo "entro 8";
+            */
         }
 
-        // CREATE
-        public function createArticle(){
-            $sqlQuery = "INSERT INTO ". $this->db_table ." (id, name, description) VALUES (NULL, :name, :description)";
-            $stmt = $this->conn->prepare($sqlQuery);
-        
-            // sanitize
-            $this->name=htmlspecialchars(strip_tags($this->name));
-            $this->description=htmlspecialchars(strip_tags($this->description));
-        
-            // bind data
-            $stmt->bindParam(":name", $this->name);
-            $stmt->bindParam(":description", $this->description);
-        
-            if($stmt->execute()){
-               return true;
-            }
-            return false;
-        }
-        
-        // READ single
-        public function getSingleArticle(){
-            $sqlQuery = "SELECT * FROM ". $this->db_table ." WHERE id = ?";
+        /* 
+		function get_articles($search=''){
+			if($search!=''){
+				$sql="SELECT * FROM {$db_table} WHERE borrado=1 AND user LIKE '%$search%'";
+			}else{
+				$sql="SELECT * FROM {$db_table} WHERE borrado=1";			
+			}
+				$resultado=$this->conexion_db->query($sql);
+	   			$verificar=$resultado->fetchAll(PDO::FETCH_ASSOC);
+				echo json_encode($verificar);
+				exit();
+		}
+        */
 
-            $stmt = $this->conn->prepare($sqlQuery);
+        /* 
+		function get_articles($search=""){
 
-            $stmt->bindParam(1, $this->id);
-            $this->id = htmlspecialchars(strip_tags($this->id));
+			if($search!=''){
+				$sql="SELECT * FROM article WHERE borrado = 1 AND user LIKE {$search}";
+			}else{
+				$sql="SELECT * FROM article WHERE borrado=1";			
+			}
 
-            $stmt->execute();
+            $result=$this->conn->query($sql);
 
-            $dataRow = $stmt->fetch(PDO::FETCH_ASSOC);
-            
-            $this->name = $dataRow['name'];
-            $this->description = $dataRow['description'];
-        }        
-        
-        // UPDATE
-        public function updateArticle(){
-            $sqlQuery = "UPDATE ". $this->db_table ." SET name = :name, description = :description WHERE id = :id";
-        
-            $stmt = $this->conn->prepare($sqlQuery);
-        
-            $this->name=htmlspecialchars(strip_tags($this->name));
-            $this->description=htmlspecialchars(strip_tags($this->description));
-            $this->id=htmlspecialchars(strip_tags($this->id));
-        
-            // bind data
-            $stmt->bindParam(":name", $this->name);
-            $stmt->bindParam(":description", $this->description);
-            $stmt->bindParam(":id", $this->id);
-        
-            if($stmt->execute()){
-               return true;
-            }
-            return false;
-        }
-
-        // DELETE
-        function deleteArticle(){
-        //$sqlQuery = "DELETE FROM " . $this->db_table . " WHERE id = ?";
-        $sqlQuery = "UPDATE ". $this->db_table ." SET name = :name, description = :description, borrado = 0 WHERE id = :id";
-            $stmt = $this->conn->prepare($sqlQuery);
-        
-            $this->id=htmlspecialchars(strip_tags($this->id));
-        
-            $stmt->bindParam(":name", $this->name);
-            $stmt->bindParam(":description", $this->description);
-            $stmt->bindParam(":id", $this->id);
-        
-            if($stmt->execute()){
-                return true;
-            }
-            return false;
-        }
-        
+            $articles=$result->fetchAll(PDO::FETCH_ASSOC);
+            echo json_encode($articles);
+            exit();
+		}
+        */
     }
 ?>

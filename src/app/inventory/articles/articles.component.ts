@@ -10,51 +10,59 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./articles.component.css']
 })
 export class ArticlesComponent implements OnInit {
+
   title = 'Artículos';
   subtitle = 'Gestión de Artículos';
 
   search:string="";
 
   articles:article[]=[];
-
+  
   HelperId: number;
 
   helperArticle:article;
   helperArticleDelete:article;
 
   constructor(private ArticlesService:ArticlesService, private router: Router) {
+    this.GetArticles();
+    //this.GetObserverArticles();
   }
 
   ngOnInit(): void {
-    this.GetArticles();
   }
 
-  GetArticles(){
-    this.ArticlesService.GetAllArticlesService().subscribe((articles:article[]) => { 
+  GetObserverArticles(){
+    this.ArticlesService.GetAllArticlesService$().subscribe( (articles) => { 
       this.articles = articles;
     });
-    
   }
   
+  GetArticles(){
+    this.ArticlesService.GetAllArticlesService().subscribe( articles => 
+      {
+        this.ArticlesService.IterateArticlesService(articles);
+      }
+    );
+  }
+
+  /*   
   DeleteArticle(id:number, index:number){
-    console.log("id: "+id);
-    console.log("index: "+index);
-    
+
     this.ArticlesService.GetArticleService(id).subscribe( (article:article) => {
       this.helperArticle=article; 
 
       if(this.helperArticle != null){
         this.ArticlesService.SoftDeleteArticleService(this.helperArticle).subscribe( response => {
-          /* this.articles.splice(index,1); 
-          window.location.reload();  */
+          this.articles.splice(index,1); 
+          window.location.reload(); 
         });
       }
     } );
-
-
-  }
+  } 
+  */
 
   SearchArticle(search:string){
     this.search = search;
   }
+
 }

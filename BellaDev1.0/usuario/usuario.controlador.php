@@ -3,7 +3,7 @@
 	header("Access-Control-Allow-Origin: *");
 	header("Access-Control-Request-Method: *");
 	header("Access-Control-Request-Headers: *");
-	include_once("./usuario.model.php");
+	include_once("/usuario.model.php");
 	$datos = json_decode(file_get_contents('php://input'));
 	if($datos != NULL){
 		$hola = new usuarios();

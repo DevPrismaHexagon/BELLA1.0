@@ -7,7 +7,7 @@ export class Usuario{
     estatus:number=0;
 
 
-    constructor(id:number,  user:string,password:string, rol:number, estado:number){
+    constructor(id:number,user:string,password:string,rol:number,estado:number){
         this.id=id;
         this.user=user;
         this.password=password;

@@ -1,7 +1,7 @@
 <?php
 	header('Content-Type: application/json');
 	include_once("../conexion.php");
-	class usuarios extends conexion{
+	class Usuario extends conexion{
 		public function usuarios(){
 			parent::__construct();
 		}

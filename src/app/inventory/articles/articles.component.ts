@@ -3,6 +3,7 @@ import { Iarticle } from 'src/interfaces/articles';
 import { article } from 'src/models/article.model';
 import { ArticlesService } from './articles.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-articles',
@@ -17,18 +18,12 @@ export class ArticlesComponent implements OnInit {
   search:string="";
 
   articles:article[]=[];
-  
-  HelperId: number;
 
-  helperArticle:article;
-  helperArticleDelete:article;
-
-  constructor(private ArticlesService:ArticlesService, private router: Router) {
-    this.GetArticles();
-    this.GetObserverArticles();
-  }
+  constructor(private ArticlesService:ArticlesService, private router: Router) { }
 
   ngOnInit(): void {
+    this.GetArticles();
+    this.GetObserverArticles();
   }
 
   GetObserverArticles(){
@@ -45,21 +40,11 @@ export class ArticlesComponent implements OnInit {
     );
   }
 
-  /*   
   DeleteArticle(id:number, index:number){
-
-    this.ArticlesService.GetArticleService(id).subscribe( (article:article) => {
-      this.helperArticle=article; 
-
-      if(this.helperArticle != null){
-        this.ArticlesService.SoftDeleteArticleService(this.helperArticle).subscribe( response => {
-          this.articles.splice(index,1); 
-          window.location.reload(); 
-        });
-      }
-    } );
+    if(window.confirm("Desea eliminar el Articulo?")){
+      this.ArticlesService.SoftDeleteArticleService(id, index).subscribe();
+    }
   } 
-  */
 
   SearchArticle(search:string){
     this.search = search;

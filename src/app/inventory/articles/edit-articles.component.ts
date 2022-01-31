@@ -23,6 +23,8 @@ export class EditArticlesComponent implements OnInit {
   
   helperArticle:article;
 
+  articles:article[]=[];
+
   article_categories:article_category[]=[];
   brands:brand[]=[];
   units:unit[]=[];
@@ -63,11 +65,29 @@ export class EditArticlesComponent implements OnInit {
     /* window.addEventListener('load',()=>{
       this.agregar();
     }) */
+    this.GetArticles();
+    this.GetObserverArticles();
 
     this.HelperId = this.ActiveRoute.snapshot.paramMap.get('id');
+    this.getArticle(this.HelperId);
+  }
 
-    /*     
-    this.ArticlesService.GetArticleService(this.HelperId).subscribe( (article:article) => {
+  GetObserverArticles(){
+    this.ArticlesService.GetAllArticlesService$().subscribe( (articles) => { 
+      this.articles = articles;
+    });
+  }
+  
+  GetArticles(){
+    this.ArticlesService.GetAllArticlesService().subscribe( articles => 
+      {
+        this.ArticlesService.IterateArticlesService(articles);
+      }
+    );
+  }
+
+  getArticle(id:number){
+    this.ArticlesService.GetArticleService(id).subscribe( article => {
       this.helperArticle=article; 
 
       if(this.helperArticle != null){
@@ -77,8 +97,7 @@ export class EditArticlesComponent implements OnInit {
           description: this.helperArticle.description,
         });
       }
-    } );
-    */
+    });
   }
 
   UpdateArticle(){
@@ -87,9 +106,8 @@ export class EditArticlesComponent implements OnInit {
       this.FormArticle.get('name')!.value,
       this.FormArticle.get('description')!.value,  
     );
-    /* 
+
     this.ArticlesService.UpdateArticleService(HelperArticle).subscribe();
     this.router.navigateByUrl('articulos');
-    */
   }
 }

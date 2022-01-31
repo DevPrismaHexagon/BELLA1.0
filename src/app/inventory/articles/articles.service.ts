@@ -30,25 +30,32 @@ export class ArticlesService implements OnInit {
   }
 
   ngOnInit(): void {
-    //this.GetAllArticlesService();
   }
 
-  // halfway done
-  AddArticleService(article:article){
+  ngOnDestroy(){
+    this.articles$.unsubscribe();
+  }
+
+  // halfway done, lacks refresh, something wrong with the refresh by observer
+  AddArticleService(article:article):Observable<any>{
+    let data = { 
+      'option':2,
+      'article':article
+    };
     this.articles.push(article);
     this.articles$.next(this.articles);
-
-    return this.httpClient.post(this.BaseUrl, article, {responseType: 'text'});
+    return this.httpClient.post(this.BaseUrl, data);
   }
 
   // observable
   GetAllArticlesService$():Observable<article[]>{
-    console.log("entro en get observable");
     return this.articles$.asObservable();
   }
 
   // non observable
    GetAllArticlesService(){
+    //posiblemente bien xD 
+    this.articles = [];
      let data = { 
       'option':1
     };
@@ -65,23 +72,43 @@ export class ArticlesService implements OnInit {
     this.articles$.next(this.articles);
   }
 
-  GetArticleService(id:number):Observable<any> {
-    let url = this.BaseUrl+"?id="+id;
-    return this.httpClient.get(url);
+  // working properly
+  GetArticleService(id:number) {
+    let data = { 
+      'option':4,
+      'id':id
+    };
+    return this.httpClient.post<article>(this.BaseUrl, data);
   }
 
-/*   
   UpdateArticleService(article:article){
-    console.log("entro a update article service");
-    return this.httpClient.put(this.UpdateArticleBaseUrl, article, {responseType: 'text'} );
+    let data = { 
+      'option':5,
+      'article':article
+    };
+    //this.articles = this.articles.filter(article => article.id == article.id);
+    
+    for (let index = 0; index < this.articles.length; index++) {
+      if(this.articles[index].id == article.id ){
+        this.articles.splice(index,1);
+      }
+    }
+     
+    this.articles.push(article);
+    this.articles$.next(this.articles); 
+
+    return this.httpClient.post(this.BaseUrl, data);
   }
 
+  SoftDeleteArticleService(id:number, index:number) {
+    let data = { 
+      'option':3,
+      'id':id
+    };
 
-
-  SoftDeleteArticleService(article:article) {
-    console.log("id: "+article.id);
-    console.log("entro a delete article service");
-    return this.httpClient.put(this.DeleteArticleBaseUrl, article, {responseType: 'text'} );
+    this.articles = this.articles.filter(article => article.id !== id);
+    this.articles$.next(this.articles);
+    return this.httpClient.post(this.BaseUrl, data, {responseType: 'text'} );
   }
-   */
+   
 }

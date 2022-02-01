@@ -56,13 +56,16 @@ export class AddArticlesComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // the part with the get all articles is doubtful
   SaveArticle(){
     let HelperArticle = new article(
       this.random_number,
       this.FormArticle.get('name')!.value,
       this.FormArticle.get('description')!.value,  
     );
-    this.ArticlesService.AddArticleService(HelperArticle);
-    this.router.navigateByUrl('articulos');
+  
+    this.ArticlesService.AddArticleService(HelperArticle).subscribe( response => {
+      this.router.navigate(['/articulos'])
+    } );
   }
 }

@@ -4,7 +4,8 @@ import { article } from 'src/models/article.model';
 import { ArticlesService } from './articles.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NombrePaginaService } from 'src/app/controlador/nombre-pagina.service';
-
+import { ThisReceiver } from '@angular/compiler';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-articles',
   templateUrl: './articles.component.html',
@@ -31,6 +32,9 @@ export class ArticlesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
+    this.GetObserverArticles();
+    this.GetArticles();
   }
 
   GetObserverArticles(){
@@ -47,21 +51,11 @@ export class ArticlesComponent implements OnInit {
     );
   }
 
-  /*   
   DeleteArticle(id:number, index:number){
-
-    this.ArticlesService.GetArticleService(id).subscribe( (article:article) => {
-      this.helperArticle=article; 
-
-      if(this.helperArticle != null){
-        this.ArticlesService.SoftDeleteArticleService(this.helperArticle).subscribe( response => {
-          this.articles.splice(index,1); 
-          window.location.reload(); 
-        });
-      }
-    } );
+    if(window.confirm("Desea eliminar el Articulo?")){
+      this.ArticlesService.SoftDeleteArticleService(id, index).subscribe();
+    }
   } 
-  */
 
   SearchArticle(search:string){
     this.search = search;

@@ -24,7 +24,7 @@
         // GET ALL
         public function get_articles(){
 
-            $sql="SELECT * FROM article WHERE borrado=1";			
+            $sql = "SELECT * FROM article WHERE borrado=1";			
         
             $query = $this->conn->query($sql);
 
@@ -32,47 +32,75 @@
 
             echo json_encode($result);
             exit();
-
-            /*              
-            echo "entro 5";
-            $sqlQuery = "SELECT * FROM " . $this->db_table . " WHERE borrado = 1";
-            echo "entro 6";
-            $stmt = $this->conn->prepare($sqlQuery);
-            echo "entro 7";
-            $result = $stmt->execute();
-            echo "entro 8";
-            */
         }
 
-        /* 
-		function get_articles($search=''){
-			if($search!=''){
-				$sql="SELECT * FROM {$db_table} WHERE borrado=1 AND user LIKE '%$search%'";
-			}else{
-				$sql="SELECT * FROM {$db_table} WHERE borrado=1";			
-			}
-				$resultado=$this->conexion_db->query($sql);
-	   			$verificar=$resultado->fetchAll(PDO::FETCH_ASSOC);
-				echo json_encode($verificar);
-				exit();
-		}
-        */
+        public function add_article($name, $description){
+            $sql = "INSERT INTO article (name, description) VALUES (:name, :description)";
+            
+            $stmt= $this->conn->prepare($sql);
 
-        /* 
-		function get_articles($search=""){
+            // sanitize
+            $name = htmlspecialchars(strip_tags($name));
+            $description = htmlspecialchars(strip_tags($description));
 
-			if($search!=''){
-				$sql="SELECT * FROM article WHERE borrado = 1 AND user LIKE {$search}";
-			}else{
-				$sql="SELECT * FROM article WHERE borrado=1";			
-			}
-
-            $result=$this->conn->query($sql);
-
-            $articles=$result->fetchAll(PDO::FETCH_ASSOC);
-            echo json_encode($articles);
+            $stmt->bindParam(':name', $name);
+            $stmt->bindParam(':description', $description);
+            
+            $result = $stmt->execute();
+            echo json_encode($result);
             exit();
-		}
-        */
+        }
+
+        public function delete_article($id){
+            $sql = "UPDATE article SET borrado = 0  WHERE id = :id";
+            $stmt= $this->conn->prepare($sql);
+
+            // sanitize
+            $id = htmlspecialchars(strip_tags($id));
+
+            $stmt->bindParam(':id', $id);
+            
+            $result = $stmt->execute();
+            echo json_encode($result);
+            exit();
+        }
+
+        public function get_article($id){
+            $sql = "SELECT * FROM article WHERE id = :id";
+            $stmt= $this->conn->prepare($sql);
+
+            // sanitize
+            $id = htmlspecialchars(strip_tags($id));
+
+            $stmt->bindParam(':id', $id);
+
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            echo json_encode($result);
+            exit();
+        }
+
+        public function update_article($data){
+            $sql = "UPDATE article SET name = :name, description = :description  WHERE id = :id";
+            $stmt= $this->conn->prepare($sql);
+
+            // sanitize
+            $id = htmlspecialchars(strip_tags($data->article->id));
+            $name = htmlspecialchars(strip_tags($data->article->name));
+            $description = htmlspecialchars(strip_tags($data->article->description));
+
+            $stmt->bindParam(':name', $name);
+            $stmt->bindParam(':description', $description);
+            $stmt->bindParam(':id', $id);
+
+            $result = $stmt->execute();
+
+            if($result){
+                $this->get_articles();
+            }
+            echo "Error";
+            exit();
+        }
     }
 ?>

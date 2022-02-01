@@ -15,10 +15,23 @@
     $data = json_decode(file_get_contents('php://input'));
 
     if($data != NULL){
+ 
         $option= $data->option;
-
+        
         if($option == 1){
             $items->get_articles();
+        }
+        else if($option == 2){
+            $items->add_article($data->article->name, $data->article->description);
+        }
+        else if($option == 3){
+            $items->delete_article($data->id);
+        }
+        else if($option == 4){
+            $items->get_article($data->id);
+        }
+        else if($option == 5){
+            $items->update_article($data);
         }
     }
 ?>

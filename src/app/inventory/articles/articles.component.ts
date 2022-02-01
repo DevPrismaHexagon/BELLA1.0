@@ -4,6 +4,7 @@ import { article } from 'src/models/article.model';
 import { ArticlesService } from './articles.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ThisReceiver } from '@angular/compiler';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-articles',
@@ -18,12 +19,13 @@ export class ArticlesComponent implements OnInit {
   search:string="";
 
   articles:article[]=[];
-
+  
   constructor(private ArticlesService:ArticlesService, private router: Router) { }
 
   ngOnInit(): void {
-    this.GetArticles();
+    
     this.GetObserverArticles();
+    this.GetArticles();
   }
 
   GetObserverArticles(){

@@ -23,8 +23,6 @@ export class EditArticlesComponent implements OnInit {
   
   helperArticle:article;
 
-  articles:article[]=[];
-
   article_categories:article_category[]=[];
   brands:brand[]=[];
   units:unit[]=[];
@@ -65,25 +63,9 @@ export class EditArticlesComponent implements OnInit {
     /* window.addEventListener('load',()=>{
       this.agregar();
     }) */
-    this.GetArticles();
-    this.GetObserverArticles();
 
     this.HelperId = this.ActiveRoute.snapshot.paramMap.get('id');
     this.getArticle(this.HelperId);
-  }
-
-  GetObserverArticles(){
-    this.ArticlesService.GetAllArticlesService$().subscribe( (articles) => { 
-      this.articles = articles;
-    });
-  }
-  
-  GetArticles(){
-    this.ArticlesService.GetAllArticlesService().subscribe( articles => 
-      {
-        this.ArticlesService.IterateArticlesService(articles);
-      }
-    );
   }
 
   getArticle(id:number){
@@ -107,7 +89,8 @@ export class EditArticlesComponent implements OnInit {
       this.FormArticle.get('description')!.value,  
     );
 
-    this.ArticlesService.UpdateArticleService(HelperArticle).subscribe();
-    this.router.navigateByUrl('articulos');
+    this.ArticlesService.UpdateArticleService(HelperArticle).subscribe( response => {
+      this.router.navigate(['/articulos'])
+    } );
   }
 }

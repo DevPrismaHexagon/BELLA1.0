@@ -17,7 +17,7 @@
     if($data != NULL){
  
         $option= $data->option;
-
+        
         if($option == 1){
             $items->get_articles();
         }

@@ -13,7 +13,7 @@ export class ArticlesService implements OnInit {
   helperArticle:article;
 
   articles:article[]=[];
-  articles$:Subject<article[]>;
+  private articles$:Subject<article[]>;
 
   BaseUrl:string = 'http://localhost/BELLA1.0/belladev1.0/articles/class/articles.controller.php';
 
@@ -42,6 +42,7 @@ export class ArticlesService implements OnInit {
       'option':2,
       'article':article
     };
+
     this.articles.push(article);
     this.articles$.next(this.articles);
     return this.httpClient.post(this.BaseUrl, data);
@@ -53,7 +54,7 @@ export class ArticlesService implements OnInit {
   }
 
   // non observable
-   GetAllArticlesService(){
+   GetAllArticlesService():Observable<article[]>{
     //posiblemente bien xD 
     this.articles = [];
      let data = { 
@@ -86,15 +87,26 @@ export class ArticlesService implements OnInit {
       'option':5,
       'article':article
     };
+
     //this.articles = this.articles.filter(article => article.id == article.id);
     
+    /*  
     for (let index = 0; index < this.articles.length; index++) {
       if(this.articles[index].id == article.id ){
         this.articles.splice(index,1);
       }
-    }
-     
+    } 
+    */
+    //console.log("before filter: "+JSON.stringify(this.articles));
+
+    this.articles = this.articles.filter(articles => articles.id !== article.id);
+
+    //console.log("after filter: "+JSON.stringify(this.articles));
+
     this.articles.push(article);
+
+    //console.log("after push: "+JSON.stringify(this.articles));
+
     this.articles$.next(this.articles); 
 
     return this.httpClient.post(this.BaseUrl, data);

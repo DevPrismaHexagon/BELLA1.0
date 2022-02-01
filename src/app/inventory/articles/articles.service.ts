@@ -56,7 +56,7 @@ export class ArticlesService implements OnInit {
   // non observable
    GetAllArticlesService(offset:number=0):Observable<article[]>{
     //posiblemente bien 
- 
+    console.log("page in service: "+offset);
     this.articles = [];
      let data = { 
       'option':1,

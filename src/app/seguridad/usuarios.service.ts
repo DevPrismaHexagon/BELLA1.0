@@ -12,22 +12,21 @@ import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 })
 export class UsuariosService {
 
-  constructor(private http : HttpClient) { 
+  constructor(private http : HttpClient) {
     this.usuarios$ = new Subject();
   }
-  BaseUrl:string = 'http://localhost4200/BELLA1.0/BellaDev1.0/usuario/usuario.controlador.php';
+   BaseUrl:string = 'http://localhost:80/BELLA1.0/BellaDev1.0/usuario/usuario.controlador.php';
 
   usuarios:Usuario[]=[];
   private usuarios$: Subject<Usuarioss[]>;
   // urlPagina = environment.url;
-  
+
   ver_usuarios(empezar:number=1){
     let data={
       'opcion':1,
       'empezar':empezar,
     }
-    
-    // let path=`${this.urlPagina}/usuario/usuario.controlador.php`;
+    // // let path=`${this.urlPagina}/usuario/usuario.controlador.php`;
      return this.http.post<Usuarioss[]>(this.BaseUrl,data);
   }
   buscar_usuarios(buscar: string){
@@ -35,7 +34,7 @@ export class UsuariosService {
       'opcion':5,
       'buscar': buscar
     }
-    // let path=`${this.urlPagina}usuario/usuario.controlador.php`;
+    //  let path=`${this.urlPagina}/usuario/usuario.controlador.php`;
      return this.http.post<Usuarioss[]>(this.BaseUrl,data);
   }
   agregar_usuarios(user:string, password:string, rol:number){
@@ -45,10 +44,9 @@ export class UsuariosService {
       'password':password,
       'rol': rol
     }
-    // let path=`${this.urlPagina}usuario/usuario.controlador.php`;
+    //  let path=`${this.urlPagina}/usuario/usuario.controlador.php`;
      return this.http.post<Usuarioss[]>(this.BaseUrl,data);
   }
-
   $id:number;
   setId(id:number){
     this.$id=id;
@@ -58,7 +56,7 @@ export class UsuariosService {
       'opcion':3,
       'id': this.$id
     }
-    // let path=`${this.urlPagina}usuario/usuario.controlador.php`;
+    //  let path=`${this.urlPagina}/usuario/usuario.controlador.php`;
      return this.http.post<Usuarioss[]>(this.BaseUrl,data);
   }
   actualizar_usuario(id:number, tipo:string, texto:any){
@@ -68,17 +66,17 @@ export class UsuariosService {
       'tipo': tipo,
       'texto':texto
     }
-    // let path=`${this.urlPagina}usuario/usuario.controlador.php`;
-     return this.http.post<Usuarioss[]>(this.BaseUrl,data); 
+    //  let path=`${this.urlPagina}/usuario/usuario.controlador.php`;
+     return this.http.post<Usuarioss[]>(this.BaseUrl,data);
   }
   paginacion_usuario(){
     let data={
       'opcion':6,
     }
-    // let path=`${this.urlPagina}usuario/usuario.controlador.php`;
-     return this.http.post<number>(this.BaseUrl,data); 
+    //  let path=`${this.urlPagina}/usuario/usuario.controlador.php`;
+     return this.http.post<number>(this.BaseUrl,data);
   }
-  
+
   getUsuarios$(): Observable<Usuarioss[]> {
     return this.usuarios$.asObservable();
   }
@@ -90,11 +88,6 @@ export class UsuariosService {
       this.usuarios.push(nuevoUsuario);
     })
     this.usuarios$.next(this.usuarios);
-    
+
   }
-  
-
-  
-
-  
 }

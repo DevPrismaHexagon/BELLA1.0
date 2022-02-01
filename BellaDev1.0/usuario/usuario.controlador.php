@@ -1,12 +1,15 @@
 <?php
-	header('Content-Type: application/json');
-	header("Access-Control-Allow-Origin: *");
-	header("Access-Control-Request-Method: *");
-	header("Access-Control-Request-Headers: *");
-	include_once("./usuario.controlador.php");
+	 header("Access-Control-Allow-Origin: *");
+	 header("Content-Type: application/json; charset=UTF-8");
+	 header("Access-Control-Allow-Methods: GET, POST, PUT, PATCH, POST, DELETE, OPTIONS");;
+	 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With, Content-Type, Accept");
+	 
+	include_once("./usuario.model.php");
+	include_once("../conexion.php");
+
 	$datos = json_decode(file_get_contents('php://input'));
 	if($datos != NULL){
-		$hola = new usuarios();
+		$hola = new Usuario();
 		$opcion= $datos->opcion;
 		if($opcion==1){
 			$hola->ver_usuario($datos->empezar);

@@ -22,10 +22,13 @@
 		}
 
         // GET ALL
-        public function get_articles(){
+        public function get_articles($offset=0, $search=''){
+            if($search!=""){
+                $sql = "SELECT * FROM article WHERE borrado=1 AND name LIKE '%$search%' ORDER BY name LIMIT $offset, 2";	 
+            }else{
+                $sql = "SELECT * FROM article WHERE borrado=1 ORDER BY name LIMIT $offset, 2";	
+            }
 
-            $sql = "SELECT * FROM article WHERE borrado=1";			
-        
             $query = $this->conn->query($sql);
 
             $result = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -102,5 +105,18 @@
             echo "Error";
             exit();
         }
+
+        // GET ALL
+        public function get_pagination_count(){
+            $sql = "SELECT COUNT(*) FROM article WHERE borrado=1";	
+        
+            $query = $this->conn->query($sql);
+
+            $count = $query->fetchColumn();
+
+            echo json_encode($count);
+            exit();
+        }
+
     }
 ?>

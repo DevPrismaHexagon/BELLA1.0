@@ -19,7 +19,7 @@
         $option= $data->option;
         
         if($option == 1){
-            $items->get_articles();
+            $items->get_articles($data->offset);
         }
         else if($option == 2){
             $items->add_article($data->article->name, $data->article->description);
@@ -32,6 +32,12 @@
         }
         else if($option == 5){
             $items->update_article($data);
+        }
+        else if($option == 6){
+            $items->get_articles(0, $data->search);
+        }
+        else if($option == 7){
+            $items->get_pagination_count();
         }
     }
 ?>

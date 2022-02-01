@@ -47,7 +47,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <div style="display: contents" *ngFor="let article of articles | articlesFilter:search; let i = index">
+                    <!-- | articlesFilter:search; -->
+                    <div style="display: contents" *ngFor="let article of articles; let i = index">
                         <tr>
                             <td routerLink="/articulos/editar/{{article.id}}">{{article.name}}</td>
                             <td routerLink="/articulos/editar/{{article.id}}">{{article.description}}</td>
@@ -62,6 +63,18 @@
                     </div>
                 </tbody>
             </table>
+        </div>
+
+        <div class="lista_footer animate__animated animate__fadeInUp  animate__fast">
+            <!-- acomodar luego css -->
+            <div class="paginacion">
+                <div class="flecha"><i class="fas fa-arrow-left"></i></div>
+                <div class="numero" *ngFor="let pageNumber of paginationNumbers" (click)="GoToPage(pageNumber)">
+                    <span >{{pageNumber}}</span>                            
+
+                </div>
+                <div class="flecha activado"><i class="fas fa-arrow-right"></i></div>
+            </div>
         </div>
 
         <!-- <div class="list_footer">

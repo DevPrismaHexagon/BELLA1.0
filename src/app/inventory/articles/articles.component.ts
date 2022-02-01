@@ -35,10 +35,37 @@ export class ArticlesComponent implements OnInit {
     
     this.GetObserverArticles();
     this.GetArticles();
+    this.SetPaginationCount();
+  }
+
+  paginationNumbers: Array<number | string> = [];
+  amountByPage = 2;
+
+  SetPaginationCount(){
+    this.ArticlesService.Paginate().subscribe( total => {
+      let counter = 1;
+      let pages = Math.ceil(total/this.amountByPage);
+      for (let index = 0; index < pages; index++) {
+        if(counter > 4){
+          this.paginationNumbers.push('...');
+          this.paginationNumbers.push(pages);
+          break;
+        }
+        this.paginationNumbers.push(counter);
+        counter++;
+      }
+    });
+  }
+
+  GoToPage(number:any){
+    let page = parseInt(number);
+    this.ArticlesService.GetAllArticlesService(page).subscribe( articles => {
+      this.ArticlesService.IterateArticlesService(articles);
+    });
   }
 
   GetObserverArticles(){
-    this.ArticlesService.GetAllArticlesService$().subscribe( (articles) => { 
+    this.ArticlesService.GetAllArticlesService$().subscribe( articles => { 
       this.articles = articles;
     });
   }
@@ -58,7 +85,11 @@ export class ArticlesComponent implements OnInit {
   } 
 
   SearchArticle(search:string){
-    this.search = search;
+    this.ArticlesService.SearchArticleService(search).subscribe( articles => 
+      {
+        this.ArticlesService.IterateArticlesService(articles);
+      }
+    );
   }
 
 }

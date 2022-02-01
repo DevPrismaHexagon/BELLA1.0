@@ -54,16 +54,19 @@ export class ArticlesService implements OnInit {
   }
 
   // non observable
-   GetAllArticlesService():Observable<article[]>{
-    //posiblemente bien xD 
+   GetAllArticlesService(offset:number=0):Observable<article[]>{
+    //posiblemente bien 
+ 
     this.articles = [];
      let data = { 
-      'option':1
+      'option':1,
+      'offset':offset
     };
     return this.httpClient.post<Iarticle[]>(this.BaseUrl, data);
   }
 
   IterateArticlesService(articles:Iarticle[]){
+    this.articles = [];
     articles.forEach( e => {
       
       let newArticle = new article(e.id, e.name,e.description);
@@ -88,27 +91,9 @@ export class ArticlesService implements OnInit {
       'article':article
     };
 
-    //this.articles = this.articles.filter(article => article.id == article.id);
-    
-    /*  
-    for (let index = 0; index < this.articles.length; index++) {
-      if(this.articles[index].id == article.id ){
-        this.articles.splice(index,1);
-      }
-    } 
-    */
-    //console.log("before filter: "+JSON.stringify(this.articles));
-
     this.articles = this.articles.filter(articles => articles.id !== article.id);
-
-    //console.log("after filter: "+JSON.stringify(this.articles));
-
     this.articles.push(article);
-
-    //console.log("after push: "+JSON.stringify(this.articles));
-
     this.articles$.next(this.articles); 
-
     return this.httpClient.post(this.BaseUrl, data);
   }
 
@@ -123,4 +108,18 @@ export class ArticlesService implements OnInit {
     return this.httpClient.post(this.BaseUrl, data, {responseType: 'text'} );
   }
    
+  SearchArticleService(search:string){
+    let data = {
+      'option':6,
+      'search':search
+    }
+    return this.httpClient.post<article[]>(this.BaseUrl, data);
+  }
+
+  Paginate(){
+    let data={
+      'option':7,
+    }
+    return this.httpClient.post<number>(this.BaseUrl, data);
+  }
 }

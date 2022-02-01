@@ -3,7 +3,7 @@ export class article {
     name:String;
     /* slug:String; */
     description:String;
-/*     status:number;
+/*  status:number;
     bar_code:String;
     sku:String;
     comments:String;

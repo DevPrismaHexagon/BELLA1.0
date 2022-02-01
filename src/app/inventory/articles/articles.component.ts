@@ -30,12 +30,13 @@ export class ArticlesComponent implements OnInit {
   }
 
   paginationNumbers: Array<number | string> = [];
-  amountByPage = 2;
+  amountByPage = 10;
 
   SetPaginationCount(){
     this.ArticlesService.Paginate().subscribe( total => {
       let counter = 1;
       let pages = Math.ceil(total/this.amountByPage);
+      console.log("page: "+pages);
       for (let index = 0; index < pages; index++) {
         if(counter > 4){
           this.paginationNumbers.push('...');
@@ -50,6 +51,7 @@ export class ArticlesComponent implements OnInit {
 
   GoToPage(number:any){
     let page = parseInt(number);
+    page = page - 1;
     this.ArticlesService.GetAllArticlesService(page).subscribe( articles => {
       this.ArticlesService.IterateArticlesService(articles);
     });

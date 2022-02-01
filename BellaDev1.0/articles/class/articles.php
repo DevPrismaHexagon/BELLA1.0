@@ -24,9 +24,9 @@
         // GET ALL
         public function get_articles($offset=0, $search=''){
             if($search!=""){
-                $sql = "SELECT * FROM article WHERE borrado=1 AND name LIKE '%$search%' ORDER BY name LIMIT $offset, 2";	 
+                $sql = "SELECT * FROM article WHERE borrado=1 AND name LIKE '%$search%' ORDER BY name LIMIT $offset, 10";	 
             }else{
-                $sql = "SELECT * FROM article WHERE borrado=1 ORDER BY name LIMIT $offset, 2";	
+                $sql = "SELECT * FROM article WHERE borrado=1 ORDER BY name LIMIT $offset, 10";	
             }
 
             $query = $this->conn->query($sql);
